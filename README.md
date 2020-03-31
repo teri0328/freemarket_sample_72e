@@ -36,6 +36,7 @@
 
 ### Association
 - belongs_to :user
+- belongs_to :like
 - belongs_to :evaluation
 - has_many :conditions
 - has_many :categories, through: product_categories
@@ -130,6 +131,7 @@
 
 ### Association
 - belongs_to :user
+- belongs_to :product
 
 ## Imagesテーブル
 
