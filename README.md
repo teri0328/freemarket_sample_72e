@@ -15,33 +15,34 @@
 |encrypted_password|string|null: false|
 
 ### Association
-- has_many :products
-- has_many :cards
-- has_many :likes
-- has_many :evaluations
+- has_many :products, dependent: :destroy
+- has_many :cards, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- has_many :evaluations, dependent: :destroy
 
 ## Productsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|user_id|integer|null: false, foreign_key :true|
+|user_id|references|null: false, foreign_key :true|
 |price|integer|null: false|
 |postage|boolean|null: false, default: false|
 |shipping_days|integer|null: false|
 |region|string|null: false|
-|condition_id|string|null: false, foreign_key :true|
+|condition_id|references|null: false, foreign_key :true|
 |explanation|text|null: false|
 |size|string||
+|bland_id|references|foreign_key :true|
 
 ### Association
 - belongs_to :user
 - belongs_to :like
+- belongs_to :bland
 - belongs_to :evaluation
 - has_many :conditions
-- has_many :categories, through: product_categories
-- has_many :blands, through: product_blands
-- has_many :images
+- has_many :categories, through: product_categories, dependent: :destroy
+- has_many :images, dependent: :destroy
 - accepts_nested_attributes_for :images
 
 ## Cardsテーブル
@@ -49,7 +50,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 |company|string|null: false|
 |number|string|null: false|
 |cord|string|null: false|
@@ -75,14 +76,14 @@
 |name|string|null: false|
 
 ### Association
-- has_many :blands, through: product_blands
+- has_many :products
 
 ## Product_categoriesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|product_id|integer|null: false, foreign_key: true|
-|category_id|integer|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
+|category_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :product
@@ -92,8 +93,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|product_id|integer|null: false, foreign_key: true|
-|bland_id|integer|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
+|bland_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :product
@@ -103,7 +104,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|product_id|integer|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
 |name|string|null: false|
 
 ### Association
@@ -115,8 +116,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|product_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -126,7 +127,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 |number|integer|null: false|
 
 ### Association
@@ -137,7 +138,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|product_id|integer|null: false, foreign_key: true|
+|product_id|references|null: false, foreign_key: true|
 |image|string|null: false|
 
 ### Association
