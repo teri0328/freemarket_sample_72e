@@ -40,6 +40,8 @@
 - has_many :conditions
 - has_many :categories, through: product_categories
 - has_many :blands, through: product_blands
+- has_many :images
+- accepts_nested_attributes_for :images
 
 ## Cardsテーブル
 
