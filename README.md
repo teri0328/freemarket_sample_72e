@@ -18,7 +18,7 @@
 - has_many :products
 - has_many :cards
 - has_many :likes
-- has_many :evalutions
+- has_many :evaluations
 
 ## Productsテーブル
 
@@ -36,7 +36,7 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :evalution
+- belongs_to :evaluation
 - has_many :conditions
 - has_many :categories, through: product_categories
 - has_many :blands, through: product_blands
@@ -109,7 +109,7 @@
 - belongs_to :product
 
 
-## Evalutionsテーブル
+## Evaluationsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
