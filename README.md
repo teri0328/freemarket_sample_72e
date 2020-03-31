@@ -128,3 +128,13 @@
 
 ### Association
 - belongs_to :user
+
+## Imagesテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|product_id|integer|null: false, foreign_key: true|
+|image|string|null: false|
+
+### Association
+- belongs_to :product
