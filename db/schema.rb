@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200401032926) do
+ActiveRecord::Schema.define(version: 20200401033156) do
 
   create_table "blands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 20200401032926) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_evaluations_on_product_id", using: :btree
     t.index ["user_id"], name: "index_evaluations_on_user_id", using: :btree
+  end
+
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "number"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
   create_table "product_blands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -112,6 +120,7 @@ ActiveRecord::Schema.define(version: 20200401032926) do
   add_foreign_key "conditions", "products"
   add_foreign_key "evaluations", "products"
   add_foreign_key "evaluations", "users"
+  add_foreign_key "likes", "users"
   add_foreign_key "product_blands", "blands"
   add_foreign_key "product_blands", "products"
   add_foreign_key "product_categories", "categories"
