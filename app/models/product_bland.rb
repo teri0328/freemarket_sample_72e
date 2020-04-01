@@ -1,0 +1,2 @@
+class ProductBland < ApplicationRecord
+end
