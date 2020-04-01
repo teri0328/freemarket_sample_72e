@@ -4,11 +4,8 @@ Rails.application.routes.draw do
   resources :products, only: [:index,:new] do
     collection do
       get "buy"
-    end
-  end
-  resources :users, only: [:index] do
-    collection do
       get "about"
     end
   end
+  resources :users, only: [:index]
 end

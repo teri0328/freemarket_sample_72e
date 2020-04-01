@@ -13,6 +13,9 @@ class ProductsController < ApplicationController
   def buy
   end
 
+  def about
+  end
+
   private
 
   def set_params
