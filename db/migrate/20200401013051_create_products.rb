@@ -9,9 +9,9 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer    :shipping_days, null: false
       t.boolean    :postage      , null: false, default: false
       t.references :user         , null: false, foreign_key: true
-      t.references :condition    , null: false, foreign_key: true
-      t.references :category     , null: false, foreign_key: true
-      t.references :bland        , null: false, foreign_key: true
+      # t.references :condition    , null: false, foreign_key: true
+      # t.references :category     , null: false, foreign_key: true
+      # t.references :bland        , null: false, foreign_key: true
       t.timestamps
     end
   end
