@@ -7,20 +7,20 @@ body {
 
 .header {
   padding: 0 60px;
-  .header__inner {
+  &__inner {
     max-width: 1040px;
     width: 100%;
     min-height: 82px;
     margin: 0 auto;
     padding: 15px 0 0;
-    .header-main {
+    &__main {
       position: relative;
       display: flex;
       align-items: center;
-      .box {
+      &__box {
         margin-left: auto;
         padding-left: 10px;
-        .from {
+        &--from {
           float: left;
           width: 870px;
           height: 36px;
@@ -33,24 +33,23 @@ body {
             padding-bottom: 30px;
           }
         }
-        
-      }
-      .aa {
-        border: 0;
-        cursor: pointer;
-        background-color: #3CCACE;
-        padding: 8px;
-        .image-tag {
-          height: 36px;
-          width: 37px;
+      &__image {
+          border: 0;
+          cursor: pointer;
+          background-color: #3CCACE;
+          padding: 8px;
+          .image-tag {
+            height: 36px;
+            width: 37px;
+          }
         }
-      }
+      } 
     }  
-    .header-nav {
+    &__nav {
       font-size: 14px;
       display: flex;
       margin-bottom: 10px;
-      .header-left {
+      &--left {
         p {
             padding-left: 20px;
           }
@@ -63,12 +62,11 @@ body {
           }
         }
       }
-      .header-right {
+      &--right {
         padding-left: 500px;
         p {
             padding-left: 20px;
           }
-      
         ul {
           position: relative;
           display: flex;
@@ -77,9 +75,7 @@ body {
           }
         }
       }
-      
     }
-    
   }
 }
 
@@ -127,11 +123,11 @@ body {
     .content__btn {
       display: flex;
       margin: 24px 0 0 0;
-      .content__btn-left {
+      &--left {
         width: 180px;
         height :53px;
       }
-      .content__btn-right {
+      &--right {
         margin-left: 50px;
         img {
           width: 250px;
@@ -157,13 +153,12 @@ body {
       font-family:"Source Sans Pro", Helvetica,;
     
     }
-    .top-introdaction-item {
+    &--item {
       text-align: center;
       display: flex;
       max-width: 1020px;
       width: 100%;
       margin: 0 auto;
-
       span {
         color: #3CCACE;
       }
@@ -174,7 +169,6 @@ body {
       }
     }
 }
-
 .top-middel {
   background-image: url(bg-topMiddleDl-pict.jpg);
   background-position: bottom right;
@@ -182,30 +176,31 @@ body {
   background-size: cover;
   display: flex;
   align-items: center;
-  .top-middel-in {
+  &--in {
     color: #fff;
     text-shadow: 0 0 5px rgba(0,0,0,0.4);
     text-align: left;
     max-width: 1040px;
     width: 100%;
     margin: 0 auto;
-  }  
-  .content__btn {
-      display: flex;
-      margin: 24px 0 0 0;
-    .content__btn-left {
-        width: 180px;
-        height :53px;
-      }
-    .content__btn-right {
-        margin-left: 50px;
-        
-      img {
-          width: 250px;
-          height :97px;
+  
+    &__content {
+        display: flex;
+        margin: 24px 0 0 0;
+      &--left {
+          width: 180px;
+          height :53px;
         }
-      }
-    
+      &--right {
+          margin-left: 50px;
+          
+        img {
+            width: 250px;
+            height :97px;
+          }
+        }
+      
+    }
   }
 }  
 .top-key {
@@ -220,24 +215,23 @@ body {
     padding-bottom: 15px;
     position: relative;
   }
-  .items {
+  &__items {
     max-width: calc(1040px + 20px);
     width: 100%;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    .item__img {
-      display: flex;
-      flex-direction: column;
-      width: calc(1 / 3 * 100%);
-      text-align: center;
-      padding: 0 20px;
-
-    }
+    &--img {
+        display: flex;
+        flex-direction: column;
+        width: calc(1 / 3 * 100%);
+        text-align: center;
+        padding: 0 20px;
+      }
   }
 }
 
-.pickup-sell {
+.pickup__sell {
   padding: 80px 0 0;
   background-color: #f8f8f8;
   height: 100%;
@@ -247,21 +241,23 @@ body {
     line-height: 1.4;
     font-weight: bold;
   }
-  .pickbox-head {
-    font-size: 24px;
-    text-decoration: none;
-    color: #3CCACE;
-    text-align: center;
-  }
-  .pick-lists {
-    width: 780px;
-    margin: 26px auto;
-    display: flex;
-    justify-content: space-around;
-  }
+  &__box {
+    &__head {
+      font-size: 24px;
+      text-decoration: none;
+      color: #3CCACE;
+      text-align: center;
+    }
+    .pick-lists {
+      width: 780px;
+      margin: 26px auto;
+      display: flex;
+      justify-content: space-around;
+    }
+  } 
 }
 
-.pickup-brand {
+.pickup__brand {
   background-color: #f8f8f8;
   height: 100%;
   h2 {
@@ -270,26 +266,29 @@ body {
     line-height: 1.4;
     font-weight: bold;
   }
-  .pickbox-head {
-    font-size: 24px;
-    text-decoration: none;
-    color: #3CCACE;
-    text-align: center;
-  }
-  .pick-lists {
-    width: 780px;
-    margin: 26px auto;
-    display: flex;
-    justify-content: space-around;
-  }
+  &__box {
+    &__head {
+      font-size: 24px;
+      text-decoration: none;
+      color: #3CCACE;
+      text-align: center;
+    }
+    .pick-lists {
+      width: 780px;
+      margin: 26px auto;
+      display: flex;
+      justify-content: space-around;
+    }
+  }  
 }
+
 .banner{
   background-image: url(bg-appBanner-pict.jpg);
   padding: 100px 40px;
   position: relative;
   background-size: cover;
   background-position: center;
-  .inner {
+  &__inner {
     color: #fff;
     text-align: center;
     h4 {
@@ -303,16 +302,16 @@ body {
       text-shadow: 0 0 5px rgba(0,0,0,0.4);
     }
   }
-  .content__btn {
+  &__content {
     width: 100%;
     display: flex;
     justify-content: center;
     margin: 20px auto 0;
-    .content__btn-left {
+    &__btn--left {
       width: 180px;
       height :53px;
     }
-    .content__btn-right {
+    &__btn--right {
       margin-left: 50px;
       
       img {
