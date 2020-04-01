@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 20200401024652) do
   end
 
   create_table "product_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "product_id", null: false
-    t.integer  "bland_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["bland_id"], name: "index_product_categories_on_bland_id", using: :btree
+    t.integer  "product_id",  null: false
+    t.integer  "category_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_product_categories_on_category_id", using: :btree
     t.index ["product_id"], name: "index_product_categories_on_product_id", using: :btree
   end
 
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20200401024652) do
   end
 
   add_foreign_key "cards", "users"
-  add_foreign_key "product_categories", "blands"
+  add_foreign_key "product_categories", "categories"
   add_foreign_key "product_categories", "products"
   add_foreign_key "products", "users"
 end
