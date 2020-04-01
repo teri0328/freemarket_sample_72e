@@ -1,0 +1,62 @@
+%body
+  .single-container
+    %header.single-header
+      %h1
+        = link_to '#', class: 'single-header-logo' do
+          = image_tag '/assets/material/logo/logo.png', alt: 'furima', class: 'header-logo'
+      %nav.progress-bar.signup-bar
+        %ol.clearfix
+          %li.active
+            会員情報
+            %div
+          %li
+            電話番号認証
+            %div
+          %li
+            完了
+            %div
+
+    %main.single-main
+      %section.l-single-container
+        %h2.l-single-head.registration 会員情報入力
+        -# = form_for @user,  html: { id:'register-form', action: '#', method: 'POST', class: 'l-single-inner registration-form', novalidate: 'novalidate' } do |f|
+        -#   = f.hidden_field :__csrf_value, value: '1227cf9cbeb321ef2affdf10b337340ca832c0bc8a8cf75a488c35feb57fb2c495ba4e22595eb8a7f50845f9c93a0f4cd780e3d896d182120805d40fa4a147264'
+          .l-single-content
+            .form-group
+            .form-group
+              -# = f.hidden_field :login_type, value:""
+            .form-group
+            .form-group
+            .form-group
+            .form-group
+            .form-group
+            .p.form-info-text ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          .l-single-content
+            -# = f.hidden_field :after_save_callback, value: ""
+            -# = f.hidden_field :g_recaptcha_response_v3, id: 'g-recaptcha-v3'
+            -# = f.hidden_field :recaptcha_version, id: 'recaptcha-version' value: "3"
+            -# = f.hidden_field, id: 'g-recaptcha-v3-site-key' value: "6LelCcAUAAAAAGYBvpuT3hj7TOnrIElDM5ZsTuAy"
+            .form-group
+            = button_to '次へ進む', class: "btn-default btn-red"
+            .form-group.text-right
+            .form-group.recaptcha_term
+
+    %footer.single-footer
+      %nav
+        %ul.clearfix
+          %li
+            = link_to '#' do
+              プライバシーポリシー
+          %li
+            = link_to '#' do
+              フリマ利用規約
+          %li
+            = link_to '#' do
+              特定商取引に関する表記
+      = link_to '#', class: 'single-footer-logo' do
+        = image_tag '/assets/material/logo/logo-white.png', alt: 'furima', class: 'footer-logo', width: '80px', height: '65px'
+      %p
+        %small © Furima, Inc
+
+
+
