@@ -10,6 +10,9 @@ class ProductsController < ApplicationController
   def create
   end
 
+  def buy
+  end
+
   private
 
   def set_params
