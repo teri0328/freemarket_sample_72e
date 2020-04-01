@@ -9,7 +9,7 @@
 |birth_year|integer|null: false|
 |birth_month|integer|null: false|
 |birth_day|integer|null: false|
-|post_number|integer|null: false|
+|post_number|string|null: false|
 |adress|string|null: false|
 |tel_number|string|null: false, unique: true|
 |encrypted_password|string|null: false|
@@ -25,15 +25,16 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|user_id|references|null: false, foreign_key :true|
+|user_id|references|null: false, foreign_key: true|
 |price|integer|null: false|
 |postage|boolean|null: false, default: false|
 |shipping_days|integer|null: false|
 |region|string|null: false|
-|condition_id|references|null: false, foreign_key :true|
+|condition_id|references|null: false, foreign_key: true|
 |explanation|text|null: false|
 |size|string||
 |bland_id|references|foreign_key :true|
+|category_id|references|foreign_key :true|
 
 ### Association
 - belongs_to :user
