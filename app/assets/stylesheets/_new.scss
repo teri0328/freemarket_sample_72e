@@ -1,0 +1,147 @@
+$lightgray: #f5f5f5;
+$black: #333;
+$white: #fff;
+$gray: #eee;
+$main--black: #000;
+$offwhite: #ccc;
+$facebook: #385185;
+$border--gray: #979797;
+
+* {
+  background-repeat: no-repeat;
+  // margin: 0;
+  // padding: 0;
+  font-size: inherit;
+  line-height: inherit;
+  box-sizing: inherit;
+}
+
+@mixin btn-default {
+  display: block;
+  width: 100%;
+  line-height: 48px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  transition: all ease-out .3s;
+  cursor: pointer;
+  text-align: center;
+}
+
+@mixin btn-sns {
+  position: relative;
+}
+
+
+
+body {
+  position: relative;
+  min-height: 100%;
+  background-color: $lightgray;
+  font-family: 'Source Sans Pro', Helvetica, Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  font-size: 14px;
+  color: $black;
+  line-height: 1;
+  .single-container {
+    padding: 0 0 220px;
+    header.single-header {
+      height: 128px;
+      text-align: center;
+      h1 {
+        margin: 40px 0 0;
+        a.single-header-logo {
+          img.header-logo {
+            width: 185px;
+            height: 49px;
+            line-height: 49px;
+          }
+        }
+      }
+    }
+
+    main.single-main {
+      // display: block;
+      background-color: $white;
+      width: 700px;
+      margin: 0 auto;
+      section.l-single-container {
+        // background-color: $white;
+      }
+      h2.l-single-head.registration {
+        text-align: center;
+        font-size: 22px;
+        padding: 32px;
+        border-bottom: 1px solid $gray;
+      }
+      .l-single-inner.registration-form {
+        padding: 24px 16px 40px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        .l-single-content {
+          max-width: 343px;
+          a.btn-mail {
+            @include btn-default;
+            text-decoration: none;
+            background-color: $gray;
+            color: $main--black;
+            i.far.fa-envelope {
+              position: absolute;
+              top: 50%;
+              left: 16%;
+              transform: translate(0, -50%);
+              color: $offwhite;
+              font-size: 16px;
+            }
+          }
+          button.btn-sns-facebook {
+            @include btn-default;
+            margin: 16px 0 0;
+            background-color: $facebook;
+            color: $white;
+          }
+          button.btn-sns-google {
+            @include btn-default;
+            margin: 16px 0 0;
+            background-color: $white;
+            border: 1px solid $border--gray;
+            color: $black;
+          }
+        }
+      }
+    }
+    footer.single-footer {
+      width: 456px;
+      height: 220px;
+      margin: 0 auto;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      height: 250px;
+      padding: 40px 0;
+      text-align: center;
+      position: fixed;
+      nav {
+        display: block;
+        ul {
+          display: flex;
+          justify-content: space-between;
+          list-style: none;
+          li {
+          }
+        }
+      }
+      a.single-footer-logo {
+        display: block;
+        color: $black;
+        width: 80px;
+        height: 65px;
+        margin: 40px auto 0;
+        img.footer-logo {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
