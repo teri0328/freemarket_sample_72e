@@ -1,0 +1,319 @@
+
+.detail-wrapper{
+  width: 700px;
+  color: #333;
+  margin: 0 auto;
+  background-color: #F5F5F5;
+  a{
+    &:hover{
+      color: #00CCF8;
+      text-decoration: underline;
+    }
+    color: #0099E8;
+    text-decoration: none;
+  }
+  &__main{
+    margin:40px auto 0 auto;
+    padding: 24px 24px 40px;
+    background-color: white;
+    &__contents{
+      &__product-name{
+        text-align: center;
+        margin-bottom: 16px;
+      }
+      &__product-contents{
+        display: flex;
+        justify-content: space-around;
+        &__product-photo{
+          width: 300px;
+          height: 375px;
+          background-color: #fafafa;
+          &__top{
+            height: 300px;
+            background-size: cover;
+            background-image: image_url("product-detail-image.jpg");
+          }
+          &__bottom{
+            display: flex;
+            overflow: scroll;
+            .image{
+              width: 75px;
+              height: 75px;
+              background-size: cover;
+              background-color: #eee;
+              background-image: image_url("product-detail-image.jpg");
+            }
+          }
+        }
+        &__detail-table{
+          width: 300px;
+          font-size: 14px;
+          th{
+            padding: 8px;
+            width: 150px;
+            font-weight: 400;
+            text-align: left;
+            background-color: #fafafa;
+          }
+          td{
+            width: 250px;
+            padding: 8px;
+            background-color: #fff;
+            border: 1px solid #fafafa;
+            .fas{
+              font-size: 20px;
+            }
+            .fa-grin{
+              color: #DE5E85;
+            }
+            .fa-meh{
+              color: #F0AC4E;
+            }
+            .fa-frown{
+              color: #7BB4D5;
+            }
+            .fa-chevron-right{
+              font-size: 16px;
+            }
+            span{
+              padding-right: 16px;
+            }
+          }
+        }
+      }
+      &__product-price{
+        margin: 24px 0;
+        display: flex;
+        justify-content: center;
+        h1{
+          font-size: 50px;
+          padding-right: 20px;
+        }
+        h5{
+          font-size: 14px;
+          margin-top: 36px;
+          font-weight: normal;
+        }
+      }
+      &__purchase-btn{
+        height: 50px;
+        width: 620px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 50px;
+        text-align: center;
+        background-color: #68C7CB;
+      }
+      &__purchase-link{
+        padding-top: 20px;
+      }
+      &__explanation{
+        padding-top: 16px;
+      }
+      &__button-container{
+        height: 40px;
+        display: flex;
+        margin-top: 20px;
+        line-height: 40px;
+        justify-content: center;
+        &__button{
+          padding: 0 20px;
+          border-radius:26px;
+          margin-right: 20px;
+          background-color: #F5F5F5;
+        }
+      }
+    }
+  }
+  
+  &__comments{
+    p{
+      padding: 8px;
+      background-color: #FEF6E1;
+    }
+    textarea{
+      width: 100%;
+      height: 100px;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      border: 1px solid #DDD;
+    }
+    button{
+      width: 100%;
+      height: 50px;
+      color: #FFF;
+      font-weight: bold;
+      background-color: #AAA;
+    }
+    color: #333;
+    position: relative;
+    margin:10px auto 0 auto;
+    padding: 24px 24px 40px;
+    background-color: white;
+    &__bubble{
+      position: absolute;
+        top :40px;
+        left:52px;
+        color: #F5F5F5;
+        font-size: 60px;
+        transform: rotate(75deg);
+    }
+    &__user{
+      position: relative;
+      &__bubble{
+        position: absolute;
+          top : 45px;
+          left: 45px;
+        width: 40px;
+        height: 40px;
+        background-size: cover;
+        background-image: image-url("bubble.png");
+      }
+      &__usericon{
+        position: absolute;
+          top : 20px;
+          left: 10px;
+        width: 46px;
+        height: 46px;
+        border-radius: 46px;
+        background-size: cover;
+        background-image: image_url("user_icon.png");
+      }
+      &__username{
+        font-weight: bold;
+        margin-left: 70px;
+        margin-bottom: 6px;
+      }
+      &__message{
+        width: 580px;
+        border-radius: 20px;
+        margin-left  : 70px;
+        margin-bottom: 20px;
+        padding: 20px 20px 0px 20px;
+        background-color: #F5F5F5;
+        &__days{
+          color: #AAA;
+          padding: 10px 0;
+          position: relative;
+          &__flag{
+            position: absolute;
+              right : 0;
+              bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+  &__other-links{
+    display: flex;
+    margin: 0 auto;
+    padding-top: 20px;
+    justify-content: space-between;
+    &__link{
+      width: 40%;
+    }
+  }
+  &__icons{
+    display: flex;
+    padding: 24px;
+    justify-content: center;
+    margin:40px auto 0 auto;
+    background-color: white;
+    &__icon{
+      margin: 4px;
+      width : 44px;
+      height: 44px;
+      font-size: 29px;
+      line-height: 44px;
+      text-align: center;
+      a{
+        color: #fff;
+      }
+      &_facebook{
+        border-radius: 4px;
+        background-color: #385185;
+      }
+      &_twitter{
+        border-radius: 4px;
+        background-color: #5D9DC9;
+      }
+      &_line{
+        border-radius: 4px;
+        background-color: #00C137;
+      }
+      &_pinterest{
+        border-radius: 4px;
+        background-color: #AA262A;
+      }
+    }
+  }
+  &__user-links{
+    padding: 20px 0;
+  }
+  &__other-products{
+    display: flex;
+    width: 700px;
+    justify-content: space-between;
+    &__product{
+      padding-bottom: 20px;
+      &__image{
+        width: 220px;
+        height: 220px;
+        background-size: cover;
+        background-image: image_url("product-detail-image");
+      }
+      &__text{
+        width: 220px;
+        height: 110px;
+        padding: 16px;
+        background-color: #fff;
+        &__product-name{
+          height: 48px;
+          overflow: hidden;
+          position: relative;
+          &:after{
+            display: block;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50%;
+            height: 1.5em;
+            background: linear-gradient(to right, rgba(255,255,255,0), #fff 72%);
+          }
+        }
+        &__product-price{
+          padding-top: 6px;
+          display: flex;
+          justify-content: space-between;
+          &__text{
+            font-weight: bolder;
+          }
+          &__icon{
+            .fa-heart{
+              color: #DDD;
+              padding-right: 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__border{
+    font-size: 14px;
+    padding: 16px 0;
+    border-top: 1px solid #EEE;
+    a{
+      color: #333;
+    }
+    .fa-chevron-right{
+      color: #999;
+      padding: 0 6px;
+    }
+    span{
+      font-weight: bold;
+    }
+  }
+}
