@@ -1,0 +1,148 @@
+.header__inner__nav {
+  border-bottom: 1px solid #3CCACE;
+}
+* {
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+ 
+}
+//  #3CCACE;
+.main-mypage {
+   background: rgb(245, 245, 245);
+   margin: 40px auto 0;
+   width: 1020px;
+  &__container {
+    padding-top: 40px;
+    padding-left : 40px;
+    width: 100%;
+    height: 150vh;
+    
+    &__content {
+      float: right;
+      width: 620px;
+      margin-right: 40px;
+      // height: 1100px;
+      &__icon {
+        height: 250px;
+        background: url(icon-back.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        text-align: center;
+        img {
+          margin-top: 20px;
+          border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+        }
+      }
+      &__function {
+        margin: 0;
+        background: #fff;
+        width: 620px;
+        height: 460px;
+        
+          .tabs {
+            font-size: 20px;
+            padding-top: 20px;
+            font-weight: bold;
+            height: 74px;
+            text-align: center;
+            border-bottom:1px solid #3CCACE;
+            list-style: none;
+            margin-block-end:0px;
+            li {
+              display: inline-block;
+              margin-right: 80px;
+              margin-left: 80px;
+
+            }
+          }
+        &__tag {
+
+          .tab-content {
+            list-style: none;
+            padding-inline-start:0px ;
+            margin-block-end:0px ;
+            margin-block-start: 0px;
+            li {
+              border-bottom:1px solid rgb(245, 245, 245);
+              font-size: 15px;
+              padding-top: 20px;
+              padding-bottom: 20px;
+
+            }
+          }
+        }
+        &__btn {
+          text-align: center;
+          
+          h3 {
+            width: 560px;
+            background: rgb(245, 245, 245);
+            margin-left: 30px;
+          }
+        }
+        
+      }
+      &__contineres {
+        background: #fff;
+        font-size: 20px;
+        margin-top: 20px;
+        font-weight: bold;
+        height: 470px;
+        text-align: center;
+        
+
+        h3 {
+          padding-top: 20px;
+          padding-bottom: 20px;
+          border-bottom:1px solid #3CCACE;
+        }
+        .buy-tab {
+          padding-inline-start: 0px;
+          
+          li {
+            margin-right: 80px;
+            margin-left: 80px;
+            display: inline-block;
+
+          }
+          
+        }
+      }
+    }
+    &__side {
+      // float: left;
+      width: 280px;
+      margin: 0 40px 0 0;
+
+        &__nav {
+        font-size: 18px;
+        background-color: #fff;
+        color: rgb(51, 51, 51);
+          &__list {
+            margin-bottom: 5px;
+            border-bottom:1px solid rgb(245, 245, 245);
+            padding-left: 30px;
+            height: 48px;
+            width: 280px;
+            padding-top: 10px;
+          }
+          
+        &__setting {
+          font-size: 18px;
+          background-color: #fff;
+          color: rgb(51, 51, 51);
+          &__list {
+            margin-bottom: 5px;
+            border-bottom:1px solid rgb(245, 245, 245);
+            padding-left: 30px;
+            height: 48px;
+            width: 280px;
+            padding-top: 10px;
+          }
+        }  
+      }  
+    }
+  }
+}
+
+  
+
