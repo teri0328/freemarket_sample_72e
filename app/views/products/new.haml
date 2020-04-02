@@ -1,9 +1,8 @@
-= icon('fab', 'facebook-square')
 %body
   .single-container
     %header.single-header
       %h1
-        = link_to '#', class: "single-header-logo" do
+        = link_to products_path, class: "single-header-logo" do
           = image_tag '/assets/material/logo/logo.png', alt: 'furima', class: 'header-logo'
 
     %main.single-main
