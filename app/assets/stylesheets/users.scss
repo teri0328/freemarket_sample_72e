@@ -5,7 +5,7 @@
   font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
  
 }
-//  #3CCACE;
+
 .main-mypage {
    background: rgb(245, 245, 245);
    margin: 40px auto 0;
@@ -20,7 +20,7 @@
       float: right;
       width: 620px;
       margin-right: 40px;
-      // height: 1100px;
+
       &__icon {
         height: 250px;
         background: url(icon-back.jpg);
@@ -104,12 +104,11 @@
             display: inline-block;
 
           }
-          
+
         }
       }
     }
     &__side {
-      // float: left;
       width: 280px;
       margin: 0 40px 0 0;
 
