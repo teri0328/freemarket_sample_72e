@@ -1,0 +1,75 @@
+.header 
+  .header__inner
+    .header__inner__main
+      %icon
+        = image_tag "logo.png", size: "140x40", alt: "logo"
+      .header__inner__main__box
+        .header__inner__main__box--from
+          %h72 キーワードから探す
+      .header__inner__main__box__image
+        .header__image--tag
+          = image_tag "icon-search1.png", size: "35x36", alt: "btn", class: "image-tag"
+    .header__inner__nav
+      .header__inner__nav--left
+        %ul 
+          %ls
+          %p カテゴリ
+          %p ブランド
+      .header__inner__nav--right
+        %ul
+          %ls
+          %p ログイン
+          %p 新規会員登録
+.main-mypage
+  .main-mypage__container.clearfix
+    .main-mypage__container__content
+      .main-mypage__container__content__icon
+        = image_tag "haruka.jpg", size: "213x142", alt: "card-1"
+        %p サンプル フリマ
+        %p 評価 12 出品 10
+      .main-mypage__container__content__function
+        %ul.tabs 
+          %li
+            お知らせ
+          %li
+            やることリスト
+        .main-mypage__container__content__function__tag
+          %ul.tab-content
+            %li
+              事務局からの個別メッセージ（FaceBook通知)
+            %li
+              事務局からの個別メッセージ「500円分ポイントが届きました！
+            %li
+              【本日開始】ファミリーマートでのコード決済が使えるようになりました
+            %li
+              【まもなく終了!】最大1,0000円分のポイントがもらえる”出品キャンペーン”開催中
+            %li
+              【１５秒かんたん出品！】最大1,0000円分のポイントがもらえる！
+        .main-mypage__container__content__function__btn
+          %h3
+            一覧を見る
+      .main-mypage__container__content__contineres
+        %h3
+          購入した商品
+        %ul.buy-tab 
+          %li
+            %h4
+              取引中
+          %li
+            %h4
+              過去の取引き
+        .main-mypage__container__content__contineres__past
+          %h5
+            取引中の商品がありません 
+          = image_tag "logo.png", size: "140x40", alt: "logo"      
+    .main-mypage__container__side
+      .main-mypage__container__side__nav
+        - @contents.each do |content|
+          .main-mypage__container__side__nav__list
+            = content
+      %h3 
+        設定
+      .main-mypage__container__side__nav__setting
+        - @settings.each do |setting|
+          .main-mypage__container__side__nav__setting__list
+            = setting
