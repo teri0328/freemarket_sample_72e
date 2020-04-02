@@ -1,0 +1,41 @@
+
+.menu
+  .menu__header
+    = link_to image_tag('logo.png'), '#'
+
+  .menu__main
+    .menu__main__box
+      .menu__main__box__account
+        %pアカウントをお持ちでない方はこちら
+        %a(href="#" class="btn" autofocus="true") 新規会員登録
+      .menu__main__box__in
+        .menu__main__box__in__area
+          .menu__main__box__in__area__btn
+            .icon-facebook 
+            Facebookでログイン
+        .menu__main__box__in__under
+          .menu__main__box__in__under__btn
+            %i.icon-facebook
+            Googleでログイン
+      .menu__main__box__form
+        .menu__main__box__form__in
+          .menu__main__box__form__in__group
+            %input.login-input-text{:name => "email", :placeholder => "メールアドレス", :type => "email", :value => ""}/
+          .menu__main__box__form__in__group
+            %input.login-input-text{:name => "password", :placeholder => "パスワード", :type => "password", :value => ""}/
+          .menu__main__box__form__in__group
+            = submit_tag "ログイン", id: "token_submit", class: "btn-default"
+          .menu__main__box__form__in__group__last
+            %a(href="#")パスワードをお忘れの方
+  .footer
+    .footer__hight
+      .footer__hight__line
+        .footer__hight__line__one
+        %a(href="#")プライバシーポリシー
+        .footer__hight__line__two
+        %a(href="#")利用規約
+        .footer__hight__line__three
+        %a(href="#")特定商取引に関する表記
+      .footer__hight__body
+        = link_to image_tag('logo-white.png'), '#'
+        %p©️FURIMA
