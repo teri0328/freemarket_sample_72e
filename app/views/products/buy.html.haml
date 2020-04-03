@@ -1,1 +1,48 @@
-商品購入確認ページ
+.buy-header
+  = link_to root_path do
+    = image_tag 'logo.png'
+.buy-main
+  .buy-main__body
+    .buy-main__body__in
+      %h2購入内容の確認
+    .buy-main__body__buy
+      .buy-main__body__buy__inner
+        = image_tag 'icon_brand.png'
+        .buy-main__body__buy__inner__content
+          ☘春だね♪☘ レディースジーンズ♡SIMPLE LIFE♡美品
+          %p¥3,700円　（税込）送料込み
+    .buy-main__body__item
+      .buy-main__body__item__inner
+        .buy-main__body__item__inner__form
+          .buy-main__body__item__inner__form__price
+          %h2 支払い金額 
+          .buy-main__body__item__inner__form__price__cell
+            .buy-main__body__item__inner__form__price__cell__aaa
+              ¥3,700
+        .buy-main__body__item__inner__point
+          %input(type="checkbox")/
+          %label ポイントを使用 (所持ポイント: P0)
+        .buy-main__body__item__inner__two
+          .buy-main__body__item__inner__two__payment
+            %h3支払い方法
+          = link_to "登録してください", "#";
+          -# %i.fas.fa-plus-circle
+        .buy-main__body__item__inner__three
+          .buy-main__body__item__inner__three__address
+            %h3配送先
+          = link_to "登録してください", "#";
+          -# %i.fas.fa-plus-circle
+        .buy-main__body__item__inner__form__info
+          = submit_tag "購入する", id: "token_submit", class: "btn"
+.buy-footer
+  .buy-footer__hight
+    .buy-footer__hight__line
+      .buy-footer__hight__line__one
+      = link_to "プライバシーポリシー", "#";
+      .buy-footer__hight__line__two
+      = link_to "利用規約", "#";
+      .buy-footer__hight__line__three
+      = link_to "特定商取引に関する表記", "#";
+    .buy-footer__hight__body
+      = link_to image_tag('logo-white.png'), '#'
+      %p©️FURIMA
