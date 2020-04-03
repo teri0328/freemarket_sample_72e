@@ -32,20 +32,10 @@ a.blue {
   color: $link--blue;
 }
 
-.progress-bar {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.text {
-  color: $darkgray;
-  font-size: 18px;
-  padding: 0 0 10px 15px ;
-}
-
 p.proviso--bold {
   font-weight: bold;
   font-size: 18px;
+  margin-top: 50px;
 }
 
 p.proviso {
@@ -75,7 +65,6 @@ body.third-page {
   margin: 0 auto;
   .single-container {
     padding: 0 0 220px;
-
     header.single-header {
       height: 128px;
       display: flex;
@@ -160,9 +149,6 @@ body.third-page {
             background-color: $furima;
             color:#fff;
           }
-          // li.active + li::before {
-          //   background-color: $furima;
-          // }
           li.done + li::before {
             background-color: $furima;
           }
@@ -172,8 +158,8 @@ body.third-page {
 
     main.single-main__third-page {
       margin: 0 auto;
-      height: 760px;
-      width: 860px;
+      height: 830px;
+      width: 800px;
       background-color: $white;
       section.l-single-container__third-page {
         height: 100%;
@@ -199,6 +185,11 @@ body.third-page {
                 border: 1px solid $darkgray;
                 border-radius: 4px;
                 line-height: 50px;
+                .text {
+                  color: $darkgray;
+                  font-size: 18px;
+                  padding: 0 0 10px 15px ;
+                }
               }
             }
           }
