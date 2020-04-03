@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200401034604) do
+ActiveRecord::Schema.define(version: 20200403042011) do
 
   create_table "blands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -39,10 +39,8 @@ ActiveRecord::Schema.define(version: 20200401034604) do
 
   create_table "conditions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
-    t.integer  "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_conditions_on_product_id", using: :btree
   end
 
   create_table "evaluations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -131,7 +129,6 @@ ActiveRecord::Schema.define(version: 20200401034604) do
   end
 
   add_foreign_key "cards", "users"
-  add_foreign_key "conditions", "products"
   add_foreign_key "evaluations", "products"
   add_foreign_key "evaluations", "users"
   add_foreign_key "likes", "users"

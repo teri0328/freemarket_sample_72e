@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root "products#master"
-  resources :products, only: [:index,:new] do
+  resources :products do
     collection do
       get "buy"
       get "about"
