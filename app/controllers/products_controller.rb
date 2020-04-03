@@ -16,6 +16,9 @@ class ProductsController < ApplicationController
   def about
   end
 
+  def master
+  end
+
   private
 
   def set_params
