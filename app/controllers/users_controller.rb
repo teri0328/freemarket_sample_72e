@@ -5,7 +5,6 @@ class UsersController < ApplicationController
     @settings = ["プロフィール","発送元・お届け先変更","支払い方法","メール・パスワード","本人情報","電話番号の確認","ログアウト"]
   end
 
-
   def new
   end
 
@@ -13,7 +12,6 @@ class UsersController < ApplicationController
   end
 
   def about
-    
   end
 
 end
