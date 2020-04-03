@@ -1,0 +1,48 @@
+%body.second-page
+  .single-container
+    %header.single-header
+      %h1
+        = link_to '#', class: 'single-header-logo' do
+          = image_tag '/assets/material/logo/logo.png', alt: 'furima', class: 'header-logo'
+      %nav.progress-bar.signup-bar
+        %ol.progress-bar
+          %li.done 会員情報
+          %li.active 電話番号認証
+          %li 完了
+
+    %main.single-main__second-page
+      %section.l-single-container__first-page
+        %h2.l-single-head.registration__first-page 電話番号の確認
+        .confirmation-field
+          .confirmation-field__cellular
+            %p.column-name
+              携帯電話の番号
+            .form--long
+              .text
+                携帯電話の番号を入力
+            %p.proviso
+              本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+            = button_tag 'SMSを送信する', class: "submit-btn"
+            %p.proviso
+              ※ 電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+            .form-group.text-right
+              = link_to '#', target: :_blank, class: "blue" do
+                電話番号の確認が必要な理由>
+
+
+    %footer.single-footer-3
+      %nav
+        %ul
+          %li
+            = link_to '#' do
+              プライバシーポリシー
+          %li
+            = link_to '#' do
+              フリマ利用規約
+          %li
+            = link_to '#' do
+              特定商取引に関する表記
+      = link_to '#', class: 'single-footer-logo' do
+        = image_tag '/assets/material/logo/logo-white.png', alt: 'furima', class: 'footer-logo', width: '80px', height: '65px'
+      %p
+        %small © Furima, Inc

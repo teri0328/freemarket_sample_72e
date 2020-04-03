@@ -1,52 +1,252 @@
-	
-/* パターン1 */
-.progressbar {
-  counter-reset: step;
-              z-index: 0;
-              position: relative;
+
+$black: #000;
+$chacoal: #333;
+$white: #fff;
+$offwhite: #ccc;
+$gray: #eee;
+$lightgray: #f5f5f5;
+$darkgray: #979797;
+$facebook: #385185;
+$furima: #3CCACE;
+$link--blue: #0099e8;
+
+$form-height: 60px;
+
+* {
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+  }
+
+a {
+  text-decoration: none;
+  color: $black;
 }
-.progressbar li {
-  list-style-type: none;
-  width: 25%;
-  float: left;
-  font-size: 12px;
-  position: relative;
-  text-align: center;
-  color: #aaa;
+
+a:hover {
+color: $chacoal;
+text-decoration: underline;
+opacity: 0.5;
 }
-.progressbar li:before {
-  width: 10px;
-  height: 10px;
-  font-size: 0px;
-  content: counter(step);
-  counter-increment: step;
-  line-height: 30px;
+
+a.blue {
+  color: $link--blue;
+}
+
+.progress-bar {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.text {
+  color: $darkgray;
+  font-size: 18px;
+  padding: 0 0 10px 15px ;
+}
+
+
+body.second-page {
   display: block;
-  text-align: center;
-  margin: 0 auto 10px auto;
-  border-radius: 50%;
-  background-color: #eee;
+  position: relative;
+  height: 100vh;
+  width:100%;
+  background-color: $lightgray;
+  font-family: 'Source Sans Pro', Helvetica, Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  font-size: 14px;
+  color: $chacoal;
+  line-height: 1;
+  margin: 0 auto;
+  .single-container {
+    padding: 0 0 220px;
+    header.single-header {
+      height: 128px;
+      display: flex;
+      justify-content: center;
+      h1 {
+        display: block;
+        margin: 40px 0 0;
+        text-align: center;
+        a.single-header-logo {
+          img.header-logo {
+            display: inline-block;
+            width: 190px;
+            height: 50px;
+            line-height: 50px;
+          }
+        }
+      }
+      nav.progress-bar.signup-bar {
+        height: 130px;
+        width: 450px;
+        text-align: center;
+        margin: 0;
+        ol.progress-bar{
+          width: 100%;
+          padding: 20px 0 0 45px;
+          text-align: center;
+          counter-reset: step;
+          z-index: 0;
+          position: relative;
+          li {
+            list-style: none;
+            width: 33%;
+            float: left;
+            padding: 0 40px 0 0;
+            position: relative;
+            text-align: center;
+            color: $offwhite;
+          }
+          // 点
+          li:after {
+            width: 16px;
+            height: 16px;
+            font-size: 0px;
+            content: counter(step);
+            counter-increment: step;
+            line-height: 30px;
+            display: block;
+            text-align: center;
+            margin: 10px auto 10px auto;
+            border-radius: 50%;
+            background-color: $offwhite;
+          }
+          // 線
+          li::before {
+            width: 100%;
+            height: 1px;
+            content: '';
+            position: absolute;
+            background-color: $offwhite;
+            top: 31px;
+            left: -70%;
+            z-index: -1;
+          }
+          // 左端をカット
+          li:first-child::before {
+            content: none;
+          }
+          li.active {
+            color: $furima;
+            font-weight: 600;
+            width: 34%
+          }
+          li.active::after {
+            background-color: $furima;
+            color:#fff;
+          }
+          li.active::before {
+            background-color: $furima;
+            color:#fff;
+          }
+          li.done::after {
+            background-color: $furima;
+            color:#fff;
+          }
+          // li.active + li::before {
+          //   background-color: $furima;
+          // }
+          li.done + li::before {
+            background-color: $furima;
+          }
+        }
+      }
+    }
+
+    main.single-main__second-page {
+      margin: 0 auto;
+      height: 550px;
+      width: 860px;
+      background-color: $white;
+      section.l-single-container__first-page {
+        margin: 0 auto;
+        h2.l-single-head.registration__first-page {
+          text-align: center;
+          font-size: 22px;
+          padding: 32px;
+          border-bottom: 1px solid $gray;
+        }
+        .confirmation-field {
+          margin-left: 234px;
+          &__cellular {
+            p.column-name {
+              font-weight: bold;
+              font-size: 16px;
+            }
+            .form--long {
+              width: 400px;
+              height: $form-height;
+              border: 1px solid $darkgray;
+              border-radius: 4px;
+              line-height: 50px;
+              .text {
+                color: $darkgray;
+                font-size: 18px;
+                padding: 0 0 10px 15px ;
+              }
+            }
+            p.proviso {
+              width: 400px;
+              font-size: 16px;
+            }
+            button.submit-btn {
+              width: 400px;
+              height: 60px;
+              margin-top: 50px;
+              background-color: $furima;
+              text-align: center;
+              font-size: 16px;
+            }
+            .form-group.text-right {
+              margin: 30px 0 0 170px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+
+
+    footer.single-footer-3 {
+      width: 460px;
+      height: 220px;
+      margin: 30px auto 0;
+      // position: absolute;
+      height: 250px;
+      padding: 40px 0;
+      text-align: center;
+      nav {
+        display: block;
+        ul {
+          display: flex;
+          justify-content: space-between;
+          list-style: none;
+          li {
+            a {
+            text-decoration: none;
+            color: $black;
+            }
+            a:hover {
+            color: $chacoal;
+            text-decoration: underline;
+            }
+          }
+        }
+      }
+      a.single-footer-logo {
+        display: block;
+        width: 200px;
+        height: 65px;
+        margin: 40px auto 0;
+        color: $chacoal;
+        text-align: center;
+        img.footer-logo {
+          display: inline-block;
+          width: 150px;
+          height: 50px;
+          line-height: 50px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
 }
-.progressbar li:after {
-  width: 100%;
-  height: 2px;
-  content: '';
-  position: absolute;
-  background-color: #eee;
-  top: 5px;
-  left: -50%;
-  z-index: -1;
-}
-.progressbar li:first-child:after {
-  content: none;
-}
-.progressbar li.active {
-  color: green;
-}
-.progressbar li.active:before {
-  background-color: #55b776;
-  color:#fff;
-}
-.progressbar li.active + li:after {
-  background-color: #55b776;
-}
+
