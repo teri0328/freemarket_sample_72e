@@ -1,23 +1,28 @@
-= link_to "トップページ" , products_path
-%br
-= link_to "ログインページ" , new_user_session_path
-%br
-= link_to "新規登録ページ" , new_user_registration_path
-%br
-= link_to "新規登録ページ1" , authenticate_products_path
-%br
-= link_to "新規登録ページ2" , telephone_products_path
-%br
-= link_to "新規登録ページ3" , select_products_path
-%br
-= link_to "新規登録ページ4" , registration_products_path
-%br
-= link_to "新規登録ページ5" , result_products_path
-%br
-= link_to "商品出品ページ" , new_product_path
-%br
-= link_to "商品詳細ページ" , about_products_path
-%br
-= link_to "ユーザーマイページ" , users_path
-%br
-= link_to "商品購入確認ページ" , buy_products_path 
+%div
+  - if user_signed_in?
+    = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn'
+    = current_user.nickname
+%div
+  = link_to "トップページ" , products_path
+  %br
+  = link_to "ログインページ" , new_user_session_path
+  %br
+  = link_to "新規登録ページ" , new_user_registration_path
+  %br
+  = link_to "新規登録ページ1" , authenticate_products_path
+  %br
+  = link_to "新規登録ページ2" , telephone_products_path
+  %br
+  = link_to "新規登録ページ3" , select_products_path
+  %br
+  = link_to "新規登録ページ4" , registration_products_path
+  %br
+  = link_to "新規登録ページ5" , result_products_path
+  %br
+  = link_to "商品出品ページ" , new_product_path
+  %br
+  = link_to "商品詳細ページ" , about_products_path
+  -# %br
+  -# = link_to "ユーザーマイページ" , user_path
+  %br
+  = link_to "商品購入確認ページ" , buy_products_path

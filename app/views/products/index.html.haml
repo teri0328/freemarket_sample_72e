@@ -1,3 +1,6 @@
+.top-message
+  = "ようこそ！#{current_user.nickname}さん"
+
 .header 
   .header__inner
     .header__inner__main
@@ -18,8 +21,11 @@
       .header__inner__nav--right
         %ul
           %ls
-          %p ログイン
-          %p 新規会員登録
+          - if user_signed_in?
+            = link_to "ログアウト" , destroy_user_session_path, method: :delete
+          - unless user_signed_in?
+            = link_to "ログイン"   , new_user_registration_path
+            = link_to "新規会員登録", new_user_registration_path
 
 .main
   .main__visial
