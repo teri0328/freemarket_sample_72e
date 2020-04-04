@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200403042011) do
+ActiveRecord::Schema.define(version: 20200404072609) do
+
+  create_table "adresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",     null: false
+    t.string   "post_number", null: false
+    t.integer  "prefecture",  null: false
+    t.string   "city",        null: false
+    t.string   "adress",      null: false
+    t.string   "apartment"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_adresses_on_user_id", using: :btree
+  end
 
   create_table "blands", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -108,23 +120,24 @@ ActiveRecord::Schema.define(version: 20200403042011) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                                null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "nickname",                            null: false
-    t.string   "furigana",                            null: false
     t.integer  "birth_year",                          null: false
     t.integer  "birth_month",                         null: false
     t.integer  "birth_day",                           null: false
-    t.string   "post_number",                         null: false
-    t.string   "adress",                              null: false
-    t.string   "tel_number",                          null: false
-    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.string   "password"
+    t.string   "password_confirmation"
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "firstname",                           null: false
+    t.string   "lastname",                            null: false
+    t.string   "firstname_kana",                      null: false
+    t.string   "lastname_kana",                       null: false
+    t.string   "email"
+    t.string   "nickname",                            null: false
+    t.string   "tel_number"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
