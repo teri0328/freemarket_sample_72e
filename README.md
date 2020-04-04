@@ -21,16 +21,16 @@
 - has_many :cards, dependent: :destroy
 - has_many :likes, dependent: :destroy
 - has_many :evaluations, dependent: :destroy
-- has_one  :adress, dependent: :destroy
+- has_one  :address, dependent: :destroy
 
-## Adressesテーブル
+## Addressesテーブル
 |Column     |Type      |Options|
 |------|----|-------|
 |user_id    |references|null: false, foreign_key: true|
 |post_number|string    |null: false|
 |prefecture |integer   |null: false|
 |city       |string    |null: false|
-|adress     |string    |null: false|
+|address    |string    |null: false|
 |apartment  |integer   ||
 
 ### Association

@@ -1,12 +1,12 @@
 .menu
   .menu__header
-    = link_to image_tag('logo.png'), '#'
+    = link_to image_tag('logo.png'), root_path
 
   .menu__main
     .menu__main__box
       .menu__main__box__account
         %pアカウントをお持ちでない方はこちら
-        = link_to "新規会員登録", "#", class: "btn"
+        = link_to "新規会員登録", new_user_registration_path, class: "btn"
       .menu__main__box__in
         .menu__main__box__in__area
           .menu__main__box__in__area__btn
