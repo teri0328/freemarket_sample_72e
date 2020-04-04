@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'telephone'
       get 'select'
       get 'registration'
+      get 'result'
     end
   end
 end

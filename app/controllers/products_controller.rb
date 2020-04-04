@@ -23,4 +23,7 @@ class ProductsController < ApplicationController
 
   def registration
   end
+
+  def result
+  end
 end
