@@ -1,1 +1,99 @@
-福永さん作業中
+= user_signed_in?
+
+#account-page.account-page
+  .account-page__inner.clearfix
+    .account-page__inner--left.account-page__header
+      %h2 Create Account
+      %h5 新規アカウントの作成
+      = render "devise/shared/links"
+    .account-page__inner--right.user-form
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        .field
+          .field-label
+            = f.label :firstname
+          .field-input
+            = f.text_field :firstname, autofocus: true
+        .field
+          .field-label
+            = f.label :lastname
+          .field-input
+            = f.text_field :lastname, autofocus: true
+        .field
+          .field-label
+            = f.label :email
+          .field-input
+            = f.email_field :email
+        .field
+          .field-label
+            = f.label :nickname
+          .field-input
+            = f.text_field :nickname, autofocus: true
+        .field
+          .field-label
+            = f.label :firstname_kana
+          .field-input
+            = f.text_field :firstname_kana
+        .field
+          .field-label
+            = f.label :lastname_kana
+          .field-input
+            = f.text_field :lastname_kana
+        .field
+          .field-label
+            = f.label :birth_year
+          .field-input
+            = f.text_field :birth_year
+        .field
+          .field-label
+            = f.label :birth_month
+          .field-input
+            = f.text_field :birth_month
+        .field
+          .field-label
+            = f.label :birth_day
+          .field-input
+            = f.text_field :birth_day
+        .field
+          .field-label
+            = f.label :tel_number
+          .field-input
+            = f.text_field :tel_number
+        .field
+          .field-label
+            = f.label :password
+            %i (英数字8文字以上)
+          .field-input
+            = f.password_field :password, autocomplete: "off"
+        .field
+          .field-label
+            = f.label :password_confirmation
+          .field-input
+            = f.password_field :password_confirmation, autocomplete: "off"
+        .actions
+          = f.submit "Create Account", class: 'btn'
+
+-# = form_for @user do |f|
+-#   名前
+-#   = f.text_field :name , class: ".item-price__name__form", placeholder: "0"
+-#   メール
+-#   = f.text_field :email , class: ".item-price__name__form", placeholder: "0"
+-#   ニックネーム
+-#   = f.text_field :nickname , class: ".item-price__name__form", placeholder: "0"
+-#   フリガナ
+-#   = f.text_field :furigana , class: ".item-price__name__form", placeholder: "0"
+-#   誕生年
+-#   = f.text_field :birth_year , class: ".item-price__name__form", placeholder: "0"
+-#   誕生月
+-#   = f.text_field :birth_month , class: ".item-price__name__form", placeholder: "0"
+-#   誕生日
+-#   = f.text_field :birth_day , class: ".item-price__name__form", placeholder: "0"
+-#   郵便番号
+-#   = f.text_field :post_number , class: ".item-price__name__form", placeholder: "0"
+-#   住所
+-#   = f.text_field :adress , class: ".item-price__name__form", placeholder: "0"
+-#   電話番号
+-#   = f.text_field :tel_number , class: ".item-price__name__form", placeholder: "0"
+-#   パスワード
+-#   = f.text_field :encrypted_password , class: ".item-price__name__form", placeholder: "0"
+-#   = f.submit "登録"
