@@ -1,0 +1,57 @@
+-# 最初のページ
+%body
+  .single-container
+    %header.single-header
+      %h1
+        = link_to products_path, class: "single-header-logo" do
+          = image_tag '/assets/material/logo/logo.png', alt: 'furima', class: 'header-logo'
+
+    %main.single-main
+      %section.l-single-container
+        %h2.l-single-head.registration 新規会員登録
+        .l-single-inner.registration-form
+          .l-single-content
+            = link_to 'product', class: 'btn-default btn-mail' do
+              = icon('far', 'fa-envelope')
+              メールアドレスで登録
+            %button{ id: 'facebook-login', class: 'btn-default btn-sns btn-sns-facebook' }
+              = icon('fab', 'facebook-square')
+              Facebookで登録
+            %button{ id: 'google-login', class: 'btn-default btn-sns btn-sns-google' }
+              = icon('fab', 'fab-google')
+              Googleで登録
+
+-# ローカル環境下ではdeviseがインストールされておらず、変数が定義されていないためコメントアウト
+
+      -# = form_for @user, html:{ id:'login_form_facebook', action: '/jp/signup/facebook/', method: 'POST', novalidate: 'novalidate' } do |f|
+      -#   = f.hidden_field :__csrf_value, value: '1227cf9cbeb321ef2affdf10b337340ca832c0bc8a8cf75a488c35feb57fb2c495ba4e22595eb8a7f50845f9c93a0f4cd780e3d896d182120805d40fa4a147264'
+      -#   = f.hidden_field :nickname, value: ""
+      -#   = f.hidden_field :email, value: ""
+      -#   = f.hidden_field :facebook_user_id, value: ""
+      -#   = f.hidden_field :facebook_access_token, value: ""
+      -#   = f.hidden_field :login_type, value: "facebook"
+
+      -# = form_for @user, html:{ id:'login_form_google', action: '/jp/signup/google/', method: 'POST', novalidate: 'novalidate' } do |f|
+      -#   = f.hidden_field :__csrf_value, value: '1227cf9cbeb321ef2affdf10b337340ca832c0bc8a8cf75a488c35feb57fb2c495ba4e22595eb8a7f50845f9c93a0f4cd780e3d896d182120805d40fa4a147264'
+      -#   = f.hidden_field :nickname, value: ""
+      -#   = f.hidden_field :email, value: ""
+      -#   = f.hidden_field :google_user_id, value: ""
+      -#   = f.hidden_field :google_access_token, value: ""
+      -#   = f.hidden_field :login_type, value: "google"
+
+    %footer.single-footer
+      %nav
+        %ul
+          %li
+            = link_to '#' do
+              プライバシーポリシー
+          %li
+            = link_to '#' do
+              フリマ利用規約
+          %li
+            = link_to '#' do
+              特定商取引に関する表記
+      = link_to '#', class: 'single-footer-logo' do
+        = image_tag '/assets/material/logo/logo-white.png', alt: 'furima', class: 'footer-logo', width: '80px', height: '65px'
+      %p
+        %small © Furima, Inc

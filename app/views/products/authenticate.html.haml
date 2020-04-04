@@ -1,0 +1,65 @@
+-# 電話番号認証ページ
+%body.third-page
+  .single-container
+    %header.single-header
+      %h1
+        = link_to '#', class: 'single-header-logo' do
+          = image_tag '/assets/material/logo/logo.png', alt: 'furima', class: 'header-logo'
+      %nav.progress-bar.signup-bar
+        %ol.progress-bar
+          %li.done 会員情報
+          %li.active 電話番号認証
+          %li 完了
+
+    %main.single-main__third-page
+      %section.l-single-container__third-page
+        %h2.l-single-head.registration__third-page 電話番号認証
+        .confirmation-box
+          .upper-field
+            .upper-field__content
+              %p.proviso--bold
+                認証番号
+              .form
+                .text
+                  認証番号を入力
+              %p.proviso
+                SMSで届いた認証番号を入力してください
+              = button_tag '認証して完了', class: "authentication-btn"
+          .middle-field
+            .middle-field__content
+              %p.proviso--bold
+                30秒たっても認証番号が届かない方へ
+              %p.proviso
+                電話で認証番号を聞くこともできます。
+              = button_tag '電話で認証番号を聞く（通話無料）', class: "tel-btn"
+          .bottom-field
+            .bottom-field__content
+              %p.proviso--bold
+                認証番号を再送することもできます。もう一度電話番号を入力して下さい。
+              .links
+                = link_to '#', target: :_blank, class: "blue" do
+                  電話番号を再度入力する
+              %p.proviso
+                ※ SMSが届かない場合は
+                = link_to '#', target: :_blank, class: "blue" do
+                  SMS受信設定
+                を確認して、もう
+              %p.proviso
+                一度電話番号を入力して下さい。
+
+    %footer.single-footer__third-page
+      %nav
+        %ul
+          %li
+            = link_to '#' do
+              プライバシーポリシー
+          %li
+            = link_to '#' do
+              フリマ利用規約
+          %li
+            = link_to '#' do
+              特定商取引に関する表記
+      = link_to '#', class: 'single-footer-logo' do
+        = image_tag '/assets/material/logo/logo-white.png', alt: 'furima', class: 'footer-logo', width: '80px', height: '65px'
+      %p
+        %small © Furima, Inc
