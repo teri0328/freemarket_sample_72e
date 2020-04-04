@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  root "products#index"
+  devise_for :users
+  root "products#master"
   resources :products do
     collection do
+      get "buy"
+      get "about"
+      get "master"
       get 'authenticate'
       get 'telephone'
       get 'select'
@@ -9,4 +13,5 @@ Rails.application.routes.draw do
       get 'result'
     end
   end
+  resources :users, only: [:index]
 end

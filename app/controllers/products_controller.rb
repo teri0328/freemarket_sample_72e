@@ -13,6 +13,22 @@ class ProductsController < ApplicationController
     @product.save!
   end
 
+  # 以下、ビュー表示用の仮アクション
+  def authenticate
+  end
+
+  def telephone
+  end
+
+  def select
+  end
+
+  def registration
+  end
+
+  def result
+  end
+
   def buy
   end
 
