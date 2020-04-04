@@ -21,6 +21,8 @@
               = icon('fab', 'fab-google')
               Googleで登録
 
+-# ローカル環境下ではdeviseがインストールされておらず、変数が定義されていないためコメントアウト
+
       -# = form_for @user, html:{ id:'login_form_facebook', action: '/jp/signup/facebook/', method: 'POST', novalidate: 'novalidate' } do |f|
       -#   = f.hidden_field :__csrf_value, value: '1227cf9cbeb321ef2affdf10b337340ca832c0bc8a8cf75a488c35feb57fb2c495ba4e22595eb8a7f50845f9c93a0f4cd780e3d896d182120805d40fa4a147264'
       -#   = f.hidden_field :nickname, value: ""
