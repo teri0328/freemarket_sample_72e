@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+body {
+  background-color:#f5f5f5;
+  height: 100vh;
+  width: 100%;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+}
+
+.buy-header{
+  height: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img{
+    width: 200px;
+    text-align: center;
+  }
+}
+
+.buy-main{
+  &__body{
+    width: 700px;
+    height: 90vh;
+    margin: auto;
+    background-color:white;
+    &__in{
+      padding: 31px;
+      font-size: 15px;
+      text-align: center;
+      border-bottom: 1px solid #cccccc;
+    }
+    &__buy{
+      height: 145px;
+      padding: 32px;
+      border-bottom: 1px solid #cccccc;
+      &__inner{
+        width: 343px;
+        height: 80px;
+        margin: auto;
+        display: flex;
+        img{
+          height: 80px;
+        }
+        &__content{
+          margin-left: 20px;
+          font-size: 14px;
+          p{
+            margin: 8px 0;
+          }
+        }
+      }
+    }
+    &__item{
+      padding: 32px 16px 48px;
+      &__inner{
+        height: 480px;
+        width: 343px;
+        margin: 0 auto;
+        &__form{
+          height: 38px;
+          display: flex;
+          &__price{
+          }
+          h2{
+            width: 175px;
+            margin-top: 10px;
+            font-size: 20px;
+          }
+          &__price__cell{
+            margin-left: 100px;
+            &__aaa{
+              font-size: 30px;
+            }
+          }
+        }
+        &__point{
+          height: 50px;
+          margin-top: 8px;
+          border-bottom: 1px solid;
+          border-bottom-color: #f5f5f5;
+          input{
+            font-size: 40px;
+          }
+          label{
+            font-size: 15px;
+            color: gray;
+          }
+          
+        }
+        &__two{
+          padding: 32px 0 0;
+          height: 110px;
+          border-bottom: 1px solid;
+          border-color: #f5f5f5;
+          &__payment{
+            font-size: 13px;
+            margin-bottom: 8px;
+          }
+          a{
+            font-size: 14px;
+            color: #00BCD4;
+          }
+        }
+        &__three{
+          height: 80px;
+          border-bottom: 1px solid;
+          border-color: #f5f5f5;
+          margin: 20px 0 20px;
+          &__address{
+            font-size: 13px;
+            margin-bottom: 8px;
+          }
+          a{
+            font-size: 14px;
+            color: #00BCD4;
+          }
+        }
+        &__info{
+          margin: 32px;
+          font-size: 12px;
+        }
+          .btn{
+            background-color: #3ccace;
+            color: white;
+            font-size: 14px;
+            width: 326px;
+            height: 50px;
+            margin: 10px 0;
+          }
+      }
+    }
+  }
+}
+
+.buy-footer {
+  padding: 40px;
+  text-align: center;
+  &__hight{
+    &__line {
+      font-size: 10px;
+      a {
+        color: black;
+      }
+      &__two {
+        display: inline-block;
+        margin-left: 16px;
+      }
+      &__three {
+        display: inline-block;
+        margin-left: 16px;
+      }
+    }
+    &__body {
+      margin-top: 40px;
+      img {
+        height: 50px;
+      }
+    }
+  }
+}
