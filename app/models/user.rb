@@ -17,9 +17,9 @@ class User < ApplicationRecord
   validates :lastname      , format: {with: /\A[ぁ-んァ-ン一-龥]/}
   validates :firstname_kana, format: {with: /\A[ぁ-んー－]+\z/}
   validates :lastname_kana , format: {with: /\A[ぁ-んー－]+\z/}
-  validates :birth_year    , format: {with: /\A[0-9]+\z/}
-  validates :birth_month   , format: {with: /\A[0-9]+\z/}
-  validates :birth_day     , format: {with: /\A[0-9]+\z/}
-  validates :tel_number    , format: {with: /\A[0-9]+\z/}
+  validates :birth_year    , format: {with: /\A\d{4}\z/}
+  validates :birth_month   , numericality: { only_integer: true , greater_than: 0, less_than: 13 }
+  validates :birth_day     , numericality: { only_integer: true , greater_than: 0, less_than: 32 }
+  validates :tel_number    , numericality: { only_integer: true }, length: { in: 10..11 }
 
 end
