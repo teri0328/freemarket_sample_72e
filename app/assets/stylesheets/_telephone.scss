@@ -38,9 +38,9 @@ a.blue {
 }
 
 .text {
-  color: $darkgray;
+  color: $black;
   font-size: 18px;
-  padding: 0 0 10px 15px ;
+  padding: 5px 8px;
 }
 
 
@@ -179,9 +179,9 @@ body.second-page {
               border-radius: 4px;
               line-height: 50px;
               .text {
-                color: $darkgray;
+                color: $black;
                 font-size: 18px;
-                padding: 0 0 10px 15px ;
+                padding: 5px 8px;
               }
             }
             p.proviso {
