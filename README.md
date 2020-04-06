@@ -1,3 +1,5 @@
+これはMASTERです
+
 ## Usersテーブル
 
 |Column|Type|Options|
