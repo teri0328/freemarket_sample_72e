@@ -44,7 +44,9 @@ ActiveRecord::Schema.define(version: 20200417102557) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "ancestry"
+    t.integer  "product_id"
     t.index ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+    t.index ["product_id"], name: "index_categories_on_product_id", using: :btree
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
