@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root "products#master"
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+  }
+  devise_scope :user do
+    get 'addresses', to: 'users/registrations#new_address'
+    post 'addresses', to: 'users/registrations#create_address'
+  end
+  
+  root "products#index"
   resources :products do
     collection do
       get "buy"
       get "about"
       get "master"
+
       get 'authenticate'
       get 'telephone'
       get 'select'
@@ -13,5 +21,5 @@ Rails.application.routes.draw do
       get 'result'
     end
   end
-  resources :users, only: [:index]
+  resources :users, only: [:show]
 end

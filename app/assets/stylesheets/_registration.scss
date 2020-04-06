@@ -52,12 +52,11 @@ span.bold {
 }
 
 span.form-require {
-  height: 20px;
   width: 40px;
   background-color: $furima;
   color: $white;
-  padding-top: 4px;
-  margin-left: 5px;
+  padding: 4px;
+  margin: 2px;
   text-align: center;
 }
 
@@ -86,9 +85,9 @@ span.form-require {
 }
 
 .text {
-  color: $darkgray;
+  color: $black;
   font-size: 18px;
-  padding: 0 0 10px 15px ;
+  padding: 5px 8px;
 }
 
 
@@ -190,9 +189,9 @@ body.first-page {
             background-color: $furima;
             color:#fff;
           }
-          li.active + li::before {
-            background-color: $furima;
-          }
+          // li.active + li::before {
+          //   background-color: $furima;
+          // }
           li.done + li::before {
             background-color: $furima;
           }
@@ -217,7 +216,7 @@ body.first-page {
           .form-info-text {
             margin: 30px 0 10px 0;
             font-size: 17px;
-            color: $darkgray;
+            color: $black;
           }
           .password-check-box {
             display: flex;
@@ -250,12 +249,13 @@ body.first-page {
               &__three-forms {
                 height: $form-height;
                 width: 80px;
-                border: 1px solid $darkgray;
+                line-height: 80px;
                 border-radius: 4px;
+                border: 1px solid $darkgray;
+                text-align: center;
+                font-size: 18px;
                 &__text {
-                  color: $darkgray;
-                  font-size: 18px;
-                  padding: 20px 10px;
+                  color: $black;
                 }
               }
               .unit {
