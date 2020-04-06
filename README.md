@@ -1,6 +1,3 @@
-これはMASTERです
-これはテストです
-
 ## Usersテーブル
 
 |Column|Type|Options|
