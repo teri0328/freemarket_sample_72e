@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
       format.html
       format.json
     end
+    @parent = Category.all.order("id ASC").limit(13)
   end
 
   def new
