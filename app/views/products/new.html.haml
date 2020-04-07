@@ -109,20 +109,7 @@
           必須
         %span.item-price__name__mark
           ¥
-        -# %input.item-price__name__form{placeholder: "0"}
-        = form_for @product do |f|
-          = f.text_field :id , class: ".item-price__name__form", placeholder: "0"
-          = f.text_field :explanation , class: ".item-price__name__form", placeholder: "0"
-          = f.text_field :name , class: ".item-price__name__form", placeholder: "0"
-          = f.text_field :region , class: ".item-price__name__form", placeholder: "0"
-          = f.text_field :size , class: ".item-price__name__form", placeholder: "0"
-          = f.text_field :price , class: ".item-price__name__form", placeholder: "0"
-          = f.text_field :shipping_days , class: ".item-price__name__form", placeholder: "0"
-          = f.text_field :postage , class: ".item-price__name__form", placeholder: "0"
-          = f.text_field :created_at , class: ".item-price__name__form", placeholder: "0"
-          = f.text_field :updated_at , class: ".item-price__name__form", placeholder: "0"
-
-          = f.submit "出品する"
+        %input.item-price__name__form{placeholder: "0"}
       .item-price__commission 
         販売手数料(10%)
         %span.item-price__commission__value
