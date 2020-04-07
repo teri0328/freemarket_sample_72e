@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_params
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
   end
@@ -12,6 +12,17 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(params.require(:product).permit(:id, :explanation, :name, :region, :size, :price, :shipping_days, :postage, :created_at, :updated_at).merge(user_id: "1", condition_id: "1", category_id: "1", bland_id: "1"))
     @product.save!
+  end
+
+  def show
+    @product    = Product.find(params[:id])
+    @user       = User.find(@product.user)
+    @bland      = Bland.find(@product.bland)
+    @category   = Category.where(product_id: @product.id)
+    @condition  = Condition.find(@product.condition)
+    @address    = Address.where(user_id: @product.user)
+    @evaluation = Evaluation.where(user_id: @product.user)
+    @images     = Image.where(product_id: @product.id)
   end
 
   # 以下、ビュー表示用の仮アクション

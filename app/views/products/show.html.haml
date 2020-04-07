@@ -1,0 +1,270 @@
+.detail-wrapper
+  .detail-wrapper__main
+    .detail-wrapper__main__contents
+      .detail-wrapper__main__contents__product-name
+        %h2
+          = @product.name
+          - if @product.user_id == current_user.id
+            = link_to "#" do
+              商品を削除する 
+      .detail-wrapper__main__contents__product-contents
+        .detail-wrapper__main__contents__product-contents__product-photo.top-images
+          - @images.each.with_index(1) do |img,i|
+            - if i == 1
+              .detail-wrapper__main__contents__product-contents__product-photo__top.top-image{id: "top-image#{i}"}
+                = image_tag img.image, class: "detail-wrapper__main__contents__product-contents__product-photo__top__image"
+            - unless i == 1
+              .detail-wrapper__main__contents__product-contents__product-photo__top.top-image.top-non-active{id: "top-image#{i}"}
+                = image_tag img.image, class: "detail-wrapper__main__contents__product-contents__product-photo__top__image"
+          .detail-wrapper__main__contents__product-contents__product-photo__bottom.bottom-images
+            - @images.each.with_index(1) do |img,i|
+              - if i == 1
+                .detail-wrapper__main__contents__product-contents__product-photo__bottom__image.bottom-image.bottom-active{action: i}
+                  = image_tag img.image
+              - unless i== 1
+                .detail-wrapper__main__contents__product-contents__product-photo__bottom__image.bottom-image{action: i}
+                  = image_tag img.image
+        .detail-wrapper__main__contents__product-contents__detail-table
+          %table
+            %tbody
+              %tr
+                %th
+                  出品者
+                %td
+                  = link_to "#" do
+                    = @user.nickname
+                  %br
+                  = icon('fas', 'grin')
+                  %span
+                    - @evaluation.each do|e|
+                      = e.grin
+                  = icon('fas', 'meh')
+                  %span
+                    - @evaluation.each do|e|
+                      = e.meh
+                  = icon('fas', 'frown')
+                  %span
+                    - @evaluation.each do|e|
+                      = e.frown
+              %tr
+                %th
+                  カテゴリー
+                %td
+                  = link_to "#" do
+                    = @category.name
+                  %br
+                -# カテゴリ機能実装後に使うので以下コメントアウト
+                  -# = link_to "#" do
+                  -#   = icon('fas','chevron-right')
+                  -#   パンツ
+                  -# %br
+                  -# = link_to "#" do
+                  -#   = icon('fas','chevron-right')
+                  -#   その他
+              %tr
+                %th
+                  ブランド
+                %td
+                  = link_to "#" do
+                    = @bland.name
+              %tr
+                %th
+                  商品のサイズ
+                %td
+                  = @product.size
+              %tr
+                %th
+                  商品の状態
+                %td
+                  = @condition.name
+              %tr
+                %th
+                  配送料の負担
+                %td
+                  - if @product.postage
+                    = "送料込み(出品者が負担)"
+                  - unless @product.postage
+                    = "送料別(購入者が負担)"
+              %tr
+                %th
+                  配送の方法
+                %td
+                  = @product.shipping_method
+              %tr
+                %th
+                  配送元地域
+                %td
+                  - @address.each do|a|
+                    = a.prefecture
+              %tr
+                %th
+                  発送日の目安
+                %td
+                  = "#{@product.shipping_days}日"
+      .detail-wrapper__main__contents__product-price
+        %h1.detail-wrapper__main__contents__product-price__price
+          = "¥#{number_with_delimiter(@product.price)}"
+        %h5.detail-wrapper__main__contents__product-price__price
+          (税込)
+          - if @product.postage
+            送料込み
+          - unless @product.postage
+            送料別
+      - if user_signed_in? && @product.user_id != current_user.id
+        .detail-wrapper__main__contents__purchase-btn
+          購入画面に進む
+      .detail-wrapper__main__contents__purchase-link
+        - if user_signed_in? && @product.user_id != current_user.id
+          = link_to "#" do
+            アプリで購入
+        - unless user_signed_in? && @product.user_id == current_user.id
+          %b
+            商品を購入するには
+            = link_to "#" do
+              ログイン
+            してください
+      %br
+      .detail-wrapper__main__contents__explanation
+        = br(@product.explanation)
+      .detail-wrapper__main__contents__button-container
+        .detail-wrapper__main__contents__button-container__button
+          = icon('far', 'heart')
+          いいね!
+          0
+        .detail-wrapper__main__contents__button-container__button
+          = icon('far', 'flag')
+          不適切な商品の報告
+        .detail-wrapper__main__contents__button-container__safe-link
+          = link_to "#" do
+            = icon('fas', 'lock')
+            あんしん・あんぜんへの取組み
+  .detail-wrapper__comments
+    .detail-wrapper__comments__user
+      .detail-wrapper__comments__user__bubble
+      .detail-wrapper__comments__user__usericon
+      .detail-wrapper__comments__user__username
+        システムログ
+      .detail-wrapper__comments__user__message
+        出品者がコメントを削除しました
+        .detail-wrapper__comments__user__message__days
+          = icon('far','clock')
+          20日前
+          .detail-wrapper__comments__user__message__days__flag
+            = icon('far','flag')
+    .detail-wrapper__comments__user
+      .detail-wrapper__comments__user__bubble
+      .detail-wrapper__comments__user__usericon
+      .detail-wrapper__comments__user__username
+        Kazz
+      .detail-wrapper__comments__user__message
+        1400円に値下げは可能でしょうか？
+        .detail-wrapper__comments__user__message__days
+          = icon('far','clock')
+          20日前
+          .detail-wrapper__comments__user__message__days__flag
+            = icon('far','flag')
+    .detail-wrapper__comments__user
+      .detail-wrapper__comments__user__bubble
+      .detail-wrapper__comments__user__usericon
+      .detail-wrapper__comments__user__username
+        = @user.nickname
+      .detail-wrapper__comments__user__message
+        Kazzさん
+        %br
+        コメントありがとうございます。
+        %br
+        1500円でいかがでしょうか？よろしくお願いします。
+        .detail-wrapper__comments__user__message__days
+          = icon('far','clock')
+          20日前
+          .detail-wrapper__comments__user__message__days__flag
+            = icon('far','flag')
+    .detail-wrapper__comments__user
+      .detail-wrapper__comments__user__bubble
+      .detail-wrapper__comments__user__usericon
+      .detail-wrapper__comments__user__username
+        Kazz
+      .detail-wrapper__comments__user__message
+        わかりました。
+        %br
+        1500円でお願いします！
+        .detail-wrapper__comments__user__message__days
+          = icon('far','clock')
+          20日前
+          .detail-wrapper__comments__user__message__days__flag
+            = icon('far','flag')
+    %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+    %textarea{type: "text"}
+    %button{type: "submit"}
+      コメントする
+  .detail-wrapper__other-links
+    .detail-wrapper__other-links__link
+      = link_to "#" do
+        = icon('fas','chevron-left')
+        資生堂 スーリール オードパルファム 《パヒュームコロン》60ml 香水
+    .detail-wrapper__other-links__link
+      = link_to "#" do
+        資生堂 スーリール オードパルファム 《パヒュームコロン》60ml 香水
+        = icon('fas','chevron-right')
+  .detail-wrapper__icons
+    .detail-wrapper__icons__icon
+      = link_to "#" do
+        .detail-wrapper__icons__icon_facebook
+          = icon("fab","facebook-square")
+    .detail-wrapper__icons__icon
+      = link_to "#" do
+        .detail-wrapper__icons__icon_twitter
+          = icon("fab","twitter")
+    .detail-wrapper__icons__icon
+      = link_to "#" do
+        .detail-wrapper__icons__icon_line
+          = icon("fab","line")
+    .detail-wrapper__icons__icon
+      = link_to "#" do
+        .detail-wrapper__icons__icon_pinterest
+          = icon("fab","pinterest")
+
+  .detail-wrapper__user-links
+    = link_to "#" do
+      %h1
+        = @user.nickname
+        さんのその他の出品
+  -for i in 1..2
+    .detail-wrapper__other-products
+      - for j in 1..3 do
+        .detail-wrapper__other-products__product
+          .detail-wrapper__other-products__product__image
+          .detail-wrapper__other-products__product__text
+            .detail-wrapper__other-products__product__text__product-name
+              途中で消えるカッコいい商品名の書き方途中で消えるカッコいい商品名の書き方途中で消えるカッコいい商品名の書き方
+            .detail-wrapper__other-products__product__text__product-price
+              .detail-wrapper__other-products__product__text__product-price__text
+                ¥4,000
+              .detail-wrapper__other-products__product__text__product-price__icon
+                = icon('far', 'heart')
+                0
+  .detail-wrapper__user-links
+    = link_to "#" do
+      %h1
+        = @product.name
+        のその他の出品
+  -for i in 1..2
+    .detail-wrapper__other-products
+      - for j in 1..3 do
+        .detail-wrapper__other-products__product
+          .detail-wrapper__other-products__product__image
+          .detail-wrapper__other-products__product__text
+            .detail-wrapper__other-products__product__text__product-name
+              途中で消えるカッコいい商品名の書き方途中で消えるカッコいい商品名の書き方途中で消えるカッコいい商品名の書き方
+            .detail-wrapper__other-products__product__text__product-price
+              .detail-wrapper__other-products__product__text__product-price__text
+                ¥4,000
+              .detail-wrapper__other-products__product__text__product-price__icon
+                = icon('far', 'heart')
+                0
+  .detail-wrapper__border
+    = link_to "#" do
+      フリマ
+    = icon('fas','chevron-right')
+    %span 
+      = @product.name
