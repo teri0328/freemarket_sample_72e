@@ -16,12 +16,12 @@ class ProductsController < ApplicationController
 
   def show
     @product    = Product.find(params[:id])
-    @user       = User.find(@product.user_id)
-    @bland      = Bland.find(@product.bland_id)
-    @category   = Category.find(@product.category_id)
-    @condition  = Condition.find(@product.condition_id)
-    @address    = Address.where(user_id: @product.user_id)
-    @evaluation = Evaluation.where(user_id: @product.user_id)
+    @user       = User.find(@product.user)
+    @bland      = Bland.find(@product.bland)
+    @category   = Category.where(product_id: @product.id)
+    @condition  = Condition.find(@product.condition)
+    @address    = Address.where(user_id: @product.user)
+    @evaluation = Evaluation.where(user_id: @product.user)
     @images     = Image.where(product_id: @product.id)
   end
 
