@@ -59,154 +59,182 @@ categories=[
                                                             ]}
                                                           ]},
                             {gen1: "メンズ", gen1_children:[
-                                                          {gen2: "トップス", gen2_children[]},
-                                                          {gen2: "ジャケット/アウター", gen2_children[]},
-                                                          {gen2: "パンツ", gen2_children[]},
-                                                          {gen2: "靴", gen2_children[]},
-                                                          {gen2: "バッグ", gen2_children[]},
-                                                          {gen2: "スーツ", gen2_children[]},
-                                                          {gen2: "帽子", gen2_children[]},
-                                                          {gen2: "アクセサリー", gen2_children[]},
-                                                          {gen2: "小物", gen2_children[]},
-                                                          {gen2: "時計", gen2_children[]},
-                                                          {gen2: "水着", gen2_children[]},
-                                                          {gen2: "レッグウェア", gen2_children[]},
-                                                          {gen2: "アンダーウェア", gen2_children[]},
-                                                          {gen2: "その他", gen2_children[]}
+                                                            {gen2: "トップス", gen2_children[
+                                                              "すべて", "Tシャツ/カットソー(半袖/袖なし)", "Tシャツ/カットソー(七分/長袖)", "シャツ", "ポロシャツ", "タンクトップ", "ニット/セーター", "パーカー", "カーディガン", "スウェット", "ジャージ", "ベスト", "その他"
+                                                            ]},
+                                                            {gen2: "ジャケット/アウター", gen2_children[
+                                                              "すべて", "テーラードジャケット", "ノーカラージャケット", "Gジャン/デニムジャケット", "レザージャケット", "ダウンジャケット", "ライダースジャケット", "ミリタリージャケット", "ナイロンジャケット", "フライトジャケット", "ダッフルコート", "ピーコート", "ステンカラーコート", "トレンチコート", "モッズコート", "チェスターコート", "スタジャン", "スカジャン", "ブルゾン", "マウンテンパーカー", "ダウンベスト", "ポンチョ", "カバーオール", "その他"
+                                                            ]},
+                                                            {gen2: "パンツ", gen2_children[
+                                                              "すべて", "デニム/ジーンズ", "ワークパンツ/カーゴパンツ", "スラックス", "チノパン", "ショートパンツ", "ペインターパンツ", "サルエルパンツ", "オーバーオール", "その他"
+                                                            ]},
+                                                            {gen2: "靴", gen2_children[
+                                                              "すべて", "スニーカー", "サンダル", "ブーツ", "モカシン", "ドレス/ビジネス", "長靴/レインシューズ", "デッキシューズ", "その他"
+                                                            ]},
+                                                            {gen2: "バッグ", gen2_children[
+                                                              "すべて", "ショルダーバッグ", "トートバッグ", "ボストンバッグ", "リュック/バックパック", "ウエストポーチ", "ボディーバッグ", "ドラムバッグ", "ビジネスバッグ", "トラベルバッグ", "メッセンジャーバッグ", "エコバッグ", "その他"
+                                                            ]},
+                                                            {gen2: "スーツ", gen2_children[
+                                                              "すべて", "スーツジャケット", "スーツベスト", "スラックス", "セットアップ", "その他"
+                                                            ]},
+                                                            {gen2: "帽子", gen2_children[
+                                                              "すべて", "キャップ", "ハット", "ニットキャップ/ビーニー", "ハンチング/ベレー帽", "キャスケット", "サンバイザー", "その他"
+                                                            ]},
+                                                            {gen2: "アクセサリー", gen2_children[
+                                                              "すべて", "ネックレス", "ブレスレット", "バングル/リストバンド", "リング", "ピアス(片耳用)", "ピアス(両耳用)", "アンクレット", "その他"
+                                                            ]},
+                                                            {gen2: "小物", gen2_children[
+                                                              "すべて", "長財布", "折り財布", "マネークリップ", "コインケース/小銭ケース", "名刺入れ/定期入れ", "キーケース", "キーホルダー", "ネクタイ", "手袋", "ハンカチ", "ベルト", "マフラー", "ストール", "バンダナ", "ネックウォーマー", "サスペンダー", "ウォレットチェーン", "サングラス/メガネ", "モバイルケース/カバー", "手帳", "ストラップ", "ネクタイピン", "カフリンクス", "イヤマフラー", "傘", "レインコート", "ミラー", "タバコグッズ", "その他"
+                                                            ]},
+                                                            {gen2: "時計", gen2_children[
+                                                              "すべて", "腕時計(アナログ)", "腕時計(デジタル)", "ラバーベルト", "レザーベルト", "金属ベルト", "その他"
+                                                            ]},
+                                                            {gen2: "水着", gen2_children[
+                                                              "すべて", "一般水着", "スポーツ用", "アクセサリー", "その他"
+                                                            ]},
+                                                            {gen2: "レッグウェア", gen2_children[
+                                                              "すべて", "ソックス", "レギンス/スパッツ", "レッグウォーマー", "その他"
+                                                            ]},
+                                                            {gen2: "アンダーウェア", gen2_children[
+                                                              "すべて", "トランクス", "ボクサーパンツ", "その他"
+                                                            ]},
+                                                            {gen2: "その他", gen2_children[
+                                                              "すべて"
+                                                            ]}
                                                           ]},
                     {gen1: "ベビー・キッズ", gen1_children: [
-                                                          {gen2: "ベビー服(女の子用) ~95cm", gen2_children[]},
-                                                          {gen2: "ベビー服(男の子用) ~95cm", gen2_children[]},
-                                                          {gen2: "ベビー服(男女兼用) ~95cm", gen2_children[]},
-                                                          {gen2: "キッズ服(女の子用) 100cm~", gen2_children[]},
-                                                          {gen2: "キッズ服(男の子用) 100cm~", gen2_children[]},
-                                                          {gen2: "キッズ服(男女兼用) 100cm~", gen2_children[]},
-                                                          {gen2: "キッズ靴", gen2_children[]},
-                                                          {gen2: "子ども用ファッション小物", gen2_children[]},
-                                                          {gen2: "おむつ/トイレ/バス", gen2_children[]},
-                                                          {gen2: "外出/移動用品", gen2_children[]},
-                                                          {gen2: "授乳/食事", gen2_children[]},
-                                                          {gen2: "ベビー家具/寝具/室内用品", gen2_children[]},
-                                                          {gen2: "おもちゃ", gen2_children[]},
-                                                          {gen2: "行事/記念品", gen2_children[]},
-                                                          {gen2: "その他", gen2_children[]}
+                                                            {gen2: "ベビー服(女の子用) ~95cm", gen2_children[]},
+                                                            {gen2: "ベビー服(男の子用) ~95cm", gen2_children[]},
+                                                            {gen2: "ベビー服(男女兼用) ~95cm", gen2_children[]},
+                                                            {gen2: "キッズ服(女の子用) 100cm~", gen2_children[]},
+                                                            {gen2: "キッズ服(男の子用) 100cm~", gen2_children[]},
+                                                            {gen2: "キッズ服(男女兼用) 100cm~", gen2_children[]},
+                                                            {gen2: "キッズ靴", gen2_children[]},
+                                                            {gen2: "子ども用ファッション小物", gen2_children[]},
+                                                            {gen2: "おむつ/トイレ/バス", gen2_children[]},
+                                                            {gen2: "外出/移動用品", gen2_children[]},
+                                                            {gen2: "授乳/食事", gen2_children[]},
+                                                            {gen2: "ベビー家具/寝具/室内用品", gen2_children[]},
+                                                            {gen2: "おもちゃ", gen2_children[]},
+                                                            {gen2: "行事/記念品", gen2_children[]},
+                                                            {gen2: "その他", gen2_children[]}
                                                           ]},
             {gen1: "インテリア・住まい・小物", gen1_children: [
-                                                          {gen2: "キッチン/食器", gen2_children[]},
-                                                          {gen2: "ベッド/マットレス", gen2_children[]},
-                                                          {gen2: "ソファ/ソファベッド", gen2_children[]},
-                                                          {gen2: "椅子/チェア", gen2_children[]},
-                                                          {gen2: "机/テーブル", gen2_children[]},
-                                                          {gen2: "収納家具", gen2_children[]},
-                                                          {gen2: "ラグ/カーペット/マット", gen2_children[]},
-                                                          {gen2: "カーテン/ブラインド", gen2_children[]},
-                                                          {gen2: "ライト/照明", gen2_children[]},
-                                                          {gen2: "寝具", gen2_children[]},
-                                                          {gen2: "インテリア/小物", gen2_children[]},
-                                                          {gen2: "季節/年中行事", gen2_children[]},
-                                                          {gen2: "その他", gen2_children[]}
+                                                            {gen2: "キッチン/食器", gen2_children[]},
+                                                            {gen2: "ベッド/マットレス", gen2_children[]},
+                                                            {gen2: "ソファ/ソファベッド", gen2_children[]},
+                                                            {gen2: "椅子/チェア", gen2_children[]},
+                                                            {gen2: "机/テーブル", gen2_children[]},
+                                                            {gen2: "収納家具", gen2_children[]},
+                                                            {gen2: "ラグ/カーペット/マット", gen2_children[]},
+                                                            {gen2: "カーテン/ブラインド", gen2_children[]},
+                                                            {gen2: "ライト/照明", gen2_children[]},
+                                                            {gen2: "寝具", gen2_children[]},
+                                                            {gen2: "インテリア/小物", gen2_children[]},
+                                                            {gen2: "季節/年中行事", gen2_children[]},
+                                                            {gen2: "その他", gen2_children[]}
                                                           ]},
                   {gen1: "本・音楽・ゲーム", gen1_children: [
-                                                          {gen2: "本", gen2_children[]},
-                                                          {gen2: "漫画", gen2_children[]},
-                                                          {gen2: "雑誌", gen2_children[]},
-                                                          {gen2: "CD", gen2_children[]},
-                                                          {gen2: "DVD/ブルーレイ", gen2_children[]},
-                                                          {gen2: "レコード", gen2_children[]},
-                                                          {gen2: "テレビゲーム", gen2_children[]}
+                                                            {gen2: "本", gen2_children[]},
+                                                            {gen2: "漫画", gen2_children[]},
+                                                            {gen2: "雑誌", gen2_children[]},
+                                                            {gen2: "CD", gen2_children[]},
+                                                            {gen2: "DVD/ブルーレイ", gen2_children[]},
+                                                            {gen2: "レコード", gen2_children[]},
+                                                            {gen2: "テレビゲーム", gen2_children[]}
                                                           ]},
             {gen1: "おもちゃ・ホビー・グッズ", gen1_children: [
-                                                          {gen2: "おもちゃ", gen2_children[]},
-                                                          {gen2: "タレントグッズ", gen2_children[]},
-                                                          {gen2: "コミック/アニメグッズ", gen2_children[]},
-                                                          {gen2: "トレーディングカード", gen2_children[]},
-                                                          {gen2: "フィギュア", gen2_children[]},
-                                                          {gen2: "楽器/機材", gen2_children[]},
-                                                          {gen2: "コレクション", gen2_children[]},
-                                                          {gen2: "ミリタリー", gen2_children[]},
-                                                          {gen2: "美術品", gen2_children[]},
-                                                          {gen2: "アート用品", gen2_children[]},
-                                                          {gen2: "その他", gen2_children[]}
+                                                            {gen2: "おもちゃ", gen2_children[]},
+                                                            {gen2: "タレントグッズ", gen2_children[]},
+                                                            {gen2: "コミック/アニメグッズ", gen2_children[]},
+                                                            {gen2: "トレーディングカード", gen2_children[]},
+                                                            {gen2: "フィギュア", gen2_children[]},
+                                                            {gen2: "楽器/機材", gen2_children[]},
+                                                            {gen2: "コレクション", gen2_children[]},
+                                                            {gen2: "ミリタリー", gen2_children[]},
+                                                            {gen2: "美術品", gen2_children[]},
+                                                            {gen2: "アート用品", gen2_children[]},
+                                                            {gen2: "その他", gen2_children[]}
                                                           ]},
                   {gen1: "コスメ・香水・美容", gen1_children:[
-                                                          {gen2: "ベースメイク", gen2_children[]},
-                                                          {gen2: "メイクアップ", gen2_children[]},
-                                                          {gen2: "ネイルケア", gen2_children[]},
-                                                          {gen2: "香水", gen2_children[]},
-                                                          {gen2: "スキンケア/基礎化粧品", gen2_children[]},
-                                                          {gen2: "ヘアケア", gen2_children[]},
-                                                          {gen2: "ボディケア", gen2_children[]},
-                                                          {gen2: "オーラルケア", gen2_children[]},
-                                                          {gen2: "リラクゼーション", gen2_children[]},
-                                                          {gen2: "ダイエット", gen2_children[]},
-                                                          {gen2: "その他", gen2_children[]}
+                                                            {gen2: "ベースメイク", gen2_children[]},
+                                                            {gen2: "メイクアップ", gen2_children[]},
+                                                            {gen2: "ネイルケア", gen2_children[]},
+                                                            {gen2: "香水", gen2_children[]},
+                                                            {gen2: "スキンケア/基礎化粧品", gen2_children[]},
+                                                            {gen2: "ヘアケア", gen2_children[]},
+                                                            {gen2: "ボディケア", gen2_children[]},
+                                                            {gen2: "オーラルケア", gen2_children[]},
+                                                            {gen2: "リラクゼーション", gen2_children[]},
+                                                            {gen2: "ダイエット", gen2_children[]},
+                                                            {gen2: "その他", gen2_children[]}
                                                           ]},
                 {gen1: "家電・スマホ・カメラ", gen1_children:[
-                                                          {gen2: "スマートフォン/携帯電話", gen2_children[]},
-                                                          {gen2: "スマホアクセサリー", gen2_children[]},
-                                                          {gen2: "PC/タブレット", gen2_children[]},
-                                                          {gen2: "カメラ", gen2_children[]},
-                                                          {gen2: "テレビ/映像機器", gen2_children[]},
-                                                          {gen2: "オーディオ機器", gen2_children[]},
-                                                          {gen2: "美容/健康", gen2_children[]},
-                                                          {gen2: "冷暖房/空調", gen2_children[]},
-                                                          {gen2: "生活家電", gen2_children[]},
-                                                          {gen2: "その他", gen2_children[]}
+                                                            {gen2: "スマートフォン/携帯電話", gen2_children[]},
+                                                            {gen2: "スマホアクセサリー", gen2_children[]},
+                                                            {gen2: "PC/タブレット", gen2_children[]},
+                                                            {gen2: "カメラ", gen2_children[]},
+                                                            {gen2: "テレビ/映像機器", gen2_children[]},
+                                                            {gen2: "オーディオ機器", gen2_children[]},
+                                                            {gen2: "美容/健康", gen2_children[]},
+                                                            {gen2: "冷暖房/空調", gen2_children[]},
+                                                            {gen2: "生活家電", gen2_children[]},
+                                                            {gen2: "その他", gen2_children[]}
                                                           ]},
                   {gen1: "スポーツ・レジャー", gen1_children:[
-                                                          {gen2: "ゴルフ", gen2_children[]},
-                                                          {gen2: "フィッシング", gen2_children[]},
-                                                          {gen2: "自転車", gen2_children[]},
-                                                          {gen2: "トレーニング/エクササイズ", gen2_children[]},
-                                                          {gen2: "野球", gen2_children[]},
-                                                          {gen2: "サッカー/フットサル", gen2_children[]},
-                                                          {gen2: "テニス", gen2_children[]},
-                                                          {gen2: "スノーボード", gen2_children[]},
-                                                          {gen2: "スキー", gen2_children[]},
-                                                          {gen2: "その他スポーツ", gen2_children[]},
-                                                          {gen2: "アウトドア", gen2_children[]},
-                                                          {gen2: "その他", gen2_children[]}
+                                                            {gen2: "ゴルフ", gen2_children[]},
+                                                            {gen2: "フィッシング", gen2_children[]},
+                                                            {gen2: "自転車", gen2_children[]},
+                                                            {gen2: "トレーニング/エクササイズ", gen2_children[]},
+                                                            {gen2: "野球", gen2_children[]},
+                                                            {gen2: "サッカー/フットサル", gen2_children[]},
+                                                            {gen2: "テニス", gen2_children[]},
+                                                            {gen2: "スノーボード", gen2_children[]},
+                                                            {gen2: "スキー", gen2_children[]},
+                                                            {gen2: "その他スポーツ", gen2_children[]},
+                                                            {gen2: "アウトドア", gen2_children[]},
+                                                            {gen2: "その他", gen2_children[]}
                                                           ]},
                       {gen1: "ハンドメイド", gen1_children: [
-                                                          {gen2: "アクセサリー(女性用)", gen2_children[]},
-                                                          {gen2: "ファッション/小物", gen2_children[]},
-                                                          {gen2: "アクセサリー/時計", gen2_children[]},
-                                                          {gen2: "日用品/インテリア", gen2_children[]},
-                                                          {gen2: "趣味/おもちゃ", gen2_children[]},
-                                                          {gen2: "キッズ/ベビー", gen2_children[]},
-                                                          {gen2: "素材/材料", gen2_children[]},
-                                                          {gen2: "二次創作物", gen2_children[]},
-                                                          {gen2: "その他", gen2_children[]}
+                                                            {gen2: "アクセサリー(女性用)", gen2_children[]},
+                                                            {gen2: "ファッション/小物", gen2_children[]},
+                                                            {gen2: "アクセサリー/時計", gen2_children[]},
+                                                            {gen2: "日用品/インテリア", gen2_children[]},
+                                                            {gen2: "趣味/おもちゃ", gen2_children[]},
+                                                            {gen2: "キッズ/ベビー", gen2_children[]},
+                                                            {gen2: "素材/材料", gen2_children[]},
+                                                            {gen2: "二次創作物", gen2_children[]},
+                                                            {gen2: "その他", gen2_children[]}
                                                           ]},
                           {gen1: "チケット", gen1_children:[
-                                                          {gen2: "音楽", gen2_children[]},
-                                                          {gen2: "スポーツ", gen2_children[]},
-                                                          {gen2: "演劇/芸能", gen2_children[]},
-                                                          {gen2: "イベント", gen2_children[]},
-                                                          {gen2: "映画", gen2_children[]},
-                                                          {gen2: "施設利用券", gen2_children[]},
-                                                          {gen2: "優待券/割引券", gen2_children[]},
-                                                          {gen2: "その他", gen2_children[]}
+                                                            {gen2: "音楽", gen2_children[]},
+                                                            {gen2: "スポーツ", gen2_children[]},
+                                                            {gen2: "演劇/芸能", gen2_children[]},
+                                                            {gen2: "イベント", gen2_children[]},
+                                                            {gen2: "映画", gen2_children[]},
+                                                            {gen2: "施設利用券", gen2_children[]},
+                                                            {gen2: "優待券/割引券", gen2_children[]},
+                                                            {gen2: "その他", gen2_children[]}
                                                           ]},
                   {gen1: "自動車・オートバイ", gen1_children:[
-                                                          {gen2: "自動車本体", gen2_children[]},
-                                                          {gen2: "自動車タイヤ/ホイール", gen2_children[]},
-                                                          {gen2: "自動車パーツ", gen2_children[]},
-                                                          {gen2: "自動車アクセサリー", gen2_children[]},
-                                                          {gen2: "オートバイ車体", gen2_children[]},
-                                                          {gen2: "オートバイパーツ", gen2_children[]},
-                                                          {gen2: "オートバイアクセサリー", gen2_children[]}
+                                                            {gen2: "自動車本体", gen2_children[]},
+                                                            {gen2: "自動車タイヤ/ホイール", gen2_children[]},
+                                                            {gen2: "自動車パーツ", gen2_children[]},
+                                                            {gen2: "自動車アクセサリー", gen2_children[]},
+                                                            {gen2: "オートバイ車体", gen2_children[]},
+                                                            {gen2: "オートバイパーツ", gen2_children[]},
+                                                            {gen2: "オートバイアクセサリー", gen2_children[]}
                                                           ]},
                             {gen1: "その他", gen1_children:[
-                                                          {gen2: "まとめ売り", gen2_children[]},
-                                                          {gen2: "ペット用品", gen2_children[]},
-                                                          {gen2: "食品", gen2_children[]},
-                                                          {gen2: "飲料/酒", gen2_children[]},
-                                                          {gen2: "日用品/生活雑貨/旅行", gen2_children[]},
-                                                          {gen2: "アンティーク/コレクション", gen2_children[]},
-                                                          {gen2: "文房具/事務用品", gen2_children[]},
-                                                          {gen2: "事務/店舗用品", gen2_children[]},
-                                                          {gen2: "その他", gen2_children[]}
+                                                            {gen2: "まとめ売り", gen2_children[]},
+                                                            {gen2: "ペット用品", gen2_children[]},
+                                                            {gen2: "食品", gen2_children[]},
+                                                            {gen2: "飲料/酒", gen2_children[]},
+                                                            {gen2: "日用品/生活雑貨/旅行", gen2_children[]},
+                                                            {gen2: "アンティーク/コレクション", gen2_children[]},
+                                                            {gen2: "文房具/事務用品", gen2_children[]},
+                                                            {gen2: "事務/店舗用品", gen2_children[]},
+                                                            {gen2: "その他", gen2_children[]}
                                                           ]}
 ]
 
