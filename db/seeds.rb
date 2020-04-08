@@ -249,54 +249,138 @@ categories=[
                                                             ]}
                                                           ]},
                   {gen1: "コスメ・香水・美容", gen1_children:[
-                                                            {gen2: "ベースメイク", gen2_children[]},
-                                                            {gen2: "メイクアップ", gen2_children[]},
-                                                            {gen2: "ネイルケア", gen2_children[]},
-                                                            {gen2: "香水", gen2_children[]},
-                                                            {gen2: "スキンケア/基礎化粧品", gen2_children[]},
-                                                            {gen2: "ヘアケア", gen2_children[]},
-                                                            {gen2: "ボディケア", gen2_children[]},
-                                                            {gen2: "オーラルケア", gen2_children[]},
-                                                            {gen2: "リラクゼーション", gen2_children[]},
-                                                            {gen2: "ダイエット", gen2_children[]},
-                                                            {gen2: "その他", gen2_children[]}
+                                                            {gen2: "ベースメイク", gen2_children[
+                                                              "すべて", "ファンデーション", "化粧下地", "コントロールカラー", "BBクリーム", "CCクリーム", "コンシーラー", "フェイスパウダー", "トライアルセット/サンプル", "その他"
+                                                            ]},
+                                                            {gen2: "メイクアップ", gen2_children[
+                                                              "すべて", "アイシャドウ", "口紅", "リップグロス", "リップライナー", "チーク", "フェイスカラー", "マスカラ", "アイライナー", "つけまつげ", "アイブロウペンシル", "パウダーアイブロウ", "眉マスカラ", "トライアルセット/サンプル", "メイク道具/化粧小物", "美容用品/美顔ローラー", "その他"
+                                                            ]},
+                                                            {gen2: "ネイルケア", gen2_children[
+                                                              "すべて", "ネイルカラー", "カラージェル", "ネイルベースコート/トップコート", "ネイルアート用品", "ネイルパーツ", "ネイルチップ/付け爪", "手入れ用具", "除光液", "その他"
+                                                            ]},
+                                                            {gen2: "香水", gen2_children[
+                                                              "すべて", "香水(女性用)", "香水(男性用)", "ユニセックス", "ボディミスト", "その他"
+                                                            ]},
+                                                            {gen2: "スキンケア/基礎化粧品", gen2_children[
+                                                              "すべて", "化粧水/ローション", "乳液/ミルク", "美容液", "フェイスクリーム", "洗顔料", "クレンジング/メイク落とし", "パック/フェイスマスク", "ジェル/ゲル", "ブースター/導入液", "アイケア", "リップケア", "トライアルセット/サンプル", "洗顔グッズ", "その他"
+                                                            ]},
+                                                            {gen2: "ヘアケア", gen2_children[
+                                                              "すべて", "シャンプー", "トリートメント", "コンディショナー", "リンス", "スタイリング剤", "カラーリング剤", "ブラシ", "その他"
+                                                            ]},
+                                                            {gen2: "ボディケア", gen2_children[
+                                                              "すべて", "オイル/クリーム", "ハンドクリーム", "ローション", "日焼け止め/サンオイル", "ボディソープ", "入浴剤", "制汗/デオドラント", "フットケア", "その他"
+                                                            ]},
+                                                            {gen2: "オーラルケア", gen2_children[
+                                                              "すべて", "口臭防止/エチケット用品", "歯ブラシ", "その他"
+                                                            ]},
+                                                            {gen2: "リラクゼーション", gen2_children[
+                                                              "すべて", "エッセンシャルオイル", "芳香機", "お香/香炉", "キャンドル", "リラクゼーショングッズ", "その他"
+                                                            ]},
+                                                            {gen2: "ダイエット", gen2_children[
+                                                              "すべて", "ダイエット用品", "エクササイズ用品", "体重計", "体脂肪計", "その他"
+                                                            ]},
+                                                            {gen2: "その他", gen2_children[
+                                                              "すべて", "健康用品", "看護/介護用品", "救急/衛生用品", "その他"
+                                                            ]}
                                                           ]},
                 {gen1: "家電・スマホ・カメラ", gen1_children:[
-                                                            {gen2: "スマートフォン/携帯電話", gen2_children[]},
-                                                            {gen2: "スマホアクセサリー", gen2_children[]},
-                                                            {gen2: "PC/タブレット", gen2_children[]},
-                                                            {gen2: "カメラ", gen2_children[]},
-                                                            {gen2: "テレビ/映像機器", gen2_children[]},
-                                                            {gen2: "オーディオ機器", gen2_children[]},
-                                                            {gen2: "美容/健康", gen2_children[]},
-                                                            {gen2: "冷暖房/空調", gen2_children[]},
-                                                            {gen2: "生活家電", gen2_children[]},
-                                                            {gen2: "その他", gen2_children[]}
+                                                            {gen2: "スマートフォン/携帯電話", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "スマホアクセサリー", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "PC/タブレット", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "カメラ", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "テレビ/映像機器", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "オーディオ機器", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "美容/健康", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "冷暖房/空調", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "生活家電", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "その他", gen2_children[
+                                                              "すべて","その他"
+                                                            ]}
                                                           ]},
                   {gen1: "スポーツ・レジャー", gen1_children:[
-                                                            {gen2: "ゴルフ", gen2_children[]},
-                                                            {gen2: "フィッシング", gen2_children[]},
-                                                            {gen2: "自転車", gen2_children[]},
-                                                            {gen2: "トレーニング/エクササイズ", gen2_children[]},
-                                                            {gen2: "野球", gen2_children[]},
-                                                            {gen2: "サッカー/フットサル", gen2_children[]},
-                                                            {gen2: "テニス", gen2_children[]},
-                                                            {gen2: "スノーボード", gen2_children[]},
-                                                            {gen2: "スキー", gen2_children[]},
-                                                            {gen2: "その他スポーツ", gen2_children[]},
-                                                            {gen2: "アウトドア", gen2_children[]},
-                                                            {gen2: "その他", gen2_children[]}
+                                                            {gen2: "ゴルフ", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "フィッシング", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "自転車", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "トレーニング/エクササイズ", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "野球", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "サッカー/フットサル", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "テニス", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "スノーボード", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "スキー", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "その他スポーツ", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "アウトドア", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "その他", gen2_children[
+                                                              "すべて", "旅行用品", "その他"
+                                                            ]}
                                                           ]},
                       {gen1: "ハンドメイド", gen1_children: [
-                                                            {gen2: "アクセサリー(女性用)", gen2_children[]},
-                                                            {gen2: "ファッション/小物", gen2_children[]},
-                                                            {gen2: "アクセサリー/時計", gen2_children[]},
-                                                            {gen2: "日用品/インテリア", gen2_children[]},
-                                                            {gen2: "趣味/おもちゃ", gen2_children[]},
-                                                            {gen2: "キッズ/ベビー", gen2_children[]},
-                                                            {gen2: "素材/材料", gen2_children[]},
-                                                            {gen2: "二次創作物", gen2_children[]},
-                                                            {gen2: "その他", gen2_children[]}
+                                                            {gen2: "アクセサリー(女性用)", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "ファッション/小物", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "アクセサリー/時計", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "日用品/インテリア", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "趣味/おもちゃ", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "キッズ/ベビー", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "素材/材料", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "二次創作物", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "その他", gen2_children[
+                                                              "すべて"
+                                                            ]}
                                                           ]},
                           {gen1: "チケット", gen1_children:[
                                                             {gen2: "音楽", gen2_children[]},
@@ -309,24 +393,56 @@ categories=[
                                                             {gen2: "その他", gen2_children[]}
                                                           ]},
                   {gen1: "自動車・オートバイ", gen1_children:[
-                                                            {gen2: "自動車本体", gen2_children[]},
-                                                            {gen2: "自動車タイヤ/ホイール", gen2_children[]},
-                                                            {gen2: "自動車パーツ", gen2_children[]},
-                                                            {gen2: "自動車アクセサリー", gen2_children[]},
-                                                            {gen2: "オートバイ車体", gen2_children[]},
-                                                            {gen2: "オートバイパーツ", gen2_children[]},
-                                                            {gen2: "オートバイアクセサリー", gen2_children[]}
+                                                            {gen2: "自動車本体", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "自動車タイヤ/ホイール", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "自動車パーツ", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "自動車アクセサリー", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "オートバイ車体", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "オートバイパーツ", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "オートバイアクセサリー", gen2_children[
+                                                              "すべて","その他"
+                                                            ]}
                                                           ]},
                             {gen1: "その他", gen1_children:[
-                                                            {gen2: "まとめ売り", gen2_children[]},
-                                                            {gen2: "ペット用品", gen2_children[]},
-                                                            {gen2: "食品", gen2_children[]},
-                                                            {gen2: "飲料/酒", gen2_children[]},
-                                                            {gen2: "日用品/生活雑貨/旅行", gen2_children[]},
-                                                            {gen2: "アンティーク/コレクション", gen2_children[]},
-                                                            {gen2: "文房具/事務用品", gen2_children[]},
-                                                            {gen2: "事務/店舗用品", gen2_children[]},
-                                                            {gen2: "その他", gen2_children[]}
+                                                            {gen2: "まとめ売り", gen2_children[
+                                                              "すべて"
+                                                            ]},
+                                                            {gen2: "ペット用品", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "食品", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "飲料/酒", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "日用品/生活雑貨/旅行", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "アンティーク/コレクション", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "文房具/事務用品", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "事務/店舗用品", gen2_children[
+                                                              "すべて","その他"
+                                                            ]},
+                                                            {gen2: "その他", gen2_children[
+                                                              "すべて"
+                                                            ]}
                                                           ]}
 ]
 
