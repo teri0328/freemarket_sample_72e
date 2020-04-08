@@ -1,0 +1,53 @@
+.header 
+  .header__inner
+    .header__inner__main
+      %icon
+        = image_tag "logo.png", size: "140x40", alt: "logo"
+      .header__inner__main__box
+        .header__inner__main__box--from
+          %h72 キーワードから探す
+      .header__inner__main__box__image
+        .header__image--tag
+          = image_tag "icon-search1.png", size: "35x36", alt: "btn", class: "image-tag"
+    .header__inner__nav
+      .header__inner__nav--left
+        %ul 
+          %ls
+          %p カテゴリ
+          %p ブランド
+      .header__inner__nav--right
+        %ul
+          %ls
+          %p ログイン
+          %p 新規会員登録
+.main-mypage2
+  .main-mypage2__container.clearfix
+    .main-mypage2__container__content
+      .main-mypage2__container__content__icon
+        %h2 クレジットカード一覧
+        .main-mypage2__container__content__icon__card
+          %figure
+            = image_tag "1.png", size: "120x70", id: "card_image"
+          .main-mypage2__container__content__icon__card__number
+            %h3 
+              = "**** **** **** " + @customer_number.last(4)
+          .main-mypage2__container__content__icon__card__number__list
+            %p 
+            = @customer_year + "/" + @customer_month
+            
+          %h4 追加する
+          
+          
+          
+
+    .main-mypage2__container__side
+      .main-mypage2__container__side__nav
+        - @contents.each do |content|
+          .main-mypage2__container__side__nav__list
+            = content
+      %h3 
+        設定
+      .main-mypage2__container__side__nav__setting
+        - @settings.each do |setting|
+          .main-mypage2__container__side__nav__setting__list
+            = setting

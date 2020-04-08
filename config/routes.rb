@@ -8,5 +8,11 @@ Rails.application.routes.draw do
       get "master"
     end
   end
-  resources :users, only: [:index]
+  resources :users, only: [:index] do
+    collection do
+      get "card"
+      post "pay"
+      get "pay"
+    end  
+  end
 end
