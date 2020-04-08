@@ -43,9 +43,6 @@ class ProductsController < ApplicationController
   def result
   end
 
-  def buy
-  end
-
   def about
   end
 

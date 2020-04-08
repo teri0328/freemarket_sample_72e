@@ -1,0 +1,1 @@
+json.hoge @card.hoge
