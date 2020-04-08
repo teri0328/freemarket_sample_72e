@@ -9,8 +9,7 @@ $(function(){
       exp_month: $("#exp_month").val()
     };
     Payjp.createToken(card, function(s, response) {
-      console.log(response);
-      $("#result").append(response.id);
+      $("#charge-form").append($("#payjpToken").val(response.id));
       $("#charge-form").get(0).submit();
     });
   })

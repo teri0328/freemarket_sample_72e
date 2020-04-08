@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_params
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index]
+  require 'payjp'
 
   def index
     @products = Product.includes(:images).order('created_at DESC')
@@ -25,6 +26,21 @@ class ProductsController < ApplicationController
     @address    = Address.where(user_id: @product.user)
     @evaluation = Evaluation.where(user_id: @product.user)
     @images     = Image.where(product_id: @product.id)
+  end
+
+  def buy
+    @card = Card.where(user_id: current_user.id)
+    customer_card = ""
+    @card.each do |c|
+      customer_card = c
+    end
+    @product = Product.find(params[:id])
+    Payjp.api_key = "sk_test_cf98ef02cadd3ab814d4dc9e"
+    @charge = Payjp::Charge.create(
+    amount: @product.price,
+    customer: customer_card.customer_id,
+    currency: 'jpy'
+    )
   end
 
   # 以下、ビュー表示用の仮アクション

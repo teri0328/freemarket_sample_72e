@@ -10,12 +10,16 @@ Rails.application.routes.draw do
   
   root "products#index"
 
-  resources :card, only: [:new, :create, :show, :delete] do
+  resources :card, only: [:new, :create, :show, :destroy] do
     collection do
       post 'show', to: 'card#show'
     end
   end
+
   resources :products, only: [:index, :new, :create, :show] do
+    member do
+      get "buy"
+    end
     collection do
       get "about"
       get "master"

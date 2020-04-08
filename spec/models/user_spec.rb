@@ -91,7 +91,7 @@ describe User do
       user.valid?
       expect(user.errors[:birth_day]).to include("は0より大きい値にしてください")
     end
-    it "birth_dayが13より大きい場合は登録できないこと" do
+    it "birth_dayが32より大きい場合は登録できないこと" do
       user = User.new(nickname: "フミヤ", email: "Fumiya.Soeno@gmail.com", password: "00000000", password_confirmation: "00000000", birth_year: "1994", birth_month: "8", birth_day: "32", firstname: "添野", lastname: "文哉", firstname_kana: "そえの", lastname_kana: "ふみや", tel_number: "08011111111")
       user.valid?
       expect(user.errors[:birth_day]).to include("は32より小さい値にしてください")

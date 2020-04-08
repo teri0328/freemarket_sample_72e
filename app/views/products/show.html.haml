@@ -111,8 +111,9 @@
           - unless @product.postage
             送料別
       - if user_signed_in? && @product.user_id != current_user.id
-        .detail-wrapper__main__contents__purchase-btn
-          購入画面に進む
+        = link_to buy_product_path(@product) do
+          .detail-wrapper__main__contents__purchase-btn
+            購入画面に進む
       .detail-wrapper__main__contents__purchase-link
         - if user_signed_in? && @product.user_id != current_user.id
           = link_to "#" do

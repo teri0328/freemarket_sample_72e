@@ -1,7 +1,7 @@
 = form_tag("/card", method: :post, id: 'charge-form',  name: "inputForm") do
-  %input{id: "number"   , type: "text", name: "number"   , maxlength: "16", placeholder: "Card #", value: "4242424242424242"}
-  %input{id: "cvc"      , type: "text", name: "cvc"      , maxlength: "4" , placeholder: "CVC"   , value: "111"}
-  %input{id: "exp_month", type: "text", name: "exp_month", maxlength: "2" , placeholder: "month" , value: "12"}
-  %input{id: "exp_year" , type: "text", name: "exp_year" , maxlength: "4" , placeholder: "year"  , value: "2020"}
+  %input{id: "number"    , type: "text"  , name: "number"   , maxlength: "16", placeholder: "Card #", value: "4242424242424242"}
+  %input{id: "cvc"       , type: "text"  , name: "cvc"      , maxlength: "4" , placeholder: "CVC"   , value: "111"}
+  %input{id: "exp_month" , type: "text"  , name: "exp_month", maxlength: "2" , placeholder: "month" , value: "12"}
+  %input{id: "exp_year"  , type: "text"  , name: "exp_year" , maxlength: "4" , placeholder: "year"  , value: "2020"}
+  %input{id: "payjpToken", type: "hidden", name: "payjpToken"}
   %button{type: "submit"} 登録完了
-  #result
