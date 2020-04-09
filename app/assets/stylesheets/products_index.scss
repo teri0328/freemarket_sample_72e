@@ -12,9 +12,8 @@ body {
 }
 
 .header {
-  padding: 0 60px;
+  padding: 0 150px;
   &__inner {
-    max-width: 1040px;
     width: 100%;
     min-height: 82px;
     margin: 0 auto;
@@ -32,7 +31,6 @@ body {
           height: 36px;
           line-height: 36px;
           display: flex;
-          margin-bottom: 5px;
           border: groove 1px;
           padding-left: 10px;
           .h72 {
@@ -44,20 +42,31 @@ body {
           cursor: pointer;
           background-color: #3CCACE;
           padding: 8px;
-          .image-tag {
-            height: 36px;
-            width: 37px;
-          }
         }
       } 
     }  
     &__nav {
       font-size: 14px;
       display: flex;
-      margin-bottom: 10px;
       &--left {
+        position: relative;
+        
+        // .test-nav{
+        //   width: 300px;
+        //   height: 300px;
+        //   background-color: seashell;
+        //   position: absolute;
+        //   border: 1px solid black;
+        //   z-index: 10;
+        //   opacity: 0;
+        //   &:hover{
+        //     color: red;
+        //     opacity: 1;
+        //   }
+        // }
         p {
-            padding-left: 20px;
+            padding-right: 20px;
+            margin: 15px 0;
           }
       
         ul {
@@ -69,15 +78,12 @@ body {
         }
       }
       &--right {
-        padding-left: 500px;
-        p {
-            padding-left: 20px;
-          }
+        margin-left: auto;
         ul {
-          position: relative;
-          display: flex;
-          li {
-            display: flex;
+          margin: 15px 0;
+          a{
+            margin-left: 15px;
+            text-decoration: none;
           }
         }
       }
@@ -240,7 +246,6 @@ body {
 .pickup__sell {
   padding: 80px 0 0;
   background-color: #f8f8f8;
-  height: 100%;
   h2 {
     text-align: center;
     font-size: 28px;
@@ -253,19 +258,35 @@ body {
       text-decoration: none;
       color: #3CCACE;
       text-align: center;
+      h3{
+        margin-left: 300px;
+        a{
+          margin-left: 230px;
+          font-size: 14px;
+          color: #3CCACE;
+          text-decoration: none;
+        }
+      }
     }
     .pick-lists {
       width: 780px;
       margin: 26px auto;
-      display: flex;
-      justify-content: space-around;
+      .pick-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      a {
+        margin-bottom: 10px;
+        text-decoration: none;
+      }
+      }
     }
   } 
 }
 
 .pickup__brand {
+  padding: 80px 0 0;
   background-color: #f8f8f8;
-  height: 100%;
   h2 {
     text-align: center;
     font-size: 28px;
@@ -278,16 +299,31 @@ body {
       text-decoration: none;
       color: #3CCACE;
       text-align: center;
+      h3{
+        margin-left: 300px;
+        a{
+          margin-left: 200px;
+          font-size: 14px;
+          color: #3CCACE;
+          text-decoration: none;
+        }
+      }
     }
     .pick-lists {
       width: 780px;
       margin: 26px auto;
-      display: flex;
-      justify-content: space-around;
+      .pick-list{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        a {
+          margin-bottom: 10px;
+          text-decoration: none;
+        }
+      }
     }
   }  
 }
-
 .banner{
   background-image: image_url("bg-appBanner-pict.jpg");
   padding: 100px 40px;
@@ -352,6 +388,10 @@ body {
       text-decoration: none;
       font-size: 12px;
       line-height: 32px;
+      a{
+        color:white;
+        text-decoration: none;
+      }
     }
     ul {
       padding-inline-start: 0;
