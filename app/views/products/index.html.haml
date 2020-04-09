@@ -8,15 +8,17 @@
           %h72 キーワードから探す
       .header__inner__main__box__image
         .header__image--tag
-          = image_tag "icon-search1.png", size: "35x36", alt: "btn", class: "image-tag"
+          = image_tag "icon-search1.png", size: "20x20", alt: "btn", class: "image-tag"
     .header__inner__nav
       .header__inner__nav--left
         %ul 
           %ls
           - if user_signed_in?
             %p
-              = "ようこそ！#{current_user.nickname}さん"
+              = link_to "#" do
+                = "ようこそ！#{current_user.nickname}さん"
           %p カテゴリ
+          -# .test-nav test
           %p ブランド
       .header__inner__nav--right
         %ul
@@ -26,7 +28,6 @@
           - unless user_signed_in?
             = link_to "ログイン"   , new_user_session_path
             = link_to "新規会員登録", new_user_registration_path
-
 .main
   .main__visial
     .content
@@ -113,69 +114,50 @@
     .pickup__sell__box__head
       %h3
         新規投稿商品
+        = link_to "#" do
+          もっと見る  >
+          %path
+
     .pick-lists
       .pick-list
-        = image_tag "659058.jpg", size: "220x150", alt: "QR"
-        .pick-boby
-          %h3
-            商品
-          %p1
-            3000円
-          %p2 
-            (税込み)
-      .pick-list
-        = image_tag "659058.jpg", size: "220x150", alt: "QR"
-        .pick-boby
-          %h3
-            商品
-          %p1
-            3000円
-          %p2 
-            (税込み)
-      .pick-list
-        = image_tag "659058.jpg", size: "220x150", alt: "QR"
-        .pick-boby
-          %h3
-            商品
-          %p1
-            3000円
-          %p2 
-            (税込み)
+        - @products.first(6).each do |product|
+          = link_to "#" do
+            - Image.where(product_id: product.id).each.with_index(1) do |image,i|
+              - if i == 1
+                = image_tag image.image, size: "220x180", alt: "QR" 
+                .pick-boby
+                  %h3 
+                    = product.name
+                  %p1 
+                    = product.price.to_s(:currency)
+                    (税込み)
+                -# - if @categorise.present?
+                -#   - if @categorise.first.category_id == category_id
+                -#     .top__transaction-check
+                -#       .top__transaction-check--btn
+                -#         SOLD OUT
 .pickup__brand
   %h2 
-    ピックアップブランド 
+    ピックアップブランド
   .pickup__brand__box
     .pickup__brand__box__head
       %h3
-        アーカイバ
+        カテゴリ別商品
+        = link_to "#" do
+          もっと見る  >
     .pick-lists
       .pick-list
-        = image_tag "EUZnP0rU0AEUJaB.jpeg", size: "220x150", alt: "QR"
-        .pick-boby
-          %h3
-            商品
-          %p1
-            3000億円
-          %p2 
-            (税込み)
-      .pick-list
-        = image_tag "EUZnP0rU0AEUJaB.jpeg", size: "220x150", alt: "QR"
-        .pick-boby
-          %h3
-            商品
-          %p1
-            3000億円
-          %p2 
-            (税込み)
-      .pick-list
-        = image_tag "EUZnP0rU0AEUJaB.jpeg", size: "220x150", alt: "QR"
-        .pick-boby
-          %h3
-            商品
-          %p1
-            3000億円
-          %p2 
-            (税込み)
+        - @categorise.first(6).each do |product|
+          = link_to "#" do
+            - Image.where(product_id: product.id).each.with_index(1) do |image,i|
+              - if i == 1
+                = image_tag image.image, size: "220x180", alt: "QR" 
+                .pick-boby
+                  %h3
+                    = product.name
+                  %p1
+                    = product.price.to_s(:currency)
+                    (税込み)
 .banner
   .banner__inner
     %h4 
@@ -209,9 +191,11 @@
       %ul
         %ls
           %p
-            カテゴリー一覧
+            = link_to "#" do
+              カテゴリー一覧
           %p
-            ブランド一覧
+            = link_to "#" do
+              ブランド一覧
     %ls.content
       %h2
         ヘルプ＆ガイド
