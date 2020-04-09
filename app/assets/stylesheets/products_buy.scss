@@ -76,6 +76,23 @@ body {
               font-size: 30px;
             }
           }
+          &__info{
+            margin: 32px;
+            &__btn{
+              &:hover{
+                text-decoration: none;
+              }
+              text-align: center;
+              line-height: 50px;
+              height: 50px;
+              width: 326px;
+              font-size: 14px;
+              margin: 10px 0;
+              display: block;
+              color: white;
+              background-color: #3ccace;
+            }
+          }
         }
         &__point{
           height: 50px;
@@ -122,8 +139,7 @@ body {
         &__info{
           margin: 32px;
           font-size: 12px;
-        }
-          .btn{
+          a{
             background-color: #3ccace;
             color: white;
             font-size: 14px;
@@ -131,6 +147,7 @@ body {
             height: 50px;
             margin: 10px 0;
           }
+        }
       }
     }
   }

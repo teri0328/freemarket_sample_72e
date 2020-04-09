@@ -32,11 +32,14 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @address = Address.where(user_id: current_user.id)[0]
     @image   = Image.where(product_id: @product.id)[0]
-    @card    = Card.find(params[:id])
-    card     = Card.where(user_id: current_user.id).first
-    Payjp.api_key = "sk_test_cf98ef02cadd3ab814d4dc9e"
-    customer = Payjp::Customer.retrieve(card.customer_id)
-    @default_card_information = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+    @card_ex = Card.where(user_id: current_user.id)
+    if @card_ex.exists?
+      card     = Card.where(user_id: current_user.id).first
+      @card    = Card.find(params[:id])
+      Payjp.api_key = "sk_test_cf98ef02cadd3ab814d4dc9e"
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+    end
   end
 
   def pay
