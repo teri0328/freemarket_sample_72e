@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_params
   before_action :authenticate_user!, except: [:index, :show]
+  require 'payjp'
 
   def index
     @products = Product.includes(:images).order('created_at DESC')
@@ -27,29 +28,35 @@ class ProductsController < ApplicationController
     @images     = Image.where(product_id: @product.id)
   end
 
-  # 以下、ビュー表示用の仮アクション
-  def authenticate
-  end
-
-  def telephone
-  end
-
-  def select
-  end
-
-  def registration
-  end
-
-  def result
-  end
-
   def buy
+    @product = Product.find(params[:id])
+    @address = Address.where(user_id: current_user.id)[0]
+    @image   = Image.where(product_id: @product.id)[0]
+    @card_ex = Card.where(user_id: current_user.id)
+    if @card_ex.exists?
+      card     = Card.where(user_id: current_user.id).first
+      @card    = Card.find(params[:id])
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+    end
   end
 
-  def about
-  end
-
-  def master
+  def pay
+    @card = Card.where(user_id: current_user.id)
+    customer_card = ""
+    @card.each do |c|
+      customer_card = c
+    end
+    @product = Product.find(params[:id])
+    @product.soldout = true
+    @product.save!
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+    @charge = Payjp::Charge.create(
+    amount: @product.price,
+    customer: customer_card.customer_id,
+    currency: 'jpy'
+    )
   end
 
   private

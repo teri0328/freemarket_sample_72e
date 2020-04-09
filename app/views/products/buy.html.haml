@@ -7,10 +7,16 @@
       %h2購入内容の確認
     .buy-main__body__buy
       .buy-main__body__buy__inner
-        = image_tag 'icon_brand.png'
+        = image_tag @image.image
         .buy-main__body__buy__inner__content
-          ☘春だね♪☘ レディースジーンズ♡SIMPLE LIFE♡美品
-          %p¥3,700円　（税込）送料込み
+          = @product.name
+          %p
+            = "¥#{@product.price.to_s(:delimited)}"
+            (税込)
+          - if @product.postage
+            %span 送料込み(出品者が負担)
+          - unless @product.postage
+            %span 送料別(購入者が負担)
     .buy-main__body__item
       .buy-main__body__item__inner
         .buy-main__body__item__inner__form
@@ -18,22 +24,34 @@
           %h2 支払い金額 
           .buy-main__body__item__inner__form__price__cell
             .buy-main__body__item__inner__form__price__cell__aaa
-              ¥3,700
+              = "¥#{@product.price.to_s(:delimited)}"
         .buy-main__body__item__inner__point
           %input(type="checkbox")/
           %label ポイントを使用 (所持ポイント: P0)
         .buy-main__body__item__inner__two
           .buy-main__body__item__inner__two__payment
             %h3支払い方法
-          = link_to "登録してください", "#";
-          -# %i.fas.fa-plus-circle
+            - if @card_ex.exists?
+              = image_tag "1.png", size: "60x35"
+              %div
+                = "**** **** **** " + @default_card_information.last4
+                = @default_card_information.exp_month.to_s + " / " + @default_card_information.exp_year.to_s.slice(2,3)
+            - else
+              %br
+              = link_to new_card_path do
+                %b 支払い方法を登録して下さい
         .buy-main__body__item__inner__three
           .buy-main__body__item__inner__three__address
             %h3配送先
-          = link_to "登録してください", "#";
-          -# %i.fas.fa-plus-circle
+          %p
+            = "〒#{@address.post_number}"
+          = @address.prefecture + @address.city + @address.address + @address.apartment
         .buy-main__body__item__inner__form__info
-          = submit_tag "購入する", id: "token_submit", class: "btn"
+          - if @card_ex.exists?
+            = link_to pay_product_path(@product), class: "buy-main__body__item__inner__form__info__btn" do
+              購入する
+          - else
+            %b 購入方法の登録が必要です
 .buy-footer
   .buy-footer__hight
     .buy-footer__hight__line
