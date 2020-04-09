@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200406023448) do
+ActiveRecord::Schema.define(version: 20200409031334) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",     null: false
@@ -31,15 +31,12 @@ ActiveRecord::Schema.define(version: 20200406023448) do
   end
 
   create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",       null: false
-    t.string   "company",    null: false
-    t.string   "number",     null: false
-    t.string   "cord",       null: false
-    t.integer  "year",       null: false
-    t.integer  "month",      null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "customer_id", null: false
+    t.string   "token"
+    t.string   "card_id"
     t.index ["user_id"], name: "index_cards_on_user_id", using: :btree
   end
 
@@ -116,6 +113,7 @@ ActiveRecord::Schema.define(version: 20200406023448) do
     t.integer  "category_id",                                   null: false
     t.integer  "bland_id",                                      null: false
     t.string   "shipping_method"
+    t.boolean  "soldout",                       default: false, null: false
     t.index ["bland_id"], name: "index_products_on_bland_id", using: :btree
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
     t.index ["condition_id"], name: "index_products_on_condition_id", using: :btree
