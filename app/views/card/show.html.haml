@@ -34,14 +34,10 @@
           .main-mypage2__container__content__icon__card__number__list
             %p 
             = @default_card_information.exp_month.to_s + " / " + @default_card_information.exp_year.to_s.slice(2,3)
-            
           %h4 追加する
           = form_tag(card_path(@card), method: :delete, id: 'charge-form',  name: "inputForm") do
             %input{ type: "hidden", name: "card_id", value: "" }
             %button 削除する
-          
-          
-
     .main-mypage2__container__side
       .main-mypage2__container__side__nav
         - @contents.each do |content|
