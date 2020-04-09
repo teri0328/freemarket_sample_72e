@@ -4,7 +4,7 @@
       .detail-wrapper__main__contents__product-name
         %h2
           = @product.name
-          - if @product.user_id == current_user.id
+          - if user_signed_in? && @product.user_id == current_user.id
             = link_to "#" do
               商品を削除する 
       .detail-wrapper__main__contents__product-contents
@@ -13,9 +13,15 @@
             - if i == 1
               .detail-wrapper__main__contents__product-contents__product-photo__top.top-image{id: "top-image#{i}"}
                 = image_tag img.image, class: "detail-wrapper__main__contents__product-contents__product-photo__top__image"
+                - if @product.soldout
+                  .soldout
+                    SOLD OUT
             - unless i == 1
               .detail-wrapper__main__contents__product-contents__product-photo__top.top-image.top-non-active{id: "top-image#{i}"}
                 = image_tag img.image, class: "detail-wrapper__main__contents__product-contents__product-photo__top__image"
+                - if @product.soldout
+                  .soldout
+                    SOLD OUT
           .detail-wrapper__main__contents__product-contents__product-photo__bottom.bottom-images
             - @images.each.with_index(1) do |img,i|
               - if i == 1
@@ -111,19 +117,19 @@
           - unless @product.postage
             送料別
       - if user_signed_in? && @product.user_id != current_user.id
-        = link_to buy_product_path(@product) do
-          .detail-wrapper__main__contents__purchase-btn
-            購入画面に進む
-      .detail-wrapper__main__contents__purchase-link
-        - if user_signed_in? && @product.user_id != current_user.id
-          = link_to "#" do
-            アプリで購入
-        - unless user_signed_in? && @product.user_id == current_user.id
-          %b
-            商品を購入するには
+        - unless @product.soldout
+          = link_to buy_product_path(@product) do
+            .detail-wrapper__main__contents__purchase-btn
+              購入画面に進む
+          .detail-wrapper__main__contents__purchase-link
             = link_to "#" do
-              ログイン
-            してください
+              アプリで購入
+      - unless user_signed_in?
+        %b
+          商品を購入するには
+          = link_to new_user_session_path do
+            ログイン
+          してください
       %br
       .detail-wrapper__main__contents__explanation
         = br(@product.explanation)

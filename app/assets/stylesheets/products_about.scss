@@ -37,11 +37,21 @@
             align-items: center;
             justify-content: center;
             background-color: #fafafa;
+            position: relative;
             &__image{
               height: auto;
               width: auto;
               max-width: 300px;
               max-height: 300px;
+            }
+            .soldout{
+              color: #fff;
+              position: absolute;
+              top: 0;
+              letter-spacing: 3px;
+              font-weight: 700;
+              background-color: #ff6600;
+              padding:10px 100px;
             }
           }
           &__bottom{

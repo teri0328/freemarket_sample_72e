@@ -21,15 +21,8 @@ Rails.application.routes.draw do
       get "pay"
       get "buy"
     end
-    collection do
-      get "about"
-      get "master"
-      get 'authenticate'
-      get 'telephone'
-      get 'select'
-      get 'registration'
-      get 'result'
-    end
   end
+
   resources :users, only: [:show]
+  
 end

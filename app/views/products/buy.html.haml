@@ -31,19 +31,19 @@
         .buy-main__body__item__inner__two
           .buy-main__body__item__inner__two__payment
             %h3支払い方法
-            = image_tag "1.png", size: "120x70"
+            = image_tag "1.png", size: "60x35"
             %div
               = "**** **** **** " + @default_card_information.last4
               = @default_card_information.exp_month.to_s + " / " + @default_card_information.exp_year.to_s.slice(2,3)
         .buy-main__body__item__inner__three
           .buy-main__body__item__inner__three__address
             %h3配送先
-          -# = @address.
-          -# = link_to "登録してください", "#";
-          %i.fas.fa-plus-circle
+          %p
+            = "〒#{@address.post_number}"
+          = @address.prefecture + @address.city + @address.address + @address.apartment
         .buy-main__body__item__inner__form__info
           = link_to pay_product_path(@product) do
-            .btn#token_submit 購入する
+            購入する
 .buy-footer
   .buy-footer__hight
     .buy-footer__hight__line

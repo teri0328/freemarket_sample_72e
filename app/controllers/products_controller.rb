@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_params
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
   require 'payjp'
 
   def index
@@ -32,8 +32,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @address = Address.where(user_id: current_user.id)[0]
     @image   = Image.where(product_id: @product.id)[0]
-    @card = Card.find(params[:id])
-    card = Card.where(user_id: current_user.id).first
+    @card    = Card.find(params[:id])
+    card     = Card.where(user_id: current_user.id).first
     Payjp.api_key = "sk_test_cf98ef02cadd3ab814d4dc9e"
     customer = Payjp::Customer.retrieve(card.customer_id)
     @default_card_information = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
@@ -46,34 +46,14 @@ class ProductsController < ApplicationController
       customer_card = c
     end
     @product = Product.find(params[:id])
+    @product.soldout = true
+    @product.save!
     Payjp.api_key = "sk_test_cf98ef02cadd3ab814d4dc9e"
     @charge = Payjp::Charge.create(
     amount: @product.price,
     customer: customer_card.customer_id,
     currency: 'jpy'
     )
-  end
-
-  # 以下、ビュー表示用の仮アクション
-  def authenticate
-  end
-
-  def telephone
-  end
-
-  def select
-  end
-
-  def registration
-  end
-
-  def result
-  end
-
-  def about
-  end
-
-  def master
   end
 
   private
