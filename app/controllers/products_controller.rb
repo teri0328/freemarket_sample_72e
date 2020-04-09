@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
   def index
     @products = Product.includes(:images).order('created_at DESC')
     @categorise = Product.where(category_id: 3).order('created_at DESC')
-    # @sold_out = Category.where(category_id: @categorise.ids)
   end
 
   def new

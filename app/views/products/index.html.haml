@@ -107,6 +107,7 @@
         様々な支払いに対応
       %p 
         お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
 .pickup__sell
   %h2 
     ピックアップカテゴリー    
@@ -117,25 +118,21 @@
         = link_to "#" do
           もっと見る  >
           %path
-
     .pick-lists
       .pick-list
         - @products.first(6).each do |product|
-          = link_to "#" do
+          = link_to "/products/1" do
             - Image.where(product_id: product.id).each.with_index(1) do |image,i|
               - if i == 1
                 = image_tag image.image, size: "220x180", alt: "QR" 
                 .pick-boby
                   %h3 
                     = product.name
+                    - if product.soldout
+                      %p SOLDOUT
                   %p1 
                     = product.price.to_s(:currency)
                     (税込み)
-                -# - if @categorise.present?
-                -#   - if @categorise.first.category_id == category_id
-                -#     .top__transaction-check
-                -#       .top__transaction-check--btn
-                -#         SOLD OUT
 .pickup__brand
   %h2 
     ピックアップブランド
@@ -155,6 +152,8 @@
                 .pick-boby
                   %h3
                     = product.name
+                    - if product.soldout
+                      %p SOLDOUT
                   %p1
                     = product.price.to_s(:currency)
                     (税込み)
@@ -211,4 +210,3 @@
     = image_tag "logo-white.png", size: "160x46", alt: "logo"
     %p
       © FURIMA
-
