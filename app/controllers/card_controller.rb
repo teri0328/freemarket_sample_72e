@@ -1,5 +1,7 @@
 class CardController < ApplicationController
   before_action :set_params
+  before_action :set_key
+  before_action :set_card, only: [:show, :destroy]
   require "payjp"
 
   def new
@@ -46,9 +48,17 @@ class CardController < ApplicationController
 
   private
 
+  def set_key
+    gon.payjp_key = ENV['KEY']
+  end
+
   def set_params
-    @card = Card.find(params[:id])
     @contents = ["マイページ","お知らせ","やることリスト","いいね一覧","出品する","下書き一覧","出品した商品-出品中","出品した商品-取引中","出品した商品〜売却済み","購入した商品-取引中","購入した商品-過去の取引","ニュース一覧","評価一覧","ガイド","お問い合わせ"]
     @settings = ["プロフィール","発送元・お届け先変更","支払い方法","メール・パスワード","本人情報","電話番号の確認","ログアウト"]
   end
+  
+  def set_card
+    @card = Card.find(params[:id])
+  end
+
 end

@@ -1,7 +1,8 @@
 $(function(){
+  const KEY = gon.payjp_key;
   $("button").click(function(e){
     e.preventDefault();
-    Payjp.setPublicKey(ENV['PAYJP_PUBLIC_KEY']);
+    Payjp.setPublicKey(KEY);
     var card = {
       cvc      : $("#cvc").val(),
       number   : $("#number").val(),
