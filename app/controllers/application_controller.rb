@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :basic_auth, if: :production? 
+  before_action :set_key
 
   protected
 
@@ -11,6 +12,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def set_key
+    gon.payjp_key = ENV['KEY']
+  end
 
   def production?
     Rails.env.production?
