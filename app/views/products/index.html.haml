@@ -18,7 +18,6 @@
               = link_to "#" do
                 = "ようこそ！#{current_user.nickname}さん"
           %p カテゴリ
-          -# .test-nav test
           %p ブランド
       .header__inner__nav--right
         %ul
@@ -121,18 +120,18 @@
     .pick-lists
       .pick-list
         - @products.first(6).each do |product|
-          = link_to "/products/1" do
-            - Image.where(product_id: product.id).each.with_index(1) do |image,i|
-              - if i == 1
-                = image_tag image.image, size: "220x180", alt: "QR" 
-                .pick-boby
-                  %h3 
-                    = product.name
-                    - if product.soldout
-                      %p SOLDOUT
-                  %p1 
-                    = product.price.to_s(:currency)
-                    (税込み)
+          = link_to product_path(product.id), data: {"turbolinks"=>false} do
+            .pick-image
+              - Image.where(product_id: product.id).each.with_index(1) do |image,i|
+                - if i == 1
+                  = image_tag image.image, alt: "QR"
+            %h3 
+              = product.name
+              - if product.soldout
+                %p SOLDOUT
+            %p1 
+              = product.price.to_s(:currency)
+              (税込み)
 .pickup__brand
   %h2 
     ピックアップブランド
@@ -144,7 +143,7 @@
           もっと見る  >
     .pick-lists
       .pick-list
-        - @categorise.first(6).each do |product|
+        - @categorize.first(6).each do |product|
           = link_to "#" do
             - Image.where(product_id: product.id).each.with_index(1) do |image,i|
               - if i == 1

@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
-  before_action :set_params
+  before_action :set_params, only: [:create]
+  before_action :set_product, only: [:show, :buy, :destroy, :pay]
   before_action :authenticate_user!, except: [:index, :show]
   require 'payjp'
 
   def index
     @products = Product.includes(:images).order('created_at DESC')
-    @categorise = Product.where(category_id: 3).order('created_at DESC')
+    @categorize = Product.where(category_id: 3).order('created_at DESC')
   end
 
   def new
@@ -13,12 +14,11 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(params.require(:product).permit(:id, :explanation, :name, :region, :size, :price, :shipping_days, :postage, :created_at, :updated_at).merge(user_id: "1", condition_id: "1", category_id: "1", bland_id: "1"))
+    @product = Product.new(set_params)
     @product.save!
   end
 
   def show
-    @product    = Product.find(params[:id])
     @user       = User.find(@product.user)
     @bland      = Bland.find(@product.bland)
     @category   = Category.where(product_id: @product.id)
@@ -29,7 +29,6 @@ class ProductsController < ApplicationController
   end
 
   def buy
-    @product = Product.find(params[:id])
     @address = Address.where(user_id: current_user.id)[0]
     @image   = Image.where(product_id: @product.id)[0]
     @card_ex = Card.where(user_id: current_user.id)
@@ -48,7 +47,6 @@ class ProductsController < ApplicationController
     @card.each do |c|
       customer_card = c
     end
-    @product = Product.find(params[:id])
     @product.soldout = true
     @product.save!
     Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
@@ -59,9 +57,20 @@ class ProductsController < ApplicationController
     )
   end
 
+  def destroy
+    unless @product.destroy
+      redirect_to product_path(@product)
+    end
+  end
+  
   private
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
   def set_params
-    
+    # ダミーです、商品出品と編集に使用します
+    params.require(:product).permit(:id, :explanation, :name, :region, :size, :price, :shipping_days, :postage, :created_at, :updated_at).merge(user_id: "1", condition_id: "1", category_id: "1", bland_id: "1")
   end
 end
