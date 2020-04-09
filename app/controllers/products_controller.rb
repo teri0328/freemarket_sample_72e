@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
     if @card_ex.exists?
       card     = Card.where(user_id: current_user.id).first
       @card    = Card.find(params[:id])
-      Payjp.api_key = "sk_test_cf98ef02cadd3ab814d4dc9e"
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
     end
@@ -51,7 +51,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.soldout = true
     @product.save!
-    Payjp.api_key = "sk_test_cf98ef02cadd3ab814d4dc9e"
+    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
     @charge = Payjp::Charge.create(
     amount: @product.price,
     customer: customer_card.customer_id,

@@ -1,7 +1,7 @@
 $(function(){
   $("button").click(function(e){
     e.preventDefault();
-    Payjp.setPublicKey('pk_test_9c6d063d65d6d71e85f7c006');
+    Payjp.setPublicKey(ENV['PAYJP_PUBLIC_KEY']);
     var card = {
       cvc      : $("#cvc").val(),
       number   : $("#number").val(),
