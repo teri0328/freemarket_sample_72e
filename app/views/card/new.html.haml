@@ -1,7 +1,65 @@
-= form_tag("/card", method: :post, id: 'charge-form',  name: "inputForm") do
-  %input{id: "number"    , type: "text"  , name: "number"   , maxlength: "16", placeholder: "Card #", value: "4242424242424242"}
-  %input{id: "cvc"       , type: "text"  , name: "cvc"      , maxlength: "4" , placeholder: "CVC"   , value: "111"}
-  %input{id: "exp_month" , type: "text"  , name: "exp_month", maxlength: "2" , placeholder: "month" , value: "12"}
-  %input{id: "exp_year"  , type: "text"  , name: "exp_year" , maxlength: "4" , placeholder: "year"  , value: "2020"}
-  %input{id: "payjpToken", type: "hidden", name: "payjpToken"}
-  %button{type: "submit"} 登録完了
+.header 
+  .header__inner
+    .header__inner__main
+      %icon
+        = image_tag "logo.png", size: "140x40", alt: "logo"
+      .header__inner__main__box
+        .header__inner__main__box--from
+          %h72 キーワードから探す
+      .header__inner__main__box__image
+        .header__image--tag
+          = image_tag "icon-search1.png", size: "35x36", alt: "btn", class: "image-tag"
+    .header__inner__nav
+      .header__inner__nav--left
+        %ul
+          %ls
+          %p カテゴリ
+          %p ブランド
+      .header__inner__nav--right
+        %ul
+          %ls
+          %p ログイン
+          %p 新規会員登録
+
+.main-mypage2
+  .main-mypage2__container.clearfix
+    .main-mypage2__container__content
+      .main-mypage2__container__content__icon
+        %h2 クレジットカード情報入力
+        .main-mypage2__container__content__icon__card
+          = form_tag("/card", method: :post, id: 'charge-form',  name: "inputForm") do
+            %h3 カード番号 <span>必須</span>
+            %input{id: "number", type: "text", name: "number", maxlength: "16", placeholder: "Card #", value: "4242424242424242"}
+            %ul.signup__card--list
+              %li.icon--visa
+                = image_tag("1.png", size: "32x20", id:"icon--visa")
+              %li.icon--master
+                = image_tag("2.png", size: "32x20", id:"icon--master")
+              %li.icon--jcb
+                = image_tag("16.png", size: "32x20", id:"icon--jcb")
+              %li.icon--americanexpress
+                = image_tag("22.png", size: "32x20", id:"icon--americanexpress")
+              %li.icon--diners
+                = image_tag("10.png", size: "32x20", id:"icon--diners")
+              %li.icon--discover
+                = image_tag("14.png", size: "32x20", id:"icon--discover")
+            %h3 有効期限 <span>必須</span>
+            %input{id: "exp_month", type: "text", name: "exp_month", maxlength: "2", placeholder: "month", value: "12"}
+            %input{id: "exp_year" , type: "text", name: "exp_year" , maxlength: "4", placeholder: "year" , value: "2020"}
+            %h3 セキュリティーコード <span>必須</span>
+            %input{id: "cvc"       , type: "text"  , name: "cvc"      , maxlength: "4" , placeholder: "CVC"   , value: "111"}
+            %p カード裏面の番号とは？
+            %input{id: "payjpToken", type: "hidden", name: "payjpToken"}
+            %button{type: "submit"} カードを追加する
+
+    .main-mypage2__container__side
+      .main-mypage2__container__side__nav
+        - @contents.each do |content|
+          .main-mypage2__container__side__nav__list
+            = content
+      %h3 
+        設定
+      .main-mypage2__container__side__nav__setting
+        - @settings.each do |setting|
+          .main-mypage2__container__side__nav__setting__list
+            = setting

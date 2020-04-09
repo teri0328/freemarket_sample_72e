@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :new, :create, :show] do
     member do
+      get "pay"
       get "buy"
     end
     collection do
