@@ -3,10 +3,12 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
+    @products = Product.includes(:images).order('created_at DESC')
+    @categorise = Product.where(category_id: 3).order('created_at DESC')
   end
 
   def new
-    @product = Product.new
+    @products = Product.new
   end
 
   def create
