@@ -5,8 +5,8 @@
         %h2
           = @product.name
           - if user_signed_in? && @product.user_id == current_user.id
-            = link_to "#" do
-              商品を削除する 
+            = link_to product_path(@product), method: "delete" do
+              商品を削除する
       .detail-wrapper__main__contents__product-contents
         .detail-wrapper__main__contents__product-contents__product-photo.top-images
           - @images.each.with_index(1) do |img,i|
@@ -118,7 +118,7 @@
             送料別
       - if user_signed_in? && @product.user_id != current_user.id
         - unless @product.soldout
-          = link_to buy_product_path(@product) do
+          = link_to buy_product_path(@product), data: {"turbolinks"=>false} do
             .detail-wrapper__main__contents__purchase-btn
               購入画面に進む
           .detail-wrapper__main__contents__purchase-link
