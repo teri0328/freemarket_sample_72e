@@ -18,8 +18,10 @@
             %p
               = "ようこそ！#{current_user.nickname}さん"
           %p
-            - @parent.each do |parent|
-              = parent.name
+            - @gen1s.each do |gen1|
+              = gen1.name
+            -# - @gen3s.each do |gen3|
+            -#   = gen3.name
           %p ブランド
       .header__inner__nav--right
         %ul
@@ -34,9 +36,9 @@
   .main__visial
     .content
       .content_submit
-        %h2 
+        %h2
           人生を変えるフリマアプリ
-        %p 
+        %p
           FURIMAはだれでもかんたんに出品・購入できる
         %p
           フリマアプリです
