@@ -63,6 +63,15 @@ class ProductsController < ApplicationController
     end
   end
   
+  def search
+    return nil if params[:keyword] == ""
+    @products = Product.where(["name LIKE ?", "%#{params[:keyword]}%"])
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   private
 
   def set_product

@@ -4,25 +4,23 @@
       %icon
         = image_tag "logo.png", size: "140x40", alt: "logo"
       .header__inner__main__box
-        .header__inner__main__box--from
-          %h72 キーワードから探す
-      .header__inner__main__box__image
-        .header__image--tag
-          = image_tag "icon-search1.png", size: "20x20", alt: "btn", class: "image-tag"
+        %input{id: "search-input" ,class: "header__inner__main__box__from", type: "textarea", placeholder: "キーワードから探す"}
+        .header__inner__main__box__image#search-submit
+          = image_tag "icon-search1.png"
+        #search-results
     .header__inner__nav
       .header__inner__nav--left
         %ul 
           %ls
-          - if user_signed_in?
-            %p
-              = link_to "#" do
-                = "ようこそ！#{current_user.nickname}さん"
           %p カテゴリ
           %p ブランド
       .header__inner__nav--right
         %ul
           %ls
           - if user_signed_in?
+            %span
+              = link_to user_path(current_user) do
+                = "#{current_user.nickname}さんのマイページ"
             = link_to "ログアウト" , destroy_user_session_path, method: :delete
           - unless user_signed_in?
             = link_to "ログイン"   , new_user_session_path
