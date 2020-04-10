@@ -34,6 +34,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     member do
       get "show_like"
+      get 'authenticate'
+      get 'telephone'
+      get 'select'
+      get 'registration'
+      get 'result'
+      get 'category'
     end
   end
 end

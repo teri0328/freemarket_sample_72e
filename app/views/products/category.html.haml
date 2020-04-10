@@ -1,0 +1,13 @@
+%p.gen1s
+  - @gen1_ids.each do |gen1_id|
+    = gen1_id
+
+%p.gen2s
+  - @gen2s.each do |gen2s|
+    - gen2s.each do |gen2|
+      = gen2.id
+
+%p.gen3s
+  - @gen3s.each do |gen3s|
+    - gen3s.each do |gen3|
+      = gen3.id
