@@ -134,11 +134,23 @@
       .detail-wrapper__main__contents__explanation
         = br(@product.explanation)
       .detail-wrapper__main__contents__button-container
-        .detail-wrapper__main__contents__button-container__button
-          = icon('far', 'heart')
-          いいね!
-          0
-        .detail-wrapper__main__contents__button-container__button
+        - if Like.where(user_id: current_user.id, product_id: @product.id).exists?
+          .detail-wrapper__main__contents__button-container__button#like-btn{action_create: create_like_product_path(@product), action_destroy: destroy_like_product_path(@product)}
+            = icon('far', 'heart')
+            いいね!
+            - Like.where(product_id: @product.id).each.with_index(1) do |p,i|
+              - @likenum += 1
+            %span#likenum
+              = @likenum
+        - unless Like.where(user_id: current_user.id, product_id: @product.id).exists?
+          .detail-wrapper__main__contents__button-container__button#like-btn.like-non-active{action_create: create_like_product_path(@product), action_destroy: destroy_like_product_path(@product)}
+            = icon('far', 'heart')
+            いいね!
+            - Like.where(product_id: @product.id).each.with_index(1) do |p,i|
+              - @likenum += 1
+            %span#likenum
+              = @likenum
+        .detail-wrapper__main__contents__button-container__button.report-btn
           = icon('far', 'flag')
           不適切な商品の報告
         .detail-wrapper__main__contents__button-container__safe-link
