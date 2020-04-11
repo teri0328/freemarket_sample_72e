@@ -1,0 +1,22 @@
+= render "products/header"
+.pickup__sell
+  %h2 あなたがいいねした商品
+  - unless Like.where(user_id: current_user.id).exists?
+    %br
+    %h2 まだいいねした商品はありません
+  .pickup__sell__box
+    .pickup__sell__box__head
+      .pick-lists
+        .pick-list
+          -  Like.where(user_id: current_user.id).each do |l|
+            - product = Product.find(l.product_id)
+            = link_to product_path(product), data: {"turbolinks"=>false} do
+              .pick-image
+                = image_tag Image.where(product_id: product.id)[0].image
+              %h3
+                = product.name
+                - if product.soldout
+                  %p SOLDOUT
+              %p
+                = product.price.to_s(:currency)
+                (税込み)

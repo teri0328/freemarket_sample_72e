@@ -23,9 +23,14 @@ Rails.application.routes.draw do
     member do
       get "pay"
       get "buy"
+      get "create_like"
+      delete "destroy_like"
     end
   end
 
-  resources :users, only: [:show]
-  
+  resources :users, only: [:show] do
+    member do
+      get "show_like"
+    end
+  end
 end

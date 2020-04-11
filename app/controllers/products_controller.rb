@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_params, only: [:create]
-  before_action :set_product, only: [:show, :buy, :destroy, :pay]
+  before_action :set_product, only: [:show, :destroy, :buy, :pay, :create_like, :destroy_like]
   before_action :authenticate_user!, except: [:index, :show]
   require 'payjp'
 
@@ -28,6 +28,13 @@ class ProductsController < ApplicationController
     @address    = Address.where(user_id: @product.user)
     @evaluation = Evaluation.where(user_id: @product.user)
     @images     = Image.where(product_id: @product.id)
+    @likenum    = 0
+  end
+  
+  def destroy
+    unless @product.destroy
+      redirect_to product_path(@product)
+    end
   end
 
   def buy
@@ -59,18 +66,26 @@ class ProductsController < ApplicationController
     )
   end
 
-  def destroy
-    unless @product.destroy
-      redirect_to product_path(@product)
-    end
-  end
-  
   def search
     return nil if params[:keyword] == ""
     @products = Product.where(["name LIKE ?", "%#{params[:keyword]}%"])
     respond_to do |format|
       format.html
       format.json
+    end
+  end
+
+  def create_like
+    like = Like.new(user_id: current_user.id, product_id: @product.id)
+    unless like.save!
+      redirect_to product_path(@product)
+    end
+  end
+
+  def destroy_like
+    like = Like.find_by(user_id: current_user.id, product_id: @product.id)
+    unless like.destroy!
+      redirect_to product_path(@product)
     end
   end
 
