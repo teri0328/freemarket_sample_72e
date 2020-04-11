@@ -174,8 +174,54 @@
       }
     }
   }
-  
   &__comments{
+    &__comment{
+      &__user{
+        position: relative;
+        &__bubble{
+          position: absolute;
+            top : 45px;
+            left: 45px;
+          width: 40px;
+          height: 40px;
+          background-size: cover;
+          background-image: image_url("bubble.png");
+        }
+        &__usericon{
+          position: absolute;
+            top : 20px;
+            left: 10px;
+          width: 46px;
+          height: 46px;
+          border-radius: 46px;
+          background-size: cover;
+          background-image: image_url("user_icon.png");
+        }
+        &__username{
+          font-weight: bold;
+          margin-left: 70px;
+          margin-bottom: 6px;
+        }
+        &__message{
+          width: 580px;
+          border-radius: 20px;
+          margin-left  : 70px;
+          margin-bottom: 20px;
+          padding: 20px 20px 0px 20px;
+          background-color: #F5F5F5;
+          &__days{
+            color: #AAA;
+            padding: 10px 0;
+            position: relative;
+            &__flag{
+              position: absolute;
+                right : 0;
+                bottom: 10px;
+            }
+          }
+        }
+      }
+    }
     p{
       padding: 8px;
       background-color: #FEF6E1;
@@ -183,14 +229,17 @@
     textarea{
       width: 100%;
       height: 100px;
+      padding: 10px;
+      font-size: 14px;
       margin-top: 8px;
       margin-bottom: 4px;
       border: 1px solid #DDD;
     }
-    button{
+    #submit-comment{
       width: 100%;
       height: 50px;
       color: #FFF;
+      cursor: pointer;
       font-weight: bold;
       background-color: #AAA;
     }
@@ -199,59 +248,6 @@
     margin:10px auto 0 auto;
     padding: 24px 24px 40px;
     background-color: white;
-    &__bubble{
-      position: absolute;
-        top :40px;
-        left:52px;
-        color: #F5F5F5;
-        font-size: 60px;
-        transform: rotate(75deg);
-    }
-    &__user{
-      position: relative;
-      &__bubble{
-        position: absolute;
-          top : 45px;
-          left: 45px;
-        width: 40px;
-        height: 40px;
-        background-size: cover;
-        background-image: image_url("bubble.png");
-      }
-      &__usericon{
-        position: absolute;
-          top : 20px;
-          left: 10px;
-        width: 46px;
-        height: 46px;
-        border-radius: 46px;
-        background-size: cover;
-        background-image: image_url("user_icon.png");
-      }
-      &__username{
-        font-weight: bold;
-        margin-left: 70px;
-        margin-bottom: 6px;
-      }
-      &__message{
-        width: 580px;
-        border-radius: 20px;
-        margin-left  : 70px;
-        margin-bottom: 20px;
-        padding: 20px 20px 0px 20px;
-        background-color: #F5F5F5;
-        &__days{
-          color: #AAA;
-          padding: 10px 0;
-          position: relative;
-          &__flag{
-            position: absolute;
-              right : 0;
-              bottom: 10px;
-          }
-        }
-      }
-    }
   }
   &__other-links{
     display: flex;

@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many  :cards              , dependent: :destroy
   has_many  :likes              , dependent: :destroy
   has_many  :evaluations        , dependent: :destroy
+  has_many  :comments           , dependent: :destroy
   has_one   :address            , dependent: :destroy
 
   devise :database_authenticatable, :registerable,

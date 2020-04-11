@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_params, only: [:create]
-  before_action :set_product, only: [:show, :destroy, :buy, :pay, :create_like, :destroy_like]
+  before_action :set_params, only: :create
+  before_action :set_product, only: [:show, :destroy, :buy, :pay, :create_like, :destroy_like, :create_comment]
   before_action :authenticate_user!, except: [:index, :show]
   require 'payjp'
 
@@ -28,6 +28,8 @@ class ProductsController < ApplicationController
     @address    = Address.where(user_id: @product.user)
     @evaluation = Evaluation.where(user_id: @product.user)
     @images     = Image.where(product_id: @product.id)
+    @comment    = Comment.new
+    @comments   = Comment.where(product_id: @product.id)
     @likenum    = 0
   end
   
@@ -69,10 +71,6 @@ class ProductsController < ApplicationController
   def search
     return nil if params[:keyword] == ""
     @products = Product.where(["name LIKE ?", "%#{params[:keyword]}%"])
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   def create_like
@@ -88,7 +86,14 @@ class ProductsController < ApplicationController
       redirect_to product_path(@product)
     end
   end
-
+  
+  def create_comment
+    @comment = Comment.new(comment: params[:comment], user_id: current_user.id, product_id: @product.id)
+    unless @comment.save!
+      redirect_to product_path(@product)
+    end
+  end
+  
   private
 
   def set_product
@@ -99,4 +104,5 @@ class ProductsController < ApplicationController
     # ダミーです、商品出品と編集に使用します
     params.require(:product).permit(:id, :explanation, :name, :region, :size, :price, :shipping_days, :postage, :created_at, :updated_at).merge(user_id: "1", condition_id: "1", category_id: "1", bland_id: "1")
   end
+
 end
