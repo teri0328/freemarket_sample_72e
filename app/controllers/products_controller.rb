@@ -83,7 +83,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy_like
-    like = Like.where(user_id: current_user.id, product_id: @product.id)[0]
+    like = Like.find_by(user_id: current_user.id, product_id: @product.id)
     unless like.destroy!
       redirect_to product_path(@product)
     end
