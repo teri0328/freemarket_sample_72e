@@ -467,4 +467,19 @@ body {
     }
   }
 }
-  
+
+.bland {
+  position: relative;
+  .category-box {
+    width: 200px;
+    height: 500px;
+    border: 1px solid;
+    background-color: red;
+    position: absolute;
+    z-index: 1;
+  }
+}
+
+.negative{
+  display: none;
+}
