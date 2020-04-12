@@ -468,7 +468,35 @@ body {
   }
 }
 
-.append_list{
-  position: fixed;
-  z-index: 1;
+.category-container {
+  position: relative;
+  .gen1s {
+    position: absolute;
+    z-index: 1;
+    width: 300px;
+    background-color: green;
+    p.gen1 {
+      font-size: 20px;
+      height: 30px;
+      line-height: 30px;
+    }
+  }
+  .gen2s {
+    position: absolute;
+    z-index: 1;
+    width: 300px;
+    background-color: blue;
+    left: 300px;
+    p.gen2 {
+      font-size: 20px;
+      height: 30px;
+      line-height: 30px;
+    }
+  }
+}
+p:hover {
+  background-color: red;
+}
+.negative {
+  display: none;
 }

@@ -1,7 +1,7 @@
-%p.gen1s
-  - @gen1s.each do |gen1|
-    = gen1.name
-    %br
+.gen1s
+  - @gen1s.each.with_index(1) do |gen1, i|
+    %p.gen1.negative{class: "gen1_#{i}"}
+      = gen1.name
 
 -# %p.gen2s
 -#   - @gen2s.each do |gen2s|
@@ -17,13 +17,19 @@
 -#       = gen3.id
 
 
-%p.category_1
-  -# 添字nのgen1直下のレコード(=子レコード)を順番に取り出す
-  - @gen1s_array[0].each do |gen2s_1|
-    = gen2s_1.id
-    %br
-  -# 添字nのgen2要素(= gen3)を1つ取得
-  = @gen1s_array[0][0].id
+
+-# 添字nのgen1直下のレコード(=子レコード)を順番に取り出す
+.gen2s
+  - @gen2s.each.with_index(1) do |gen2s, i|
+    -# 配列内配列から取り出された要素単位で動的命名
+    - gen2s.each do |gen2|
+      %p.gen2.negative{class: "gen1_#{i}_children"}
+        = gen2.name
+    -# 配列単位で動的命名
+    -# %p.gen2.negative{class: "gen1_#{i}_children"}
+    -#   = gen2s.ids
+-# 添字nのgen2要素(= gen3)を1つ取得
+-# = @gen1s_array[0][0].id
 
 -# %p.category_2
 -#   - @gen2s[1].each do |category_2|
