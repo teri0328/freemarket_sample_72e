@@ -12,6 +12,13 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html
       format.json
+
+    # 福永
+    @gen1s = Category.where(ancestry: nil)
+
+    @gen2s = []
+    @gen1s.each do |gen1|
+      @gen2s << gen1.children
     end
 
   end
