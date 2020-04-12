@@ -81,17 +81,15 @@
 
 .pickup__sell
   %h2 
-    ピックアップカテゴリー    
+    ピックアップカテゴリー
   .pickup__sell__box
     .pickup__sell__box__head
       %h3
         新規投稿商品
-        = link_to "#" do
-          もっと見る  >
-          %path
     .pick-lists
       .pick-list
         - @products.first(6).each do |product|
+          - @used_id << product.id
           = link_to product_path(product.id), data: {"turbolinks"=>false} do
             .pick-image
               - product.images.each.with_index(1) do |image,i|
@@ -104,6 +102,9 @@
             %p1 
               = product.price.to_s(:currency)
               (税込み)
+      .pick-list#pick-list
+      #pick-pagenation{action: @used_id}
+        %p もっと見る
 .pickup__brand
   %h2 
     ピックアップブランド
