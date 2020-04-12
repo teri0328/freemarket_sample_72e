@@ -2,7 +2,8 @@
   .header__inner
     .header__inner__main
       %icon
-        = image_tag "logo.png", size: "140x40", alt: "logo"
+        = link_to root_path do
+          = image_tag "logo.png", size: "140x40", alt: "logo"
       .header__inner__main__box
         %input{id: "search-input" ,class: "header__inner__main__box__from", type: "textarea", placeholder: "キーワードから探す"}
         .header__inner__main__box__image#search-submit

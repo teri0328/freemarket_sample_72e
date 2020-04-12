@@ -3,28 +3,114 @@
 }
 * {
   font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
- 
 }
 
 .main-mypage {
-   background: rgb(245, 245, 245);
-   margin: 40px auto 0;
-   width: 1020px;
+   background: #EEE;
   &__container {
-    padding-top: 40px;
-    padding-left : 40px;
-    width: 100%;
-    height: 150vh;
-    
+    display: flex;
+    margin: 0 auto;
+    flex-direction: row-reverse;
+    justify-content: space-around;
     &__content {
-      float: right;
-      width: 620px;
-      margin-right: 40px;
+      position: absolute;
+      width: 65%;
+      right: 40px;
+      &__card {
+        padding: 40px 40px 64px;
+        margin: 0;
+        background: #fff;
+        width: 620px;
+        height: 600px;
+        .signup__card--list {
+          display: flex;
+          list-style: none;
+          margin-left: 140px;
+        }
+        h3 {
+          padding-top: 20px;
+          padding-bottom: 10px;
+          
+        }
+        span {
+          background-color: red;
+          color :#fff;
+          border-top-right-radius: 8px;   /* 右上だけの角丸半径 */
+          border-top-left-radius: 8px;
+          border-bottom-left-radius: 8px; /* 左下だけの角丸半径 */
+          border-bottom-right-radius :8px;
+          border: 1px solid orange;   /* 枠線の装飾 */
+          padding: 4px;               /* 内側の余白 */
+          font-size: 12px;
+          margin-left: 20px;
 
+        }
+        #number {
+          height: 48px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+          width: 50%;
+          margin: 8px 0 0;
+        }
+        #cvc {
+          height: 48px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+          width: 50%;
+          margin: 8px 0 0;
+        }
+        #exp_year {
+          height: 48px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+          width: 25%;
+          margin: 8px 0 0;
+        }
+        #exp_month {
+          height: 48px;
+          padding: 10px 16px 8px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          background: #fff;
+          line-height: 1.5;
+          font-size: 16px;
+          width: 25%;
+          margin: 8px 0 0;
+        }
+        h4 {
+          padding-top: 50px;
+          border-bottom: 1px solid #3CCACE;
+        }
+        p {
+          color: #3CCACE;
+          font-size: 12px;
+          margin-left: 150px;
+        }
+        .button {
+          background-color: #3CCACE;
+          color: white;
+          width: 50%;
+          height: 48px;
+          margin-top: 50px;
+        } 
+      }
       &__icon {
         height: 250px;
         background: image_url("icon-back.jpg");
         background-repeat: no-repeat;
+        background-position: center center;
         background-size: cover;
         text-align: center;
         img {
@@ -35,9 +121,7 @@
       &__function {
         margin: 0;
         background: #fff;
-        width: 620px;
         height: 460px;
-        
           .tabs {
             font-size: 20px;
             padding-top: 20px;
@@ -51,11 +135,9 @@
               display: inline-block;
               margin-right: 80px;
               margin-left: 80px;
-
             }
           }
         &__tag {
-
           .tab-content {
             list-style: none;
             padding-inline-start:0px ;
@@ -66,20 +148,17 @@
               font-size: 15px;
               padding-top: 20px;
               padding-bottom: 20px;
-
             }
           }
         }
         &__btn {
           text-align: center;
-          
           h3 {
             width: 560px;
             background: rgb(245, 245, 245);
             margin-left: 30px;
           }
         }
-        
       }
       &__contineres {
         background: #fff;
@@ -88,8 +167,6 @@
         font-weight: bold;
         height: 470px;
         text-align: center;
-        
-
         h3 {
           padding-top: 20px;
           padding-bottom: 20px;
@@ -97,38 +174,36 @@
         }
         .buy-tab {
           padding-inline-start: 0px;
-          
           li {
             margin-right: 80px;
             margin-left: 80px;
             display: inline-block;
 
           }
-
         }
       }
     }
     &__side {
-      width: 280px;
-      margin: 0 40px 0 0;
+      width: 25%;
+      position: absolute;
+      left: 20px;
       h3{
         margin: 30px 0 10px 0;
       }
       &__nav {
         font-size: 14px;
         background-color: #fff;
-        color: rgb(51, 51, 51);
+        color: #333;
         &__list {
           &:hover{
             background-color: #F0F0F0;
           }
           cursor: pointer;
-          width: 280px;
           height: 48px;
           line-height: 48px;
-          padding-bottom: 5px;
           padding-left: 10px;
-          border-bottom: 1px solid rgb(245, 245, 245);
+          padding-bottom: 5px;
+          border-bottom: 1px solid #EEE;
         }
       }  
     }
