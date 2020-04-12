@@ -1,5 +1,5 @@
 $(function() {
-  $("p.category-area").on("mouseenter", function(){
+  $(".category-area").on("mouseenter", function(){
     $("p.gen1").removeClass("negative");
   });
   $(".category-container").on("mouseleave", function(){

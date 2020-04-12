@@ -17,11 +17,10 @@
           - if user_signed_in?
             %p
               = "ようこそ！#{current_user.nickname}さん"
-          %p.category-area
-            = icon('fas', 'list-ul')
+          .category-area
+            %i.fas.fa-list-ul
             カテゴリ
-            .category-container
-              = render 'category'
+            = render 'category'
           %p ブランド
       .header__inner__nav--right
         %ul
