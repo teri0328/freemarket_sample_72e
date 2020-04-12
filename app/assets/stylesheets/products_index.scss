@@ -471,31 +471,34 @@ body {
 .category-container {
   position: relative;
   .gen1s {
+    width: 300px;
+    height: 780px;
     position: absolute;
     z-index: 1;
-    width: 300px;
-    background-color: green;
+    background-color: white;
     p.gen1 {
       font-size: 20px;
-      height: 30px;
-      line-height: 30px;
+      height: 60px;
+      line-height: 60px;
     }
   }
   .gen2s {
+    width: 300px;
+    height: 780px;
     position: absolute;
     z-index: 1;
-    width: 300px;
-    background-color: blue;
     left: 300px;
+    background-color: white;
     p.gen2 {
-      font-size: 20px;
-      height: 30px;
-      line-height: 30px;
+      font-size: 18px;
+      height: 40px;
+      line-height: 40px;
     }
   }
 }
 p:hover {
   background-color: red;
+  color: white;
 }
 .negative {
   display: none;

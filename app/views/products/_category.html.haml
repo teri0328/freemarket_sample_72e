@@ -1,83 +1,14 @@
 .category-container
-  .gen1s
+  .gen1s.negative
     - @gen1s.each.with_index(1) do |gen1, i|
       %p.gen1.negative{class: "gen1_#{i}"}
         = gen1.name
 
   -# 添字nのgen1直下のレコード(=子レコード)を順番に取り出す
-  .gen2s
+  .gen2s.negative
     - @gen2s.each.with_index(1) do |gen2s, i|
       -# 配列内配列から取り出された要素単位で動的命名
       - gen2s.each do |gen2|
         %p.gen2.negative{class: "gen1_#{i}_children"}
           = gen2.name
-      -# 配列単位で動的命名
-      -# %p.gen2.negative{class: "gen1_#{i}_children"}
-      -#   = gen2s.ids
 
-  -# 添字nのgen2要素(= gen3)を1つ取得
-  -# = @gen1s_array[0][0].id
-
-  -# %p.category_2
-  -#   - @gen2s[1].each do |category_2|
-  -#     = category_2.name
-  -#     %br
-
-  -# %p.category_3
-  -#   - @gen2s[2].each do |category_3|
-  -#     = category_3.name
-  -#     %br
-
-  -# %p.category_4
-  -#   - @gen2s[3].each do |category_4|
-  -#     = category_4.name
-  -#     %br
-
-  -# %p.category_5
-  -#   - @gen2s[4].each do |category_5|
-  -#     = category_5.name
-  -#     %br
-
-  -# %p.category_6
-  -#   - @gen2s[5].each do |category_6|
-  -#     = category_6.name
-  -#     %br
-
-  -# %p.category_7
-  -#   - @gen2s[6].each do |category_7|
-  -#     = category_7.name
-  -#     %br
-
-  -# %p.category_8
-  -#   - @gen2s[7].each do |category_8|
-  -#     = category_8.name
-  -#     %br
-
-  -# %p.category_9
-  -#   - @gen2s[8].each do |category_9|
-  -#     = category_9.name
-  -#     %br
-
-  -# %p.category_10
-  -#   - @gen2s[9].each do |category_10|
-  -#     = category_10.name
-  -#     %br
-
-  -# %p.category_11
-  -#   - @gen2s[10].each do |category_11|
-  -#     = category_11.name
-  -#     %br
-
-  -# %p.category_12
-  -#   - @gen2s[11].each do |category_12|
-  -#     = category_12.name
-  -#     %br
-
-  -# %p.category_13
-  -#   - @gen2s[12].each do |category_13|
-  -#     = category_13.name
-  -#     %br
-
-  -# %p.ancestry_1_2
-
-  -# %p.category_1-22
