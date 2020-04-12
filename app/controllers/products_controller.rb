@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   def index
     @products = Product.includes(:images).order('created_at DESC')
     @categorize = Product.where(category_id: 3).order('created_at DESC')
+    @parents = Category.all.order("id ASC")
   end
 
   def new
@@ -23,7 +24,7 @@ class ProductsController < ApplicationController
   def show
     @user       = User.find(@product.user)
     @bland      = Bland.find(@product.bland)
-    @category   = Category.where(product_id: @product.id)
+    @category   = Category.find(@product.category_id)
     @condition  = Condition.find(@product.condition)
     @address    = Address.where(user_id: @product.user)
     @evaluation = Evaluation.where(user_id: @product.user)
