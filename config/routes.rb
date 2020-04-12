@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       get "pay"
       get "buy"
       get "create_like"
+      post "create_comment"
       delete "destroy_like"
     end
   end

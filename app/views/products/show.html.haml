@@ -156,66 +156,27 @@
         .detail-wrapper__main__contents__button-container__safe-link
           = link_to "#" do
             = icon('fas', 'lock')
-            あんしん・あんぜんへの取組み
+            あんしん・あんぜんへの取組み  
   .detail-wrapper__comments
-    .detail-wrapper__comments__user
-      .detail-wrapper__comments__user__bubble
-      .detail-wrapper__comments__user__usericon
-      .detail-wrapper__comments__user__username
-        システムログ
-      .detail-wrapper__comments__user__message
-        出品者がコメントを削除しました
-        .detail-wrapper__comments__user__message__days
-          = icon('far','clock')
-          20日前
-          .detail-wrapper__comments__user__message__days__flag
-            = icon('far','flag')
-    .detail-wrapper__comments__user
-      .detail-wrapper__comments__user__bubble
-      .detail-wrapper__comments__user__usericon
-      .detail-wrapper__comments__user__username
-        Kazz
-      .detail-wrapper__comments__user__message
-        1400円に値下げは可能でしょうか？
-        .detail-wrapper__comments__user__message__days
-          = icon('far','clock')
-          20日前
-          .detail-wrapper__comments__user__message__days__flag
-            = icon('far','flag')
-    .detail-wrapper__comments__user
-      .detail-wrapper__comments__user__bubble
-      .detail-wrapper__comments__user__usericon
-      .detail-wrapper__comments__user__username
-        = @user.nickname
-      .detail-wrapper__comments__user__message
-        Kazzさん
-        %br
-        コメントありがとうございます。
-        %br
-        1500円でいかがでしょうか？よろしくお願いします。
-        .detail-wrapper__comments__user__message__days
-          = icon('far','clock')
-          20日前
-          .detail-wrapper__comments__user__message__days__flag
-            = icon('far','flag')
-    .detail-wrapper__comments__user
-      .detail-wrapper__comments__user__bubble
-      .detail-wrapper__comments__user__usericon
-      .detail-wrapper__comments__user__username
-        Kazz
-      .detail-wrapper__comments__user__message
-        わかりました。
-        %br
-        1500円でお願いします！
-        .detail-wrapper__comments__user__message__days
-          = icon('far','clock')
-          20日前
-          .detail-wrapper__comments__user__message__days__flag
-            = icon('far','flag')
+    .detail-wrapper__comments__comment
+      - @comments.each do |comment|
+        .detail-wrapper__comments__comment__user
+          .detail-wrapper__comments__comment__user__bubble
+          .detail-wrapper__comments__comment__user__usericon
+          .detail-wrapper__comments__comment__user__username
+            = link_to user_path(User.find(comment.user_id)) do
+              = User.find(comment.user_id).nickname
+          .detail-wrapper__comments__comment__user__message
+            = br(comment.comment)
+            .detail-wrapper__comments__comment__user__message__days
+              = icon('far','clock')
+              = comment.created_at.strftime("%Y年%m月%d日 %H:%M:%S")
+              .detail-wrapper__comments__comment__user__message__days__flag
+                = icon('far','flag')
     %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-    %textarea{type: "text"}
-    %button{type: "submit"}
-      コメントする
+    = form_for @comment, url: {controller: "products", action: "create_comment"} do |f|
+      = f.text_area :comment
+      = f.submit id: "submit-comment",value: "コメントする", action: create_comment_product_path(@product)
   .detail-wrapper__other-links
     .detail-wrapper__other-links__link
       = link_to "#" do
