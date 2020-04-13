@@ -12,4 +12,18 @@
 @import "registration";
 @import "telephone";
 @import "authenticate";
-@import "result"
+@import "result";
+
+body{
+  padding-top: 102px;
+}
+
+.breadcrumbs{
+  margin: 8px;
+  padding: 8px;
+  font-size: 14px;
+  display: inline-block;
+  a{
+    color: #333;
+  }
+}

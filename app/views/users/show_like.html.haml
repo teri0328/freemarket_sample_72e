@@ -1,4 +1,6 @@
-= render "products/header"
+= render "/products/header"
+- breadcrumb :user_show_like
+= breadcrumbs separator: " &rsaquo; "
 .pickup__sell
   %h2 あなたがいいねした商品
   - unless Like.where(user_id: current_user.id).exists?

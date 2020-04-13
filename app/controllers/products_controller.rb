@@ -40,32 +40,40 @@ class ProductsController < ApplicationController
   end
 
   def buy
-    @address = Address.where(user_id: current_user.id)[0]
-    @image   = Image.where(product_id: @product.id)[0]
-    @card_ex = Card.where(user_id: current_user.id)
-    if @card_ex.exists?
-      card     = Card.where(user_id: current_user.id).first
-      @card    = Card.find(params[:id])
-      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+    unless @product.soldout
+      @address = Address.where(user_id: current_user.id)[0]
+      @image   = Image.where(product_id: @product.id)[0]
+      @card_ex = Card.where(user_id: current_user.id)
+      if @card_ex.exists?
+        card     = Card.where(user_id: current_user.id).first
+        @card    = Card.find(params[:id])
+        Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+        customer = Payjp::Customer.retrieve(card.customer_id)
+        @default_card_information = Payjp::Customer.retrieve(card.customer_id).cards.data[0]
+      end
+    else
+      redirect_to product_path(@product)
     end
   end
 
   def pay
-    @card = Card.where(user_id: current_user.id)
-    customer_card = ""
-    @card.each do |c|
-      customer_card = c
+    unless @product.soldout
+      @card = Card.where(user_id: current_user.id)
+      customer_card = ""
+      @card.each do |c|
+        customer_card = c
+      end
+      @product.soldout = true
+      @product.save!
+      Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
+      @charge = Payjp::Charge.create(
+      amount: @product.price,
+      customer: customer_card.customer_id,
+      currency: 'jpy'
+      )
+    else
+      redirect_to product_path(@product)
     end
-    @product.soldout = true
-    @product.save!
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    @charge = Payjp::Charge.create(
-    amount: @product.price,
-    customer: customer_card.customer_id,
-    currency: 'jpy'
-    )
   end
 
   def search
