@@ -1,0 +1,35 @@
+.category-container {
+  position: relative;
+  .gen1s {
+    width: 300px;
+    height: 780px;
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    p.gen1 {
+      font-size: 20px;
+      height: 60px;
+      line-height: 60px;
+    }
+  }
+  .gen2s {
+    width: 300px;
+    height: 780px;
+    position: absolute;
+    z-index: 1;
+    left: 300px;
+    background-color: white;
+    p.gen2 {
+      font-size: 18px;
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+}
+// p:hover {
+//   background-color: red;
+//   color: white;
+// }
+.negative {
+  display: none;
+}
