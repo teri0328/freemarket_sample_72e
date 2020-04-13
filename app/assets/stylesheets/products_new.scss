@@ -58,6 +58,30 @@
         border: dashed 1px #cccccc;
         text-align: center;
         position: relative;
+        #image-box {
+
+
+          #previews {
+
+            
+            .js-file_group{
+              
+
+
+            }
+
+
+            img{
+              float: left;
+  
+            }
+            .js-remove {
+              // float: left;
+            }
+          }
+
+   
+        }
         &__file {
           position: absolute;
           top: 0;
@@ -67,12 +91,10 @@
           cursor: pointer;
           opacity: 0;
         }
-        img{
-          position: absolute;
-          margin-top: 50px;
-          width: 20px;
-          height: 20px;
-        }
+
+
+
+
         i {
           padding: 5px;
           margin-top: 50px ;
@@ -81,11 +103,18 @@
         &__content{
           position: absolute;
           width: 100%;
-          padding-top: 80px;
+          padding-top: 40px;
           align-items: center;
           font-size: 12px;
           opacity: 0.8;
           margin-top: 5px;
+          .camera {
+            background-color: black;
+            position: absolute;
+            margin-top: 50px;
+            width: 20px;
+            height: 20px;
+          }
         }
       }
     }
@@ -394,3 +423,4 @@
     }
   } 
 }
+

@@ -10,24 +10,29 @@
           %span.image-wrapper__label__tag 
             必須
         .image-wrapper__text
-          最大10枚までアップロードできます
+          最大5枚までアップロードできます
         .image-wrapper__image
-          -# = form.fields_for :images do |i|
-          -#   = i.file_field :image
-          -#   %br/
-          -#   %span.js-remove 削除
           #image-box
-            = form.fields_for :images do |image|
-              .js-file_group{"data-index" => "#{image.index}"}
-                = image.file_field :image, class: 'js-file'
-                %br/
-                %span.js-remove 削除
-
-          = image_tag 'icon_camera.png', width: "100%"
-          .image-wrapper__image__content 
-            ドラッグアンドドロップ
-            %br/
-            またはクリックしてファイルをアップロード
+            #previews
+              - if @product.persisted?
+                - @product.images.each_with_index do |image, i|
+                  = image_tag image.src.url, data: { index: i }, width: "20%", height: '100'
+              = form.fields_for :images do |image|
+                .js-file_group{"data-index" => "#{image.index}"}
+                  = image.file_field :image, class: 'js-file'
+                  %br/
+                  %span.js-remove 削除
+                - if @product.persisted?
+                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                - if @product.persisted?
+                  .js-file_group{"data-index" => "#{@product.images.count}"}
+                    = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", class: 'js-file'
+                    .js-remove 削除
+          -# .image-wrapper__image__content 
+          -#   = image_tag 'icon_camera.png', width: "120px", class: "camera"
+          -#   ドラッグアンドドロップ
+          -#   %br/
+          -#   またはクリックしてファイルをアップロード
           -# %input.image-wrapper__image__file
       .item-wrapper
         .item-wrapper__name
@@ -101,7 +106,7 @@
         .item-exhibition__back
           %a{href: "http://18.180.222.87/"} もどる
         .item-exhibition__text
-        禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+          %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
       
       .item-footer
         %ul.item-footer_list
