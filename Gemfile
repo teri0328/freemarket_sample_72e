@@ -70,3 +70,7 @@ gem 'payjp'
 gem 'gon'
 gem 'dotenv-rails'
 gem "gretel"
+
+  #画像を複数投稿する
+gem 'carrierwave'
+gem 'mini_magick'
