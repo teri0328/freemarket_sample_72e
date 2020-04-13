@@ -5,8 +5,13 @@ class ProductsController < ApplicationController
   require 'payjp'
 
   def index
+    @used_id = []
     @products = Product.includes(:images).order('created_at DESC')
     @categorize = Product.where(category_id: 3).order('created_at DESC')
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def new

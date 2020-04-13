@@ -292,19 +292,20 @@ body {
       text-decoration: none;
       color: #3CCACE;
       text-align: center;
-      h3{
-        margin-left: 300px;
-        a{
-          margin-left: 230px;
-          font-size: 14px;
-          color: #3CCACE;
-          text-decoration: none;
-        }
-      }
     }
     .pick-lists {
       width: 780px;
       margin: 26px auto;
+      #pick-pagenation{
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        padding-top: 20px;
+        p{
+          font-size: 22px;
+          font-weight: bold;
+        }
+      }
       .pick-list {
         display: flex;
         flex-wrap: wrap;
