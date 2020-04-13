@@ -21,6 +21,13 @@ class ProductsController < ApplicationController
       @gen2s << gen1.children
     end
 
+    @gen3s = []
+    @gen2s.each do |gen2s|
+      gen2s.each do |gen2|
+        @gen3s << gen2.children
+      end
+    end
+
   end
 
 
