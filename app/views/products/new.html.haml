@@ -12,13 +12,18 @@
         .image-wrapper__text
           最大10枚までアップロードできます
         .image-wrapper__image
-          = form.fields_for :images do |i|
-            = i.file_field :image
-            %br/
-            %span.js-remove 削除
           -# = form.fields_for :images do |i|
-          -#   = i.file_field :image 
-            = image_tag 'icon_camera.png', width: "100%"
+          -#   = i.file_field :image
+          -#   %br/
+          -#   %span.js-remove 削除
+          #image-box
+            = form.fields_for :images do |image|
+              .js-file_group{"data-index" => "#{image.index}"}
+                = image.file_field :image, class: 'js-file'
+                %br/
+                %span.js-remove 削除
+
+          = image_tag 'icon_camera.png', width: "100%"
           .image-wrapper__image__content 
             ドラッグアンドドロップ
             %br/
