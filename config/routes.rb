@@ -38,7 +38,6 @@ Rails.application.routes.draw do
       get 'select'
       get 'registration'
       get 'result'
-      get 'category'
     end
   end
 end
