@@ -4,17 +4,15 @@ $(function(){
   var grandchild_flag = 0;
   $("#category-area").mouseleave(function(){
     child_flag = 0;
+    grandchild_flag == 0;
     $(".category-box").css("display","none");
-    $(".parent-box").css("background","#f5f5f5");
-    $(".child-box").css("background","#f5f5f5");
-    $(".grandchild-box").css("background","#f5f5f5");
+    $(".parent-box").children().css("background","#f5f5f5");
+    $(".child-box").children().css("background","#f5f5f5");
   })
   $("#category-hover").hover(function(){
     child_flag = 0;
+    grandchild_flag == 0;
     $(".parent-box").css("display","block");
-    $(".parent-box").css("background","#f5f5f5");
-    $(".child-box").css("background","#f5f5f5");
-    $(".grandchild-box").css("background","#f5f5f5");
   })
   $.ajax({
     type    : "get",
@@ -27,6 +25,7 @@ $(function(){
       if($(`#parent${d.id}`).length != 0){
         $(`#parent${d.id}`).hover(function(){
           $(".parent-box").children().css("background","#f5f5f5");
+          $(".child-box").children().css("background","#f5f5f5");
           $(this).css("background","#69C8CC");
           category_data.category.forEach(function(d_child){
             if($(`#child${d_child.id}`).length != 0){
@@ -40,7 +39,6 @@ $(function(){
           category_data.category.forEach(function(d_child){
             if($(`#child${d_child.id}`).length != 0){
               if(d_child.ancestry == d.id){
-                // 子要素にカーソルが乗ると、親要素の非表示と色変更を避ける
                 $(".child-box").hover(function(){child_flag = 1;})
                 if(child_flag == 0){
                   $(`#parent${d.id}`).css("background","");
@@ -76,7 +74,6 @@ $(function(){
                     $(`#child${d.id}`).css("background","");
                     $(`#grandchild${d_grandchild.id}`).parent().css("display","");
                   }
-                  grandchild_flag == 0;
                 }
               }
             }
