@@ -27,12 +27,12 @@
           商品名
           %span.item-wrapper__name__tag
             必須
-        = form.text_area :name, class: "item-wrapper__form", placeholder: "40文字まで", rows: "40", value: "バック"
+        = form.text_area :name, class: "item-wrapper__form", placeholder: "40文字まで", rows: "40"
         .item-wrapper__description
           商品の説明
           %span.item-wrapper__description__tag
             必須
-        = form.text_area :explanation, class: "item-wrapper__area", placeholder: "商品の説明（必須　1000文字以内）(色、素材、重さ、定価、注意点など) 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません、合わせやすいのでおすすめです！", rows: "5" ,value: "商品名"
+        = form.text_area :explanation, class: "item-wrapper__area", placeholder: "商品の説明（必須　1000文字以内）(色、素材、重さ、定価、注意点など) 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません、合わせやすいのでおすすめです！", rows: "5" 
         %p.item-wrapper__counter{id:"counter"}0/1000
       .item-detail
         .item-detail__name
@@ -41,22 +41,22 @@
           カテゴリー
           %span.item-detail__category__tag
             必須
-        = form.select :category_id, [["メンズ", 1], ["レディース", 2], ["ベビー・キッズ", 3],["インテリア・住まい・小物", 4], ["本・音楽・ゲーム", 5],["おもちゃ・ホビー・グッズ", 6], ["コスメ・香水・美容", 7], ["家電・スマホ・カメラ", 8], ["スポーツ・レジャー", 9], ["ハンドメイド", 10], ["その他", 11]],{},{class: "item-detail__select"} 
+        = form.select :category_id, [["選択してください",""],["メンズ", 1], ["レディース", 2], ["ベビー・キッズ", 3],["インテリア・住まい・小物", 4], ["本・音楽・ゲーム", 5],["おもちゃ・ホビー・グッズ", 6], ["コスメ・香水・美容", 7], ["家電・スマホ・カメラ", 8], ["スポーツ・レジャー", 9], ["ハンドメイド", 10], ["その他", 11]],{},{class: "item-detail__select"} 
         .item-detail__brand
           ブランド
           %span.item-detail__brand__tag
             任意
-        = form.text_area :bland_id, class: "item-detail__form", placeholder: "例）シャネル", rows: "40" ,value: 1
+        = form.text_area :bland_id, class: "item-detail__form", placeholder: "例）シャネル", rows: "40" 
         .item-detail__brand
           サイズ
           %span.item-detail__brand__tag
             任意
-        = form.text_area :size ,class: "item-detail__form", placeholder: "例）26.5cm", rows: "40" ,value: 1
+        = form.text_area :size ,class: "item-detail__form", placeholder: "例）26.5cm", rows: "40" 
         .item-detail__status
           商品の状態
           %span.item-detail__status__tag
             必須
-        = form.select :condition_id, [["新品、未使用", 1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3],["やや傷や汚れあり", 4], ["傷や汚れあり", 5],["全体的に状態が悪い", 6],],{},{class: "item-detail__form"} 
+        = form.select :condition_id, [["選択してください",""],["新品、未使用", 1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3],["やや傷や汚れあり", 4], ["傷や汚れあり", 5],["全体的に状態が悪い", 6],],{},{class: "item-detail__form"} 
       .item-cost
         .item-cost__about
           配送について
@@ -64,17 +64,17 @@
           配送料の負担
           %span.item-cost__name__tag
             必須
-        = form.select :shipping_method, [["送料込み(出品者負担)", 1], ["着払い(購入者負担)", 2]],{},{class: "item-cost__burden"}
+        = form.select :shipping_method, [["選択してください",""],["送料込み(出品者負担)", 1], ["着払い(購入者負担)", 2]],{},{class: "item-cost__burden"}
         .item-cost__area
           発送元の地域
           %span.item-cost__area__tag
             必須
-        = form.select :region, [["東京", 1], ["大阪", 2]],{},{class: "item-cost__area__form"}
+        = form.select :region, [["選択してください",""],["東京", 1], ["大阪", 2]],{},{class: "item-cost__area__form"}
         .item-cost__days
           発送までの日数
           %span.item-cost__days__tag
             必須
-        = form.select :shipping_days, [["1~2日で発送", 1], ["2~3日で発送", 2],["4~7日で発送", 3]],{},{class: "item-cost__select"}
+        = form.select :shipping_days, [["選択してください",""],["1~2日で発送", 1], ["2~3日で発送", 2],["4~7日で発送", 3]],{},{class: "item-cost__select"}
       .item-price
         .item-price__about
           価格(¥300~9,999,999)
