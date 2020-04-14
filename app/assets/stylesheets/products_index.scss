@@ -101,21 +101,20 @@ body {
             margin: 15px 0;
           }
         .parent-box{
-          display: none;
+          display: flex;
+          flex-direction: column;
+          // display: none;
           z-index: 2;
-          position: absolute;
-          bottom: -240px;
-          left: -12px;
+          // position: absolute;
+          // left: -12px;
           border: 1px solid #999;
           background-color: #fff;
-          &__parent{
-            width: 500px;
+          &__child{
             padding: 0px 10px;
-            &__child{
+            border: 1px solid #000;
+            &__grandchild{
               padding: 0px 10px;
-              &__grandchild{
-                padding: 0px 10px;
-              }
+              border: 1px solid #000;
             }
           }
         }

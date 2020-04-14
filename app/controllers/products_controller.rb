@@ -20,12 +20,10 @@ class ProductsController < ApplicationController
     unless @product.save!
       redirect_to new_product_path
     end
-    for num in 1..10 do
-      unless params[:product][:image][":image#{num}"].nil?
-        @image = Image.new(image: params[:product][:image][":image#{num}"], product_id: @product.id)
-        unless @image.save!
-          redirect_to new_product_path
-        end
+    params[:product][:image][:filepath].each do |p|
+      @image = Image.new(filepath: p.original_filename, product_id: @product.id)
+      unless @image.save!
+        redirect_to new_product_path
       end
     end
   end
@@ -111,7 +109,7 @@ class ProductsController < ApplicationController
   end
 
   def set_params
-    params.require(:product).permit(:explanation, :name, :region, :size, :price, :shipping_days, :postage, :bland_id, :condition_id, :category_id, images_attributes:[:image]).merge(user_id: current_user.id)
+    params.require(:product).permit(:explanation, :name, :region, :size, :price, :shipping_days, :postage, :bland_id, :condition_id, :category_id, product_images_attributes:[:image]).merge(user_id: current_user.id)
   end
 
 end

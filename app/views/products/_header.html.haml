@@ -12,22 +12,26 @@
       .header__inner__nav--left
         %ul 
           %ls
-          %p#category-hover カテゴリ
-          .parent-box
+          %p#category-hover
+            カテゴリ
+            .parent-box
+              - @parents.each do |parent|
+                - if parent.ancestry == nil
+                  = link_to "category/#{parent.id}", id: "parent#{parent.id}" do
+                    = parent.name
             - @parents.each do |parent|
               - if parent.ancestry == nil
-                = link_to "category/#{parent.id}" do
-                  .parent-box__parent
-                    = parent.name
-                    %br
-                - parent.children.each do |child|
-                  = link_to "category/#{child.id}" do
-                    .parent-box__parent__child
+                .parent-box__child
+                  - parent.children.each do |child|
+                    = link_to "category/#{child.id}", id: "child#{child.id}" do
                       = "> " + child.name
                       %br
-                  - child.children.each do |grandchild|
-                    = link_to "category/#{grandchild.id}" do
-                      .parent-box__parent__child__grandchild
+            - @parents.each do |parent|
+              - if parent.ancestry == nil
+                - parent.children.each do |child|
+                  .parent-box__child__grandchild
+                    - child.children.each do |grandchild|
+                      = link_to "category/#{grandchild.id}", id:"grandchild#{grandchild.id}" do
                         = ">> " + grandchild.name
                         %br
           %p ブランド

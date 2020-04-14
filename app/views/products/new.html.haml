@@ -31,8 +31,13 @@
   = f.text_field :price, value: "1000"
   %br
   = f.fields_for @image do |i|
-    - for num in 1..10
-      = i.label "画像#{num}"
-      = i.text_field ":image#{num}", value: ""
-      %br
+    = i.label "画像"
+    = i.file_field :filepath, multiple: true
+    %br
+    = i.label "画像"
+    = i.file_field :filepath, multiple: true
+    %br
+    = i.label "画像"
+    = i.file_field :filepath, multiple: true
+    %br
   = f.submit "商品を登録する"
