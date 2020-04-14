@@ -19,7 +19,7 @@ $(function(){
           `<a href= "/products/${d.id}">
             <div class = "search-result">${soldout} ${d.name} ${d.category} ${d.bland}
               <div class = "search-result__image">
-                <img src = "images/${d.image}">
+                <img src = "assets/${d.image}">
               </div>
             </div>
           </a>`;
