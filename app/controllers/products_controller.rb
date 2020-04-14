@@ -3,8 +3,10 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :destroy, :buy, :pay, :create_like, :destroy_like, :create_comment]
   before_action :authenticate_user!, except: [:index, :show]
   require 'payjp'
-
+  require 'date'
+  
   def index
+    @date = Date.today.to_s + Time.now.to_s
     @used_id = []
     @products = Product.includes(:images).order('created_at DESC')
     @categorize = Product.where(category_id: 3).order('created_at DESC')
