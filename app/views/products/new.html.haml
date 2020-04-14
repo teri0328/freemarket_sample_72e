@@ -47,6 +47,11 @@
           %span.item-detail__brand__tag
             任意
         = form.text_area :bland_id, class: "item-detail__form", placeholder: "例）シャネル", rows: "40" ,value: 1
+        .item-detail__brand
+          サイズ
+          %span.item-detail__brand__tag
+            任意
+        = form.text_area :size ,class: "item-detail__form", placeholder: "例）26.5cm", rows: "40" ,value: 1
         .item-detail__status
           商品の状態
           %span.item-detail__status__tag
@@ -79,16 +84,15 @@
             必須
           %span.item-price__name__mark
             ¥
-          = form.number_field :price,  class: "item-price__name__form", placeholder: "0", rows: "40", value: 300
+          = form.number_field :price, class: "item-price__name__form", placeholder: "0", rows: "40"
         .item-price__commission 
           販売手数料(10%)
           %span.item-price__commission__value
-            ー
         .item-price__profit
           販売利益
-          %span.item-price__profit__value
-            ー
-
+          %span.item-price__profit__value 円
+          %input{name: "tax", size: "10", type: "hidden", value: "10"}
+          %output.item-price__profit__value__price{name: "incl"} 0
       .item-exhibition
         = form.submit "出品する" ,class: "item-exhibition__btn"
         .item-exhibition__back
@@ -104,36 +108,4 @@
       .item-logo
         = link_to root_path do
           = image_tag 'logo-white.png'
-
-
-
--# <form oninput="incl.value = Math.round(Number(prc.value) - Number(prc.value) * Number(tax.value) /100);">
--# 販売価格 <input type="number" name="prc" value="0" size="10"> × 
--# 販売手数料 <input type="number" name="tax" value="10" size="10"> ％ = 
--# 販売利益：¥<output name="incl">0</output>
-
--# </form>
-
-        -# #image-box
-          -#   #previews
-          -#     - if @product.persisted?
-          -#       - @product.images.each_with_index do |image, i|
-          -#         = image_tag image.src.url, data: { index: i }, width: "20%", height: '100'
-          -#     = form.fields_for :images do |image|
-          -#       .js-file_group{"data-index" => "#{image.index}"}
-          -#         = image.file_field :image, class: 'js-file'
-          -#         %br/
-          -#         %span.js-remove 削除
-          -#       - if @product.persisted?
-          -#         = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-          -#       - if @product.persisted?
-          -#         .js-file_group{"data-index" => "#{@product.images.count}"}
-          -#           = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", class: 'js-file'
-          -#           .js-remove 削除
-          -# -# .image-wrapper__image__content 
-          -# -#   = image_tag 'icon_camera.png', width: "120px", class: "camera"
-          -# -#   ドラッグアンドドロップ
-          -# -#   %br/
-          -# -#   またはクリックしてファイルをアップロード
-          -# -# %input.image-wrapper__image__file
 

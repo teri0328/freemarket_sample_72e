@@ -177,7 +177,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-
           padding: 3px;
           background-color:red;
         }
@@ -198,7 +197,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-
           padding: 3px;
           background-color:red;
         }
@@ -297,7 +295,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-
           padding: 3px;
           background-color:red;
         }
@@ -316,7 +313,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-
           padding: 3px;
           background-color:red;
         }
@@ -336,7 +332,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-
           padding: 3px;
           background-color:red;
         }
@@ -366,7 +361,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-
           padding: 3px;
           background-color:red;
         }
@@ -399,6 +393,11 @@
         &__value{
           float: right;
           margin-right: 50px;
+        }
+        .item-price__profit__value__price {
+          float: right;
+          margin-right: 50px;
+          font-weight: bold;
         }
       }
     }
