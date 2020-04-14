@@ -10,29 +10,29 @@
         #search-results
     .header__inner__nav
       .header__inner__nav--left
-        %ul 
-          %ls
+        #category-area
           %p#category-hover
             カテゴリ
-            .parent-box
+            .category-box.parent-box
               - @parents.each do |parent|
                 - if parent.ancestry == nil
                   = link_to "category/#{parent.id}", id: "parent#{parent.id}" do
                     = parent.name
+                    %br
             - @parents.each do |parent|
               - if parent.ancestry == nil
-                .parent-box__child
+                .category-box.child-box
                   - parent.children.each do |child|
                     = link_to "category/#{child.id}", id: "child#{child.id}" do
-                      = "> " + child.name
+                      = child.name
                       %br
             - @parents.each do |parent|
               - if parent.ancestry == nil
                 - parent.children.each do |child|
-                  .parent-box__child__grandchild
+                  .category-box.grandchild-box
                     - child.children.each do |grandchild|
                       = link_to "category/#{grandchild.id}", id:"grandchild#{grandchild.id}" do
-                        = ">> " + grandchild.name
+                        = grandchild.name
                         %br
           %p ブランド
       .header__inner__nav--right

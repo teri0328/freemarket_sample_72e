@@ -1,5 +1,21 @@
 $(function(){
   var category_data;
+  var child_flag = 0;
+  var grandchild_flag = 0;
+  $("#category-area").mouseleave(function(){
+    child_flag = 0;
+    $(".category-box").css("display","none");
+    $(".parent-box").css("background","#f5f5f5");
+    $(".child-box").css("background","#f5f5f5");
+    $(".grandchild-box").css("background","#f5f5f5");
+  })
+  $("#category-hover").hover(function(){
+    child_flag = 0;
+    $(".parent-box").css("display","block");
+    $(".parent-box").css("background","#f5f5f5");
+    $(".child-box").css("background","#f5f5f5");
+    $(".grandchild-box").css("background","#f5f5f5");
+  })
   $.ajax({
     type    : "get",
     url     : "/",
@@ -10,17 +26,27 @@ $(function(){
       // 子カテゴリ
       if($(`#parent${d.id}`).length != 0){
         $(`#parent${d.id}`).hover(function(){
-          $(this).css("color","red");
+          $(".parent-box").children().css("background","#f5f5f5");
+          $(this).css("background","#69C8CC");
           category_data.category.forEach(function(d_child){
-            if(d_child.ancestry == d.id){
-              $(`#child${d_child.id}`).parent().css("background","red");
+            if($(`#child${d_child.id}`).length != 0){
+              $(`#child${d_child.id}`).parent().css("display","none");
+              if(d_child.ancestry == d.id){
+                $(`#child${d_child.id}`).parent().css("display","block");
+              }
             }
           })
         },function(){
-          $(this).css("color","");
           category_data.category.forEach(function(d_child){
-            if(d_child.ancestry == d.id){
-              $(`#child${d_child.id}`).parent().css("background","");
+            if($(`#child${d_child.id}`).length != 0){
+              if(d_child.ancestry == d.id){
+                // 子要素にカーソルが乗ると、親要素の非表示と色変更を避ける
+                $(".child-box").hover(function(){child_flag = 1;})
+                if(child_flag == 0){
+                  $(`#parent${d.id}`).css("background","");
+                  $(`#child${d_child.id}`).parent().css("display","");
+                }
+              }
             }
           })
         })
@@ -28,21 +54,30 @@ $(function(){
       // 孫カテゴリ
       if($(`#child${d.id}`).length != 0){
         $(`#child${d.id}`).hover(function(){
-          $(this).css("color","red");
+          $(".child-box").children().css("background","#f5f5f5");
+          $(this).css("background","#69C8CC");
           category_data.category.forEach(function(d_grandchild){
-            if(d_grandchild.ancestry != null && d_grandchild.ancestry.indexOf("/") != -1){
-              if(d.id == (d_grandchild.ancestry).split("/")[1]){
-                $(`#grandchild${d_grandchild.id}`).parent().css("background","red");
+            if($(`#grandchild${d_grandchild.id}`).length != 0){
+              $(`#grandchild${d_grandchild.id}`).parent().css("display","none");
+              if(d_grandchild.ancestry != null && d_grandchild.ancestry.indexOf("/") != -1){
+                if(d.id == (d_grandchild.ancestry).split("/")[1]){
+                  $(`#grandchild${d_grandchild.id}`).parent().css("display","block");
+                }
               }
             }
           })
         },function(){
-          $(this).css("color","");
           category_data.category.forEach(function(d_grandchild){
-            if(d_grandchild.ancestry != null && d_grandchild.ancestry.indexOf("/") != -1){
-              if(d.id == (d_grandchild.ancestry).split("/")[1]){
-                $(this).parent().css("background","");
-                $(`#grandchild${d_grandchild.id}`).parent().css("background","");
+            if($(`#grandchild${d_grandchild.id}`).length != 0){
+              if(d_grandchild.ancestry != null && d_grandchild.ancestry.indexOf("/") != -1){
+                if(d.id == (d_grandchild.ancestry).split("/")[1]){
+                  $(".grandchild-box").hover(function(){grandchild_flag = 1;})
+                  if(grandchild_flag == 0){
+                    $(`#child${d.id}`).css("background","");
+                    $(`#grandchild${d_grandchild.id}`).parent().css("display","");
+                  }
+                  grandchild_flag == 0;
+                }
               }
             }
           })

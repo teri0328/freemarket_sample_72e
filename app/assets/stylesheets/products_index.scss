@@ -91,38 +91,40 @@ body {
       } 
     }  
     &__nav {
-      font-size: 14px;
       display: flex;
       &--left {
-        position: relative;
+        line-height: 44px;
         padding-left: 30px;
-        p {
-            padding-right: 20px;
-            margin: 15px 0;
-          }
-        .parent-box{
+        position: relative;
+        z-index: 2;
+        #category-area{
           display: flex;
-          flex-direction: column;
-          // display: none;
-          z-index: 2;
-          // position: absolute;
-          // left: -12px;
-          border: 1px solid #999;
-          background-color: #fff;
-          &__child{
-            padding: 0px 10px;
-            border: 1px solid #000;
-            &__grandchild{
-              padding: 0px 10px;
-              border: 1px solid #000;
-            }
-          }
         }
-        ul {
-          position: relative;
-          display: flex;
-          li {
-            display: flex;
+        .parent-box{
+          left: 20px;
+        }
+        .child-box{
+          left: 269px;
+        }
+        .grandchild-box{
+          left: 518px;
+        }
+        .category-box{
+          top: 40px;
+          position: absolute;
+          height: calc(44*4px);
+          display: none;
+          background-color: #fff;
+          width: 250px;
+          a{
+            width: 250px;
+            display: inline-block;
+            padding: 0px 10px;
+            &:hover{
+              background-color: #69C8CC;
+              text-decoration: none;
+              color: #fff;
+            }
           }
         }
       }
