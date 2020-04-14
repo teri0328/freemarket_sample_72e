@@ -1,7 +1,7 @@
 .category-container
   .gen1s.negative
     - @gen1s.each.with_index(1) do |gen1, i|
-      = link_to "#" do
+      = link_to "category/#{gen1.id}", id: "gen1_id:#{gen1.id}" do
         %p.gen1.negative{class: "gen1_#{i}"}
           = gen1.name
 
@@ -10,7 +10,7 @@
     - @gen2s.each.with_index(1) do |gen2s, i|
       -# 配列内配列から取り出された要素単位で動的命名
       - gen2s.each do |gen2|
-        = link_to "#" do
+        = link_to "category/#{gen2.id}", id: "gen2_id:#{gen2.id}" do
           %p.gen2.negative{class: "gen1_#{i}_children"}
             -# %p.gen2.negative{class: "gen1_#{i}_children gen2_#{i}"}
             = gen2.name
@@ -19,7 +19,7 @@
     - @gen3s.each.with_index(1) do |gen3s, i|
       -# gen3s(=配列）単位で動的命名
       - gen3s.each.with_index(1) do |gen3, index|
-        = link_to "#" do
+        = link_to "category/#{gen3.id}", id: "gen3_id:#{gen3.id}" do
           %p.gen3{class: "gen1_#{i}_children_#{index}"}
             = gen3.name
 
