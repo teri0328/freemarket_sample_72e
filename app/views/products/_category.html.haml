@@ -1,14 +1,26 @@
 .category-container
   .gen1s.negative
     - @gen1s.each.with_index(1) do |gen1, i|
-      %p.gen1.negative{class: "gen1_#{i}"}
-        = gen1.name
+      = link_to "#" do
+        %p.gen1.negative{class: "gen1_#{i}"}
+          = gen1.name
 
   -# 添字nのgen1直下のレコード(=子レコード)を順番に取り出す
   .gen2s.negative
     - @gen2s.each.with_index(1) do |gen2s, i|
       -# 配列内配列から取り出された要素単位で動的命名
       - gen2s.each do |gen2|
-        %p.gen2.negative{class: "gen1_#{i}_children"}
-          = gen2.name
+        = link_to "#" do
+          %p.gen2.negative{class: "gen1_#{i}_children"}
+            -# %p.gen2.negative{class: "gen1_#{i}_children gen2_#{i}"}
+            = gen2.name
+
+  .gen3s
+    - @gen3s.each.with_index(1) do |gen3s, i|
+      -# gen3s(=配列）単位で動的命名
+      - gen3s.each.with_index(1) do |gen3, index|
+        = link_to "#" do
+          %p.gen3{class: "gen1_#{i}_children_#{index}"}
+            = gen3.name
+
 

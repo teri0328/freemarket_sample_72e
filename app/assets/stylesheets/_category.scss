@@ -1,3 +1,13 @@
+$yellow: rgb(250, 184, 4);
+$furima: #3CCACE;
+
+
+
+.negative {
+  display: none;
+}
+
+
 .category-container {
   position: relative;
   .gen1s {
@@ -6,10 +16,13 @@
     position: absolute;
     z-index: 1;
     background-color: white;
-    p.gen1 {
-      font-size: 20px;
-      height: 60px;
-      line-height: 60px;
+    a{
+      text-decoration: none;
+      p.gen1 {
+        font-size: 20px;
+        height: 60px;
+        line-height: 60px;
+      }
     }
   }
   .gen2s {
@@ -19,17 +32,29 @@
     z-index: 1;
     left: 300px;
     background-color: white;
-    p.gen2 {
-      font-size: 18px;
-      height: 40px;
-      line-height: 40px;
+    a{
+      text-decoration: none;
+      p.gen2 {
+        font-size: 18px;
+        height: 40px;
+        line-height: 40px;
+      }
     }
   }
-}
-// p:hover {
-//   background-color: red;
-//   color: white;
-// }
-.negative {
-  display: none;
+  .gen3s {
+    width: 300px;
+    height: 780px;
+    position: absolute;
+    z-index: 1;
+    left: 600px;
+    background-color: white;
+    a{
+      text-decoration: none;
+      p.gen3 {
+        font-size: 18px;
+        height: 40px;
+        line-height: 40px;
+      }
+    }
+  }
 }

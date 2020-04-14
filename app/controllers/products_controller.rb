@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
 
     # 福永
     @gen1s = Category.where(ancestry: nil)
+    
 
     @gen2s = []
     @gen1s.each do |gen1|
