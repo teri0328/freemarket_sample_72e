@@ -7,4 +7,6 @@ class Product < ApplicationRecord
   has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :images
 
+  gen1_json = Category.where(ancestry: nil)
+  gen1_json.to_json
 end
