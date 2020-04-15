@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  $date = Date.today.to_s + Time.now.to_s
+  $date = Time.now.to_s
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
