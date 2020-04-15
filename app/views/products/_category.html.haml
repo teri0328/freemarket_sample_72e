@@ -20,7 +20,6 @@
       - gen3s.each do |gen3|
         = link_to "category/#{gen3.id}", id: "category/#{gen3.id}" do
           %p.gen3.negative{id: "#{gen3.id}", class: "#{gen3.ancestry.split("/")[0]} #{gen3.ancestry.split("/")[1]}"}
-            -# %p.gen3.negative{id: "#{gen3.id}", data:{ancestry: "#{gen3.ancestry}"}}
             = gen3.name
 
 
