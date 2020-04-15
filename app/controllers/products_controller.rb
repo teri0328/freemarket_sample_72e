@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
 
     # 福永
     @gen1s = Category.where(ancestry: nil)
-    
 
     @gen2s = []
     @gen1s.each do |gen1|
@@ -23,6 +22,7 @@ class ProductsController < ApplicationController
     end
 
     @gen3s = []
+    @gen3_ancestries = []
     @gen2s.each do |gen2s|
       gen2s.each do |gen2|
         @gen3s << gen2.children
