@@ -1,0 +1,27 @@
+-# .catefory-selector
+  -# .catefory-selector__form
+  -#   = f.label "カテゴリー", class: "category-label"
+  -#   %span.catefory-selector__form--require 必須
+  -#   .catefory-selector__form__wrapper
+  -#     .catefory-selector__form__wrapper__box
+  -#       = f.select :category, @category_parent_array, {}, {class: 'parent-selector', id: 'parent_category'}
+  -#       %i.fas.fa-chevron-down.parent-selector-icon
+
+  -# = form_for (@products) do|f|
+  -#   = f.label "カテゴリー", class: "category-label" do
+  -#     .category-selector__form カテゴリー
+  -#     %span.catefory-selector__form--require 必須
+  -#   .catefory-selector__form__wrapper
+  -#     .catefory-selector__form__wrapper__box
+  -#       = f.select :category, @category_parent_array, {}, {class: 'parent-selector', id: 'parent_category'}
+  -#       %i.fas.fa-chevron-down.parent-selector-icon
+
+.listing-form-box
+  .listing-product-detail__category
+    = form_for @products do|f|
+      = f.label 'カテゴリー', class: 'listing-default__label'
+      %span.listing-default--require 必須
+      .listing-select-wrapper
+        .listing-select-wrapper__box
+          = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select', id: 'parent_category'}
+          %i.fas.fa-chevron-down.listing-select-wrapper__box--arrow-down

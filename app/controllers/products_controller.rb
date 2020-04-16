@@ -12,8 +12,9 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html
       format.json
+    end
 
-    # 福永
+    # 以下、トップページの多重カテゴリ表示のため
     @gen1s = Category.where(ancestry: nil)
 
     @gen2s = []
@@ -22,7 +23,6 @@ class ProductsController < ApplicationController
     end
 
     @gen3s = []
-    @gen3_ancestries = []
     @gen2s.each do |gen2s|
       gen2s.each do |gen2|
         @gen3s << gen2.children
@@ -33,6 +33,13 @@ class ProductsController < ApplicationController
 
   def new
     @products = Product.new
+
+    # 以下、出品ページのカテゴリ選択欄のため
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |gen1|
+      @category_parent_array << gen1.name
+    end
+
   end
 
   def create
@@ -111,14 +118,27 @@ class ProductsController < ApplicationController
       redirect_to product_path(@product)
     end
   end
-  
+
   def create_comment
     @comment = Comment.new(comment: params[:comment], user_id: current_user.id, product_id: @product.id)
     unless @comment.save!
       redirect_to product_path(@product)
     end
   end
-  
+
+  # 親カテゴリーが選択された後に動くアクション
+  def get_category_children
+    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
+  end
+
+  # 子カテゴリーが選択された後に動くアクション
+  def get_category_grandchildren
+    #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
+
   private
 
   def set_product
