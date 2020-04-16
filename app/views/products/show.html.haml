@@ -7,6 +7,8 @@
           - if user_signed_in? && @product.user_id == current_user.id
             = link_to product_path(@product), method: "delete" do
               商品を削除する
+            = link_to edit_product_path(@product) do
+              商品を編集する
       .detail-wrapper__main__contents__product-contents
         .detail-wrapper__main__contents__product-contents__product-photo.top-images
           - @images.each.with_index(1) do |img,i|

@@ -4,7 +4,7 @@
       = image_tag 'logo.png'
 
   .new-main
-    = form_for(@product) do |f|
+    = form_for @product do |f|
       .image-wrapper
         .image-wrapper__label
           出品画像
@@ -18,19 +18,68 @@
             ドラッグアンドドロップ
             %br/
             またはクリックしてファイルをアップロード
-          %input.image-wrapper__image__file
-      
+            #image-box
+              #previews
+                - if @product.persisted?
+                  - @product.images.each_with_index do |image, i|
+                    = image_tag image.image.url, data: { index: i }, width: "20%", height: '100'
+                  = f.fields_for :images do |x|
+                    .js-group{"data-index" => "#{x.index}"}
+                    = x.file_field :image, class: 'js-file'
+                    %br/
+                    %span.js-remove 削除ボタン
+                    - if @product.persisted?
+                      = x.check_box :_destroy, data:{ index: x.index }, class: 'hidden-destroy'
+                    - if @product.persisted?
+                      .js-file_group{"data-index" => "#{@product.images.count}"}
+                        = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", class: 'js-file'
+                        .js-remove-content 削除
+
+
+
+            -# #image-box
+            -#   #previews
+            -#     - if @product.persisted?
+            -#       - @product.images.each_with_index do |image, i|
+            -#         = image_tag image.src.url, data: { index: i }, width: "20%", height: '100'
+            -#     = form.fields_for :images do |image|
+            -#       .js-file_group{"data-index" => "#{image.index}"}
+            -#         = image.file_field :image, class: 'js-file'
+            -#         %br/
+            -#         %span.js-remove 削除ボタン
+            -#       - if @product.persisted?
+            -#         = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+            -#       - if @product.persisted?
+            -#         .js-file_group{"data-index" => "#{@product.images.count}"}
+            -#           = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", class: 'js-file'
+            -#           .js-remove-content 削除
+
+
+
+
+            -# = f.fields_for @image do |i|
+            -#   - for num in 1..10
+            -#     = i.text_field ":image#{num}", value: ""
+            -# = f.file_field :image, class: 'image-wrapper__image__file'
+        
+
+            
+
+
+
+
+
       .item-wrapper
         .item-wrapper__name
           商品名
           %span.item-wrapper__name__tag
             必須
-        = f.text_field :name, :class => 'item-wrapper__form', placeholder: "40文字まで"
+        = f.text_field :name, class: 'item-wrapper__form', placeholder: "40文字まで"
         .item-wrapper__description
           商品の説明
           %span.item-wrapper__description__tag
             必須
-        = f.text_area :explanation, :class => 'item-wrapper__area', placeholder: '商品の説明（必須　1000文字以内）(色、素材、重さ、定価、注意点など) 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません、合わせやすいのでおすすめです！',rows:"5"
+        = f.text_area :explanation, class: 'item-wrapper__area', placeholder: '商品の説明（必須　1000文字以内）(色、素材、重さ、定価、注意点など) 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません、合わせやすいのでおすすめです！',rows:"5"
         %p.item-wrapper__counter{id:"counter"}0/1000
       .item-detail
         .item-detail__name
@@ -39,24 +88,19 @@
           カテゴリー
           %span.item-detail__category__tag
             必須
-        = f.select :category_id, [["メンズ",1],["レディース",2],["ベビー・キッズ",3],["インテリア・住まい・小物",4],["本・音楽・ゲーム",5],["おもちゃ・ホビー・グッズ",6],["コスメ・香水・美容",7],["家電・スマホ・カメラ",8],["家電・スマホ・カメラ",9],["スポーツ・レジャー",10],["ハンドメイド",11],["チケット",12],["自動車・オートバイ",13],["その他",14]], { include_blank: "選択して下さい", selected: "" }, { id: "category_id", class: "item-detail__select" }
+        -# = f.select :category_id, [["メンズ",1],["レディース",2],["ベビー・キッズ",3],["インテリア・住まい・小物",4],["本・音楽・ゲーム",5],["おもちゃ・ホビー・グッズ",6],["コスメ・香水・美容",7],["家電・スマホ・カメラ",8],["家電・スマホ・カメラ",9],["スポーツ・レジャー",10],["ハンドメイド",11],["チケット",12],["自動車・オートバイ",13],["その他",14]], { include_blank: "選択して下さい", selected: "" }, { id: "category_id", class: "item-detail__select" }
+        = f.select :category_id, [["メンズ",1],["レディース",2],["ベビー・キッズ",3],["インテリア・住まい・小物",4],["本・音楽・ゲーム",5],["おもちゃ・ホビー・グッズ",6],["コスメ・香水・美容",7],["家電・スマホ・カメラ",8],["家電・スマホ・カメラ",9],["スポーツ・レジャー",10],["ハンドメイド",11],["チケット",12],["自動車・オートバイ",13],["その他",14]], { }, { id: "category_id", class: "item-detail__select" }
         .item-detail__brand
           ブランド
           %span.item-detail__brand__tag
             任意
-        %input.item-detail__form{placeholder: "例）シャネル"}
+        = f.text_field :bland_id, class: 'item-detail__form', placeholder: "例）シャネル"
         .item-detail__status
           商品の状態
           %span.item-detail__status__tag
             必須
-        %select.item-detail__form
-          %option{ value: ""}選択して下さい
-          %option{ value: "1"}新品、未使用
-          %option{ value: "2"}未使用に近い
-          %option{ value: "3"}目立った傷や汚れなし
-          %option{ value: "4"}やや傷や汚れあり
-          %option{ value: "5"}傷や汚れあり
-          %option{ value: "6"}全体的に状態が悪い
+        -# = f.select :condition_id, [["新品、未使用",1],["未使用に近い",2],["目立った傷や汚れなし",3],["やや傷や汚れあり",4],["傷や汚れあり",5],["全体的に状態が悪い",6]], { include_blank: "選択して下さい", selected: "" }, { id: "condition_id", class: "item-detail__form" }
+        = f.select :condition_id, [["新品、未使用",1],["未使用に近い",2],["目立った傷や汚れなし",3],["やや傷や汚れあり",4],["傷や汚れあり",5],["全体的に状態が悪い",6]], { }, { id: "condition_id", class: "item-detail__form" }
       .item-cost
         .item-cost__about
           配送について
@@ -64,29 +108,20 @@
           配送料の負担
           %span.item-cost__name__tag
             必須
-        %select.item-cost__burden
-          %option{ value: ""} 選択して下さい
-          %option{ value: "1"} 送料込み(出品者負担)
-          %option{ value: "2"} 着払い(購入者負担)
+        -# = f.select :postage,[["送料込み(出品者負担)",1],["着払い(購入者負担)",2]], { include_blank: "選択して下さい", selected: "" }, { id: "postage", class: "item-cost__burden" }
+        = f.select :postage,[["送料込み(出品者負担)",1],["着払い(購入者負担)",2]], { }, { id: "postage", class: "item-cost__burden" }
         .item-cost__area
           発送元の地域
           %span.item-cost__area__tag
             必須
-        %select.item-cost__area__form
-          %option{ value: ""} 選択して下さい
-          %option{ value: "1"} 東京
-          %option{ value: "2"} 大阪
-
+        -# = f.select :region,[["東京",1],["大阪",2]], { include_blank: "選択して下さい", selected: "" }, { id: "region", class: "item-cost__area__form"}
+        = f.select :region,[["東京",1],["大阪",2]], {}, { id: "region", class: "item-cost__area__form"}
         .item-cost__days
           発送までの日数
           %span.item-cost__days__tag
             必須
-        %select.item-cost__select
-          %option{ value: ""}選択して下さい
-          %option{ value: "1"}1~2日で発送
-          %option{ value: "2"}2~3日で発送
-          %option{ value: "3"}4~7日で発送
-      
+        -# = f.select :shipping_days,[["1~2日で発送",1],["2~3日で発送",2],["4~7日で発送",3]], { include_blank: "選択して下さい", selected: ""}, { id: "shipping_days", class: "item-cost__select" }
+        = f.select :shipping_days,[["1~2日で発送",1],["2~3日で発送",2],["4~7日で発送",3]], {}, { id: "shipping_days", class: "item-cost__select" }
       .item-price
         .item-price__about
           価格(¥300~9,999,999)
@@ -96,7 +131,7 @@
             必須
           %span.item-price__name__mark
             ¥
-          %input.item-price__name__form{placeholder: "0"}
+          = f.number_field :price, class: "item-price__name__form", min: 300, max: 9999999  , placeholder: "0"
         .item-price__commission 
           販売手数料(10%)
           %span.item-price__commission__value
@@ -107,10 +142,11 @@
             ー
 
       .item-exhibition
-        %button.item-exhibition__btn{type: 'submit'}
-          変更する
+        = f.submit "変更する", class: "item-exhibition__btn"
+        -# = link_to product_path(@product), method: "PUT" do
         .item-exhibition__back
-          %a{href: "product_path"}もどる
+          = link_to product_path(@product) do
+            もどる
         .item-exhibition__text
         禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
       

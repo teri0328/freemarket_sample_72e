@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_params, only: [:create, :edit, :update]
-  before_action :set_product, only: [:show, :buy, :destroy, :pay]
+  before_action :set_params, only: [:create]
+  before_action :set_product, only: [:show, :buy, :destroy, :pay, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
   require 'payjp'
 
@@ -11,6 +11,8 @@ class ProductsController < ApplicationController
 
   def new
     @products = Product.new
+    # @images = Image.new
+    @products.images.new
   end
 
   def create
@@ -18,6 +20,22 @@ class ProductsController < ApplicationController
     unless @product.save!
       redirect_to new_product_path
     end
+    # (params.require(:product).permit(:explanation, :name, :region, :size, :price, :shipping_days, :postage,:bland_id, :condition_id,:category_id, images_attributes: [:image] ).merge(user_id: current_user.id,))
+    # @image = Image.new(params.require(:image).permit(:image, :product_id))
+  
+    # @image.save!
+    # redirect_to product_path(@product)
+    # unless @product.save!
+    #   redirect_to new_product_path
+    # end
+    # for num in 1..10 do
+    #   unless params[:product][:image][":image#{num}"].nil?
+    #     @image = Image.new(image: params[:product][:image][":image#{num}"], product_id: @product.id)
+    #     unless @image.save!
+    #       redirect_to new_product_path
+    #     end
+    #   end
+    # end
   end
 
   def show
@@ -31,14 +49,24 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product    = Product.find(params[:id])
-    # @image    = Image.find(params[:id])
+    # @image = Image.find(params[:id])
   end
 
   def update
-    product = Product.find(params[:id])
-    product.update
-    
+    @product.update(set_params)
+    #   redirect_to root_path
+    # else
+    #   render :edit
+    # end
+
+    # for num in 1..3 do
+    #   unless params[:image][":image#{num}"].nil?
+    #     @image = Image.new(image: params[:product][:image][":image#{num}"], product_id: @product.id)
+    #     unless @image.save!
+    #       redirect_to new_product_path
+    #     end
+    #   end
+    # end
   end
 
 
@@ -94,6 +122,7 @@ class ProductsController < ApplicationController
 
   def set_params
     # ダミーです、商品出品と編集に使用します
-    params.require(:product).permit(:id, :explanation, :name, :region, :size, :price, :shipping_days, :postage, :created_at, :updated_at).merge(user_id: "1", condition_id: "1", category_id: "1", bland_id: "1")
+    params.require(:product).permit(:explanation, :name, :region, :size, :price, :shipping_days, :postage, :bland_id, :condition_id, :category_id, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+    # params.require(:product).permit(:id, :explanation, :name, :region, :size, :price, :shipping_days, :postage).merge(user_id: "3", condition_id: "1", category_id: "1", bland_id: "1")
   end
 end
