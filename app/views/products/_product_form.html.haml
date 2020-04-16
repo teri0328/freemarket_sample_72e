@@ -1,0 +1,188 @@
+= render "header"
+
+.wrapper
+  .new-header
+    = link_to root_path do
+      = image_tag 'logo.png'
+
+  .new-main
+    = form_for @product do |f|
+      .image-wrapper
+        .image-wrapper__label
+          出品画像
+          %span.image-wrapper__label__tag 
+            必須
+        .image-wrapper__text
+          最大10枚までアップロードできます
+        .image-wrappers
+          #image-wrapper{action: request.path}
+            #previews
+              - if @product.persisted?
+                - @product.images.each_with_index do |image, i|
+                  .preview-image
+                    = image_tag image.filepath.url, index: i
+            = f.fields_for :images do |image|
+              .image-content{index: image.index}
+                = image.file_field :filepath, class: "file-field"
+                %span.image-delete 削除
+                %br
+              - if @product.persisted?
+                = image.check_box :_destroy, class: "hidden-destroy destroy#{image.index}", action_destroy: destroy_image_product_path(@product)
+                %br
+          .image-wrapper__image
+            = image_tag 'icon_camera.png', class: "cam-image"
+            .image-wrapper__image__content 
+              ドラッグアンドドロップ
+              %br/
+              またはクリックしてファイルをアップロード
+
+      .item-wrapper
+        .item-wrapper__name
+          商品名
+          %span.item-wrapper__name__tag
+            必須
+        = f.text_field :name, class: 'item-wrapper__form', placeholder: "40文字まで"
+        .item-wrapper__description
+          商品の説明
+          %span.item-wrapper__description__tag
+            必須
+        = f.text_area :explanation, class: 'item-wrapper__area', placeholder: '商品の説明（必須　1000文字以内）(色、素材、重さ、定価、注意点など) 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません、合わせやすいのでおすすめです！',rows:"5"
+        %p.item-wrapper__counter{id:"counter"}0/1000
+      .item-detail
+        .item-detail__name
+          商品の詳細
+        .item-detail__category
+          カテゴリー
+          %span.item-detail__category__tag
+            必須
+        = f.select :category_id, [["メンズ",1],["レディース",2],["ベビー・キッズ",3],["インテリア・住まい・小物",4],["本・音楽・ゲーム",5],["おもちゃ・ホビー・グッズ",6],["コスメ・香水・美容",7],["家電・スマホ・カメラ",8],["家電・スマホ・カメラ",9],["スポーツ・レジャー",10],["ハンドメイド",11],["チケット",12],["自動車・オートバイ",13],["その他",14]], { }, { id: "category_id", class: "item-detail__select" }
+        .item-detail__brand
+          ブランド
+          %span.item-detail__brand__tag
+            任意
+        = f.text_field :bland_id, class: 'item-detail__form', placeholder: "例）シャネル"
+        .item-detail__status
+          商品の状態
+          %span.item-detail__status__tag
+            必須
+        = f.select :condition_id, [["新品、未使用",1],["未使用に近い",2],["目立った傷や汚れなし",3],["やや傷や汚れあり",4],["傷や汚れあり",5],["全体的に状態が悪い",6]], { }, { id: "condition_id", class: "item-detail__form" }
+      .item-cost
+        .item-cost__about
+          配送について
+        .item-cost__name
+          配送料の負担
+          %span.item-cost__name__tag
+            必須
+        = f.select :postage,[["送料込み(出品者負担)",1],["着払い(購入者負担)",2]], { }, { id: "postage", class: "item-cost__burden" }
+        .item-cost__area
+          発送元の地域
+          %span.item-cost__area__tag
+            必須
+        = f.select :region,[["東京",1],["大阪",2]], {}, { id: "region", class: "item-cost__area__form"}
+        .item-cost__days
+          発送までの日数
+          %span.item-cost__days__tag
+            必須
+        = f.select :shipping_days,[["1~2日で発送",1],["2~3日で発送",2],["4~7日で発送",3]], {}, { id: "shipping_days", class: "item-cost__select" }
+      .item-price
+        .item-price__about
+          価格(¥300~9,999,999)
+        .item-price__name
+          販売価格
+          %span.item-price__name__tag
+            必須
+          %span.item-price__name__mark
+            ¥
+          = f.number_field :price, class: "item-price__name__form", min: 300, max: 9999999  , placeholder: "0"
+        .item-price__commission 
+          販売手数料(10%)
+          %span.item-price__commission__value
+            ー
+        .item-price__profit
+          販売利益
+          %span.item-price__profit__value
+            ー
+
+      .item-exhibition
+        = f.submit "変更する", class: "item-exhibition__btn", id: "product-submit"
+        .item-exhibition__back
+          = link_to product_path(@product) do
+            もどる
+        .item-exhibition__text
+        禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+      
+      .item-footer
+        %ul.item-footer_list
+          %li プライバシーポリシー
+          %li メルカリ利用規約
+          %li 特定商取引に関する表記
+      .item-logo
+        = link_to root_path do
+          = image_tag 'logo-white.png'
+
+:javascript
+  $(function(){
+    $(".image-wrapper__image").css("width", 600-120*2);
+    var deleteFlag = false;
+    $(".hidden-destroy").hide();
+    var index = [0,1,2,3,4,5,6,7,8,9];
+    var imageID = [];
+    for(var i = $(".image-content").length-1; i >= 0; i--){
+      index.shift();
+    }
+    var buildHTML = function(){
+      html = `
+      </div>
+      <div class="image-content" index=${index[0]}>
+      <input type="file" class="file-field" name="product[images_attributes][${index[0]}][filepath]" id="product_images_attributes_${index[0]}_filepath">
+      <span class="image-delete">削除</span><br>
+      </div>
+      `;
+      $("#image-wrapper").append(html);
+      index.shift();
+    };
+    if($("#image-wrapper").attr("action").indexOf("edit") != -1){
+      if(index.length != 0){
+        buildHTML();
+      }
+      $("#product-submit").click(function(e){
+        if(deleteFlag == true){
+          e.preventDefault();
+          $.ajax({
+            type: "delete",
+            url : $(".hidden-destroy").attr("action_destroy"),
+            data: {destroy_image : imageID}
+          })
+          $("#product-submit").submit();
+        }
+      })
+    }
+    var deleteFunction = function(){
+      $(".image-delete").on("click", function(){
+        deleteFlag = true;
+        var targetIndex = Number($(this).parent().attr("index"));
+        if(index.length != 9){
+          $(this).parent().remove();
+          index.push(targetIndex);
+        }
+        $(`img[index="${targetIndex}"]`).remove();
+        $(`.destroy${targetIndex}`).prop('checked', true);
+        if($(`input[type ="hidden"]#product_images_attributes_${targetIndex}_id`).val() != null){
+          imageID.push(Number($(`input[type ="hidden"]#product_images_attributes_${targetIndex}_id`).val()));
+          console.log(imageID);
+        }
+      })
+    };
+    deleteFunction();
+    $("#image-wrapper").on("change", ".image-content", function(e){
+      var targetImageIndex = Number($(this).attr("index"));
+      var file = e.target.files[0];
+      var blobUrl = window.URL.createObjectURL(file);
+      $(`img[index="${targetImageIndex}"]`).remove();
+      $("#previews").append(`<img index="${targetImageIndex}" width="100" height="100" src="${blobUrl}">`);
+      if(index.length != 0){
+        buildHTML();
+        deleteFunction();
+      }
+    })
+  })

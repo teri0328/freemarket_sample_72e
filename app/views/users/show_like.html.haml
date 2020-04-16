@@ -14,7 +14,7 @@
             - product = Product.find(l.product_id)
             = link_to product_path(product), data: {"turbolinks"=>false} do
               .pick-image
-                = image_tag Image.where(product_id: product.id)[0].image
+                = image_tag Image.where(product_id: product.id)[0].filepath
               %h3
                 = product.name
                 - if product.soldout

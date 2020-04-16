@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_params, only: :create
-  before_action :set_product, only: [:show, :destroy, :buy, :pay, :create_like, :destroy_like, :create_comment]
+  before_action :set_product, only: [:destroy_image, :edit, :update, :show, :destroy, :buy, :pay, :create_like, :destroy_like, :create_comment]
   before_action :authenticate_user!, except: [:index, :show]
   require 'payjp'
   require 'date'
@@ -21,7 +21,6 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.images.new
-
   end
 
   #商品保存機能
@@ -45,6 +44,29 @@ class ProductsController < ApplicationController
     @likenum    = 0
   end
   
+  def edit
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
+  def update
+    @product.update(set_params)
+    # unless @product.update(set_edit_params)
+    #   redirect_to new_product_path
+    # end
+  end
+
+  def destroy_image
+    @images = params[:destroy_image]
+    @images.each do |image|
+      img = Image.find(image)
+      img.destroy!
+    end
+    redirect_to product_path(@product)
+  end
+
   def destroy
     unless @product.destroy
       redirect_to product_path(@product)
@@ -115,7 +137,7 @@ class ProductsController < ApplicationController
   end
 
   def set_params
-    params.require(:product).permit(:explanation, :name, :region, :size, :price, :shipping_days, :postage,:bland_id, :condition_id,:category_id, images_attributes: [:image] ).merge(user_id: current_user.id,)
+    params.require(:product).permit(:explanation, :name, :region, :size, :price, :shipping_days, :postage,:bland_id, :condition_id,:category_id, images_attributes: [:image, :_destroy, :id] ).merge(user_id: current_user.id,)
   end
 
 end

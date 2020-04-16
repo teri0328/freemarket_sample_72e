@@ -10,18 +10,20 @@
           - if user_signed_in? && @product.user_id == current_user.id
             = link_to product_path(@product), method: "delete" do
               商品を削除する
+            = link_to edit_product_path(@product) do
+              商品を編集する
       .detail-wrapper__main__contents__product-contents
         .detail-wrapper__main__contents__product-contents__product-photo.top-images
           - @images.each.with_index(1) do |img,i|
             - if i == 1
               .detail-wrapper__main__contents__product-contents__product-photo__top.top-image{id: "top-image#{i}"}
-                = image_tag img.image, class: "detail-wrapper__main__contents__product-contents__product-photo__top__image"
+                = image_tag img.filepath, class: "detail-wrapper__main__contents__product-contents__product-photo__top__image"
                 - if @product.soldout
                   .soldout
                     SOLD OUT
             - unless i == 1
               .detail-wrapper__main__contents__product-contents__product-photo__top.top-image.top-non-active{id: "top-image#{i}"}
-                = image_tag img.image, class: "detail-wrapper__main__contents__product-contents__product-photo__top__image"
+                = image_tag img.filepath, class: "detail-wrapper__main__contents__product-contents__product-photo__top__image"
                 - if @product.soldout
                   .soldout
                     SOLD OUT
@@ -29,10 +31,10 @@
             - @images.each.with_index(1) do |img,i|
               - if i == 1
                 .detail-wrapper__main__contents__product-contents__product-photo__bottom__image.bottom-image.bottom-active{action: i}
-                  = image_tag img.image
+                  = image_tag img.filepath
               - unless i== 1
                 .detail-wrapper__main__contents__product-contents__product-photo__bottom__image.bottom-image{action: i}
-                  = image_tag img.image
+                  = image_tag img.filepath
         .detail-wrapper__main__contents__product-contents__detail-table
           %table
             %tbody

@@ -1,0 +1,45 @@
+= form_for @product do |f|
+  = f.label "商品名"
+  = f.text_field :name ,value: "商品名"
+  %br
+  = f.label "商品の説明"
+  = f.text_field :explanation, value: "商品説明"
+  %br
+  = f.label "カテゴリー"
+  = f.select :category_id, [["レディース", 1], ["メンズ", 2], ["その他", 3]]
+  %br
+  = f.label "ブランド"
+  = f.select :bland_id, [["ナイキ", 1], ["コンバース", 2], ["その他", 3]]
+  %br
+  = f.label "商品の状態"
+  = f.select :condition_id, [["新品", 1], ["中古", 2]]
+  %br
+  = f.label "配送料の負担"
+  = f.select :postage, [["送料込み(あなたが負担)", true], ["送料別(購入者が負担)", false]]
+  %br
+  = f.label "発送元の地域"
+  = f.select :region, [["東京都", "東京都"], ["大阪府", "大阪府"], ["それ以外", "それ以外"]]
+  %br
+  = f.label "発送までの日数"
+  = f.text_field :shipping_days, value: 1
+  %br
+  = f.label "サイズ"
+  = f.text_field :size, value: "M"
+  %br
+  = f.label "販売価格"
+  = f.text_field :price, value: "1000"
+  %br
+  #image-wrapper{action: request.path}
+    #previews
+      - if @product.persisted?
+        - @product.images.each_with_index do |image, i|
+          = image_tag image.filepath.url, index: i, width: "100", height: "100"
+    = f.fields_for :images do |image|
+      .image-content{index: image.index}
+        = image.file_field :filepath
+        %span.image-delete 削除
+        %br
+      - if @product.persisted?
+        = image.check_box :_destroy, class: "hidden-destroy destroy#{image.index}", action_destroy: destroy_image_product_path(@product)
+        %br
+  = f.submit id: "product-submit", value:"商品を登録する"
