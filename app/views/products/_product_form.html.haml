@@ -15,26 +15,22 @@
         .image-wrapper__text
           最大10枚までアップロードできます
         .image-wrappers
-          #image-wrapper{action: request.path}
-            #previews
-              - if @product.persisted?
-                - @product.images.each_with_index do |image, i|
-                  .preview-image
-                    = image_tag image.filepath.url, index: i
+          #image-wrapper{action: request.path, productID: @product.id}
             = f.fields_for :images do |image|
-              .image-content{index: image.index}
-                = image.file_field :filepath, class: "file-field"
-                %span.image-delete 削除
-                %br
-              - if @product.persisted?
-                = image.check_box :_destroy, class: "hidden-destroy destroy#{image.index}", action_destroy: destroy_image_product_path(@product)
-                %br
-          .image-wrapper__image
-            = image_tag 'icon_camera.png', class: "cam-image"
-            .image-wrapper__image__content 
-              ドラッグアンドドロップ
-              %br/
-              またはクリックしてファイルをアップロード
+              %label
+                #previews
+                  - if @product.persisted?
+                    - @product.images.each_with_index do |img, i|
+                      - if i == image.index
+                        .preview-image
+                          = image_tag img.filepath.url, index: i
+                .image-content{index: image.index}
+                  = image.file_field :filepath, class: "file-field"
+                  %i.image-delete{class: "fas fa-times-circle"}
+                  %br
+                - if @product.persisted?
+                  = image.check_box :_destroy, class: "hidden-destroy destroy#{image.index}", action_destroy: destroy_image_product_path(@product)
+                  %br
 
       .item-wrapper
         .item-wrapper__name
@@ -121,28 +117,37 @@
 
 :javascript
   $(function(){
-    $(".image-wrapper__image").css("width", 600-120*2);
     var deleteFlag = false;
     $(".hidden-destroy").hide();
-    var index = [0,1,2,3,4,5,6,7,8,9];
+    var index = [0,1,2,3];
+    var indexLength = index.length
     var imageID = [];
     for(var i = $(".image-content").length-1; i >= 0; i--){
       index.shift();
     }
-    var buildHTML = function(){
+    
+    var buildHTML = function(imgHTML){
       html = `
-      </div>
-      <div class="image-content" index=${index[0]}>
-      <input type="file" class="file-field" name="product[images_attributes][${index[0]}][filepath]" id="product_images_attributes_${index[0]}_filepath">
-      <span class="image-delete">削除</span><br>
-      </div>
+      <label>
+        <div id="previews">
+          <div class="preview-image">
+            ${imgHTML}
+          </div>
+        </div>
+        <div class="image-content" index="${index[0]}">
+          <input class="file-field" type="file" name="product[images_attributes][${index[0]}][filepath]" id="product_images_attributes_${index[0]}_filepath">
+          <i class="fas fa-times-circle image-delete"></i><br>
+        </div>
+      </label>
       `;
       $("#image-wrapper").append(html);
       index.shift();
     };
     if($("#image-wrapper").attr("action").indexOf("edit") != -1){
       if(index.length != 0){
-        buildHTML();
+        for(i = index.length; i >= 0; i--){
+          buildHTML("");
+        }
       }
       $("#product-submit").click(function(e){
         if(deleteFlag == true){
@@ -160,7 +165,7 @@
       $(".image-delete").on("click", function(){
         deleteFlag = true;
         var targetIndex = Number($(this).parent().attr("index"));
-        if(index.length != 9){
+        if(index.length != indexLength){
           $(this).parent().remove();
           index.push(targetIndex);
         }
@@ -168,7 +173,6 @@
         $(`.destroy${targetIndex}`).prop('checked', true);
         if($(`input[type ="hidden"]#product_images_attributes_${targetIndex}_id`).val() != null){
           imageID.push(Number($(`input[type ="hidden"]#product_images_attributes_${targetIndex}_id`).val()));
-          console.log(imageID);
         }
       })
     };
@@ -177,11 +181,9 @@
       var targetImageIndex = Number($(this).attr("index"));
       var file = e.target.files[0];
       var blobUrl = window.URL.createObjectURL(file);
-      $(`img[index="${targetImageIndex}"]`).remove();
-      $("#previews").append(`<img index="${targetImageIndex}" width="100" height="100" src="${blobUrl}">`);
-      if(index.length != 0){
-        buildHTML();
-        deleteFunction();
-      }
+      $(this).parent().remove();
+      console.log("remove");
+      buildHTML(`<img index="${targetImageIndex}" src="${blobUrl}">`);
+      deleteFunction();
     })
   })

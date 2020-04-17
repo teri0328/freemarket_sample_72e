@@ -29,9 +29,22 @@
       justify-content: center;
     }
     #image-wrapper{
-      display: inline-block;
+      overflow: scroll;
+      display: flex;
       padding-right: 10px;
+      .image-content{
+        position: relative;
+        .image-delete{
+          position: absolute;
+          top: -166px;
+          right: 2px;
+        }
+        .file-field{
+          display: none;
+        }
+      }
       #previews{
+        color: red;
         display: inline-block;
         .preview-image{
           display: flex;

@@ -52,10 +52,11 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product.update(set_params)
-    # unless @product.update(set_edit_params)
-    #   redirect_to new_product_path
-    # end
+    if @product.valid?
+      @product.update(set_params)
+    else
+      redirect_to edit_product_path(@product)
+    end
   end
 
   def destroy_image
