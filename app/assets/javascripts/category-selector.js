@@ -13,7 +13,6 @@ $(function(){
                             <option value="---" data-category="---">---</option>
                             ${insertHTML}
                           <select>
-                          <i class='fas fa-chevron-down category-selector__wrapper__box--arrow-down'></i>
                         </div>
                       </div>`;
     $('#new_product').append(childrenSelector);
@@ -23,11 +22,10 @@ $(function(){
     let grandchildrenSelector = '';
     grandchildrenSelector = `<div class='category-selector__wrapper--added' id= 'grandchildren_wrapper'>
                               <div class='category-selector__wrapper__box'>
-                                <select class="select-box" id="grandchild_category" name="category_id">
+                                <select class="select_box" id="grandchild_category" name="category_id">
                                   <option value="---" data-category="---">---</option>
                                   ${insertHTML}
                                 </select>
-                                <i class='fas fa-chevron-down category-selector__wrapper__box--arrow-down'></i>
                               </div>
                             </div>`;
     $('#new_product').append(grandchildrenSelector);
