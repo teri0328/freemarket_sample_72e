@@ -12,28 +12,16 @@
         .image-wrapper__text
           最大5枚までアップロードできます
         .image-wrapper__image
-          #image-box
-            #previews
-              - if @product.persisted?
-                - @product.images.each_with_index do |image, i|
-                  = image_tag image.src.url, data: { index: i }, width: "20%", height: '100'
-              = form.fields_for :images do |image|
-                .js-file_group{"data-index" => "#{image.index}"}
-                  = image.file_field :image, class: 'js-file'
-                  %br/
-                  %span.js-remove 削除
-                - if @product.persisted?
-                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-                - if @product.persisted?
-                  .js-file_group{"data-index" => "#{@product.images.count}"}
-                    = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", class: 'js-file'
-                    .js-remove 削除
-          -# .image-wrapper__image__content 
-          -#   = image_tag 'icon_camera.png', width: "120px", class: "camera"
-          -#   ドラッグアンドドロップ
-          -#   %br/
-          -#   またはクリックしてファイルをアップロード
-          -# %input.image-wrapper__image__file
+          .post__drop__box__container
+            .prev-content
+            .label-content
+              %label{for: "product_images_attributes_0_image", class: "label-box", id: "label-box--0" ,type: "file"}
+                %pre.label-box__text-visible クリックしてファイルをアップロード
+            .hidden-content
+              = form.fields_for :images do |i|
+                - for num in 0..4 do
+                  = i.file_field :image, class: "hidden-field", name: "product[images_attributes][#{num}][image]", id: "product_images_attributes_#{num}_image"
+                
       .item-wrapper
         .item-wrapper__name
           商品名
@@ -126,6 +114,26 @@
 
 -# </form>
 
-
-
+        -# #image-box
+          -#   #previews
+          -#     - if @product.persisted?
+          -#       - @product.images.each_with_index do |image, i|
+          -#         = image_tag image.src.url, data: { index: i }, width: "20%", height: '100'
+          -#     = form.fields_for :images do |image|
+          -#       .js-file_group{"data-index" => "#{image.index}"}
+          -#         = image.file_field :image, class: 'js-file'
+          -#         %br/
+          -#         %span.js-remove 削除
+          -#       - if @product.persisted?
+          -#         = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+          -#       - if @product.persisted?
+          -#         .js-file_group{"data-index" => "#{@product.images.count}"}
+          -#           = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", class: 'js-file'
+          -#           .js-remove 削除
+          -# -# .image-wrapper__image__content 
+          -# -#   = image_tag 'icon_camera.png', width: "120px", class: "camera"
+          -# -#   ドラッグアンドドロップ
+          -# -#   %br/
+          -# -#   またはクリックしてファイルをアップロード
+          -# -# %input.image-wrapper__image__file
 

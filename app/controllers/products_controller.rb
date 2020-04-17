@@ -27,7 +27,6 @@ class ProductsController < ApplicationController
   #商品保存機能
   def create
     @product = Product.new(set_params)
-    
     unless @product.save!
       redirect_to new_product_path
     end
