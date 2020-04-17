@@ -1,10 +1,9 @@
 .item-detail__category
   .item-detail__category__form
     = form_for @products do|f|
-      %span.item-detail__category__form__column カテゴリー
+      %span.item-detail__category__form__category カテゴリー
       %span.item-detail__category__form__require 必須
       .category-selector__wrapper{id: "parent_wrapper"}
         .category-selector__wrapper__box
           //         カラム名, 選択肢（親カテゴリ)が格納された配列, オプション(空でも省略不可), HTMLオプション
           = f.select(:category, @category_parent_array, {}, {class: 'select_box', id: 'parent_category'})
-          %i.fas.fa-chevron-down.category-selector__icon
