@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200414144641) do
+ActiveRecord::Schema.define(version: 20200417102557) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",     null: false
@@ -136,7 +136,6 @@ ActiveRecord::Schema.define(version: 20200414144641) do
     t.integer  "birth_year",                          null: false
     t.integer  "birth_month",                         null: false
     t.integer  "birth_day",                           null: false
-    t.string   "tel_number",                          null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -151,6 +150,7 @@ ActiveRecord::Schema.define(version: 20200414144641) do
     t.string   "lastname_kana",                       null: false
     t.string   "email"
     t.string   "nickname",                            null: false
+    t.string   "tel_number"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
