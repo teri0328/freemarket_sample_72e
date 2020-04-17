@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
   def new
     @products = Product.new
 
-    # 以下、出品ページのカテゴリ選択欄のため
+    # セレクトボックスの選択肢（親カテゴリ）として使うデータが格納された配列を生成
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |gen1|
       @category_parent_array << gen1.name
@@ -126,13 +126,11 @@ class ProductsController < ApplicationController
     end
   end
 
-  # 親カテゴリーが選択された後に動くアクション
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
 
-  # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
     @category_grandchildren = Category.find("#{params[:child_id]}").children
