@@ -41,12 +41,12 @@
           商品名
           %span.item-wrapper__name__tag
             必須
-        = f.text_field :name, class: 'item-wrapper__form', placeholder: "40文字まで"
+        = f.text_field :name, class: 'item-wrapper__form', placeholder: "40文字まで", value: "商品名"
         .item-wrapper__description
           商品の説明
           %span.item-wrapper__description__tag
             必須
-        = f.text_area :explanation, class: 'item-wrapper__area', placeholder: '商品の説明（必須　1000文字以内）(色、素材、重さ、定価、注意点など) 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません、合わせやすいのでおすすめです！',rows:"5"
+        = f.text_area :explanation, class: 'item-wrapper__area', placeholder: '商品の説明（必須　1000文字以内）(色、素材、重さ、定価、注意点など) 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません、合わせやすいのでおすすめです！',rows:"5", value: "商品説明"
         %p.item-wrapper__counter{id:"counter"}0/1000
       .item-detail
         .item-detail__name
@@ -60,10 +60,10 @@
           ブランド
           %span.item-detail__brand__tag
             任意
-        = f.text_field :bland_id, class: 'item-detail__form', placeholder: "例）シャネル"
+        = f.text_field :bland_id, class: 'item-detail__form', placeholder: "例）シャネル", value: 1
         .item-detail__status
           商品の状態
-          %span.item-detail__status__tag
+          %span.itezm-detail__status__tag
             必須
         = f.select :condition_id, [["新品、未使用",1],["未使用に近い",2],["目立った傷や汚れなし",3],["やや傷や汚れあり",4],["傷や汚れあり",5],["全体的に状態が悪い",6]], { }, { id: "condition_id", class: "item-detail__form" }
       .item-cost
@@ -93,7 +93,7 @@
             必須
           %span.item-price__name__mark
             ¥
-          = f.number_field :price, class: "item-price__name__form", min: 300, max: 9999999  , placeholder: "0"
+          = f.number_field :price, class: "item-price__name__form", min: 300, max: 9999999  , placeholder: "0", value: 1000
         .item-price__commission 
           販売手数料(10%)
           %span.item-price__commission__value
@@ -106,8 +106,7 @@
       .item-exhibition
         = f.submit "変更する", class: "item-exhibition__btn", id: "product-submit"
         .item-exhibition__back
-          = link_to product_path(@product) do
-            もどる
+          もどる
         .item-exhibition__text
         禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
       
