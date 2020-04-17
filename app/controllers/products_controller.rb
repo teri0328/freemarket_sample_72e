@@ -15,10 +15,16 @@ class ProductsController < ApplicationController
     end
   end
 
+
+  
+  #商品出品画面
   def new
-    @products = Product.new
+    @product = Product.new
+    @product.images.new
+
   end
 
+  #商品保存機能
   def create
     @product = Product.new(set_params)
     unless @product.save!
@@ -104,14 +110,12 @@ class ProductsController < ApplicationController
   end
   
   private
-
   def set_product
     @product = Product.find(params[:id])
   end
 
   def set_params
-    # ダミーです、商品出品と編集に使用します
-    params.require(:product).permit(:id, :explanation, :name, :region, :size, :price, :shipping_days, :postage, :created_at, :updated_at).merge(user_id: "1", condition_id: "1", category_id: "1", bland_id: "1")
+    params.require(:product).permit(:explanation, :name, :region, :size, :price, :shipping_days, :postage,:bland_id, :condition_id,:category_id, images_attributes: [:image] ).merge(user_id: current_user.id,)
   end
 
 end

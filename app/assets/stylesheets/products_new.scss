@@ -37,8 +37,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-          width: 4px;
-          height: 4px;
           padding: 3px;
           background-color:red;
         }
@@ -51,42 +49,118 @@
         padding: 0 30px;
       }
       &__image{
-        height: 170px;
-        width: 600px;
-        background-color: #F5F5F5;
-        margin: 0 auto;
-        border: dashed 1px #cccccc;
-        text-align: center;
-        position: relative;
-        &__file {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          cursor: pointer;
-          opacity: 0;
+        // height: 170px;
+        // width: 600px;
+        // background-color: #F5F5F5;
+        padding-left: 40px;
+        // border: dashed 1px #cccccc;
+        // text-align: center;
+        // position: relative;
+        .post__drop__box__container{
+          position: relative;
+          // display: block;
+          // margin: auto 0;
+          display: flex;
+          flex-wrap: wrap;
+        
+          //プレビュー表示欄のCSS
+          .prev-content {
+            display: flex;
+            .preview-box {
+              height: 162px;
+              width: 112px;
+              margin: 0 15px 10px 0;
+              .upper-box {
+                height: 112px;
+                width: 100%;
+                img{
+                  width: 112px;
+                  height: 112px;
+                }
+              }
+              .lower-box {
+                display: flex;
+                text-align: center;
+                .update-box {
+                  color: #00b0ff;
+                  width: 50%;
+                  height: 50px;
+                  line-height: 50px;
+                  border: 1px solid #eee;
+                  background: #f5f5f5;
+                  cursor: pointer;
+                }
+                .delete-box {
+                  color: #00b0ff;
+                  width: 50%;
+                  height: 50px;
+                  line-height: 50px;
+                  border: 1px solid #eee;
+                  background: #f5f5f5;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        
+          //投稿クリックエリアのCSS
+          .label-content{
+            margin-bottom: 10px;
+            width: 620px;
+            
+              .label-box {
+                display: block;
+                border: 1px dashed #ccc;
+                position: relative;
+                background: #f5f5f5;
+                width: 100%;
+                height: 162px;
+                cursor: pointer;
+                
+              &__text-visible {
+                  position: absolute;
+                  top: 50%;
+                  left: 16px;
+                  right: 16px;
+                  text-align: center;
+                  font-size: 14px;
+                  line-height: 1.5;
+                  font-weight: bold;
+                  -webkit-transform: translate(0, -50%);
+                  transform: translate(0, -50%);
+                  pointer-events: none;
+                  white-space: pre-wrap;
+                  word-wrap: break-word;
+                }
+            }
+          }
+         //file_fieldのcss
+          #product_images_attributes_0_image{
+            position: absolute;
+            top:0px;
+            left:0px;
+            z-index: 2;
+            opacity: 0;
+            cursor: pointer;
+            display: inline-block;
+            width:620px;
+            height:162px;
+          }
+          .hidden-content {
+            .hidden-field {
+              display: none;
+            }
+            .hidden-checkbox {
+              display: none;
+            }
+          }
         }
-        img{
-          position: absolute;
-          margin-top: 50px;
-          width: 20px;
-          height: 20px;
-        }
-        i {
-          padding: 5px;
-          margin-top: 50px ;
-          opacity: 0.5;     
-        }
-        &__content{
-          position: absolute;
-          width: 100%;
-          padding-top: 80px;
-          align-items: center;
-          font-size: 12px;
-          opacity: 0.8;
-          margin-top: 5px;
-        }
+
+
+
+
+
+
       }
     }
 
@@ -103,8 +177,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-          width: 4px;
-          height: 4px;
           padding: 3px;
           background-color:red;
         }
@@ -125,8 +197,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-          width: 4px;
-          height: 4px;
           padding: 3px;
           background-color:red;
         }
@@ -163,8 +233,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-          width: 4px;
-          height: 4px;
           padding: 3px;
           background-color:red;
         }
@@ -184,8 +252,7 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-          width: 4px;
-          height: 4px;
+
           padding: 3px;
           background-color:#cccccc;
         }
@@ -205,8 +272,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-          width: 4px;
-          height: 4px;
           padding: 3px;
           background-color:red;
         }
@@ -230,8 +295,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-          width: 4px;
-          height: 4px;
           padding: 3px;
           background-color:red;
         }
@@ -250,8 +313,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-          width: 4px;
-          height: 4px;
           padding: 3px;
           background-color:red;
         }
@@ -271,8 +332,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-          width: 4px;
-          height: 4px;
           padding: 3px;
           background-color:red;
         }
@@ -302,8 +361,6 @@
           font-size: 12px;
           font-weight: lighter;
           border-radius: 5px;
-          width: 4px;
-          height: 4px;
           padding: 3px;
           background-color:red;
         }
@@ -336,6 +393,11 @@
         &__value{
           float: right;
           margin-right: 50px;
+        }
+        .item-price__profit__value__price {
+          float: right;
+          margin-right: 50px;
+          font-weight: bold;
         }
       }
     }
@@ -394,3 +456,15 @@
     }
   } 
 }
+
+
+
+        // &__file {
+        //   position: absolute;
+        //   top: 0;
+        //   left: 0;
+        //   width: 100%;
+        //   height: 100%;
+        //   cursor: pointer;
+        //   opacity: 0;
+        // }
