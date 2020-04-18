@@ -1,26 +1,29 @@
-.category-container
-  .gen1s.negative
-    - @gen1s.each do |gen1|
-      = link_to "category/#{gen1.id}", id: "category/#{gen1.id}" do
-        %p.gen1.negative{id: "#{gen1.id}"}
-          = gen1.name
+.category-area
+  %i.fas.fa-list-ul
+  カテゴリ
+  .category-container
+    .gen1s.negative
+      - @gen1s.each do |gen1|
+        = link_to "category/#{gen1.id}", id: "category/#{gen1.id}" do
+          %p.gen1.negative{id: "#{gen1.id}"}
+            = gen1.name
 
-  -# 添字nのgen1直下のレコード(=子レコード)を順番に取り出す
-  .gen2s.negative
-    - @gen2s.each do |gen2s|
-      -# 配列内配列から取り出された要素単位で動的命名
-      - gen2s.each do |gen2|
-        = link_to "category/#{gen2.id}", id: "category/#{gen2.id}" do
-          %p.gen2.negative{id: "#{gen2.id}",  class:"#{gen2.ancestry}"}
-            = gen2.name
+    -# 添字nのgen1直下のレコード(=子レコード)を順番に取り出す
+    .gen2s.negative
+      - @gen2s.each do |gen2s|
+        -# 配列内配列から取り出された要素単位で動的命名
+        - gen2s.each do |gen2|
+          = link_to "category/#{gen2.id}", id: "category/#{gen2.id}" do
+            %p.gen2.negative{id: "#{gen2.id}",  class:"#{gen2.ancestry}"}
+              = gen2.name
 
-  .gen3s.negative
-    - @gen3s.each do |gen3s|
-      -# gen3s(=配列）単位で動的命名
-      - gen3s.each do |gen3|
-        = link_to "category/#{gen3.id}", id: "category/#{gen3.id}" do
-          %p.gen3.negative{id: "#{gen3.id}", class: "#{gen3.ancestry.split("/")[0]} #{gen3.ancestry.split("/")[1]}"}
-            = gen3.name
+    .gen3s.negative
+      - @gen3s.each do |gen3s|
+        -# gen3s(=配列）単位で動的命名
+        - gen3s.each do |gen3|
+          = link_to "category/#{gen3.id}", id: "category/#{gen3.id}" do
+            %p.gen3.negative{id: "#{gen3.id}", class: "#{gen3.ancestry.split("/")[0]} #{gen3.ancestry.split("/")[1]}"}
+              = gen3.name
 
 
 

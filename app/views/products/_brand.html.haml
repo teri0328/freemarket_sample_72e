@@ -1,0 +1,9 @@
+.brand-area
+  %i.fas.fa-tag
+  ブランド
+  .brand-container
+    .brands.negative
+      - @brands.each do |brand|
+        = link_to "brand/#{brand.id}", id: "brand/#{brand.id}" do
+          %p.brand.negative{id: "#{brand.id}"}
+            = brand.name

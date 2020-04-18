@@ -46,12 +46,12 @@
             %span.item-detail__category__form__require 必須
             .category-selector__wrapper{id: "parent_wrapper"}
               .category-selector__wrapper__box
-                = form.select(:category_id, @category_parent_array, {}, {class: 'select_box', id: 'parent_category'})
+                = form.select(:category_id, @category_parent_array, {}, {class: 'select_box', id: 'parent_category', value: "#{"})
         .item-detail__brand
           .item-detail__brand__form
             ブランド
             %span.item-detail__bland__tag 任意
-          = form.select(:category_id, @bland_array, {}, {class: 'select_box', id: 'bland_selector'})
+          = form.select(:bland_id, @bland_array, {}, {class: 'select_box', id: 'bland_selector'})
         .item-detail__brand
           サイズ
           %span.item-detail__brand__tag

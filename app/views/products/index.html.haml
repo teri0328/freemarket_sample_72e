@@ -17,11 +17,8 @@
           - if user_signed_in?
             %p
               = "ようこそ！#{current_user.nickname}さん"
-          .category-area
-            %i.fas.fa-list-ul
-            カテゴリ
-            = render 'category'
-          %p ブランド
+          = render 'category'
+          = render 'brand'
       .header__inner__nav--right
         %ul
           %ls

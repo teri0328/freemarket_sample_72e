@@ -29,6 +29,8 @@ class ProductsController < ApplicationController
       end
     end
 
+    @brands = Bland.all
+
   end
 
 
