@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_params, only: :create
   before_action :set_product, only: [:destroy_image, :edit, :update, :show, :destroy, :buy, :pay, :create_like, :destroy_like, :create_comment]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   require 'payjp'
   require 'date'
   
