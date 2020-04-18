@@ -94,7 +94,7 @@
             .pick-image
               - product.images.each.with_index(1) do |image,i|
                 - if i == 1
-                  = image_tag image.filepath, alt: "QR"
+                  = image_tag image.image, alt: "QR"
             %h3 
               = product.name
               - if product.soldout
@@ -120,7 +120,7 @@
           = link_to "#" do
             - Image.where(product_id: product.id).each.with_index(1) do |image,i|
               - if i == 1
-                = image_tag image.filepath, size: "220x180", alt: "QR" 
+                = image_tag image.image, size: "220x180", alt: "QR" 
                 .pick-boby
                   %h3
                     = product.name

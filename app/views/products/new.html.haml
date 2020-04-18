@@ -1,6 +1,9 @@
 = render "header"
 - breadcrumb :product_new
 = breadcrumbs separator: " &rsaquo; "
+
+= render "header"
+
 .wrapper
   .new-main
     = form_for @product do |form|

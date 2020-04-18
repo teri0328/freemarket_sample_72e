@@ -1,6 +1,7 @@
 = render "/products/header"
 - breadcrumb :user_show
 = breadcrumbs separator: " &rsaquo; "
+
 .main-mypage
   .main-mypage__container.clearfix
     .main-mypage__container__content
@@ -46,7 +47,7 @@
     .main-mypage__container__side
       .main-mypage__container__side__nav
         - @contents.each do |content|
-          = link_to content[:link] do
+          = link_to content[:link],method: content[:method] do
             .main-mypage__container__side__nav__list
               = content[:content]
       %h3 

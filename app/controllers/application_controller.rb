@@ -31,11 +31,12 @@ class ApplicationController < ActionController::Base
   def set_contents
     if user_signed_in?
       @contents      = []
-      contents       = ["マイページ","お知らせ","やることリスト","いいね一覧"                       ,"出品する","下書き一覧","出品した商品-出品中","出品した商品-取引中","出品した商品〜売却済み","購入した商品-取引中","購入した商品-過去の取引","ニュース一覧","評価一覧","ガイド","お問い合わせ"]
-      contents_links = [""        ,""       ,""            ,show_like_user_path(current_user),""       ,""        ,""                ,""                ,""                  ,""                ,""                   ,""          ,""       ,""     ,""          ]
+      contents       = ["マイページ"               ,"お知らせ","やることリスト","いいね一覧"                       ,"出品する"       ,"下書き一覧","出品した商品-出品中","出品した商品-取引中","出品した商品〜売却済み","購入した商品-取引中","購入した商品-過去の取引","ニュース一覧","評価一覧","ガイド","お問い合わせ"]
+      contents_links = [destroy_user_session_path,""       ,""            ,show_like_user_path(current_user),new_product_path,""        ,""                ,""                ,""                  ,""                ,""                   ,""          ,""       ,""     ,""          ]
+      method         = [:delete                  ,""       ,""            ,:get                             ,:get            ,""        ,""                ,""                ,""                  ,""                ,""                   ,""          ,""       ,""     ,""          ]
       @settings      = ["プロフィール","発送元・お届け先変更","支払い方法","メール・パスワード","本人情報","電話番号の確認","ログアウト"]
       contents.each.with_index(0) do |content,i|
-        @contents << {content: content, link: contents_links[i]}
+        @contents << {content: content, link: contents_links[i], method: method[i]}
       end
     end
   end
