@@ -32,7 +32,7 @@ class ProductsController < ApplicationController
   end
 
 
-  
+
   #商品出品画面
   def new
     @product = Product.new
@@ -44,6 +44,11 @@ class ProductsController < ApplicationController
       @category_parent_array << gen1.name
     end
 
+    @blands = Bland.all
+    @bland_array = ["---"]
+    @blands.each do |bland|
+      @bland_array << bland.name
+    end
   end
 
   #商品保存機能
@@ -70,7 +75,7 @@ class ProductsController < ApplicationController
       @ancestry = @category.ancestry
     end
   end
-  
+
   def edit
     respond_to do |format|
       format.html
@@ -176,7 +181,7 @@ class ProductsController < ApplicationController
   end
 
   def set_params
-    params.require(:product).permit(:explanation, :name, :region, :size, :price, :shipping_days, :postage,:bland_id, :condition_id,:category_id, images_attributes: [:image, :_destroy, :id] ).merge(user_id: current_user.id,)
+    params.require(:product).permit(:explanation, :name, :region, :size, :price, :shipping_days, :postage,:bland_id, :condition_id, :category_id, images_attributes: [:image, :_destroy, :id] ).merge(user_id: current_user.id)
   end
 
 end

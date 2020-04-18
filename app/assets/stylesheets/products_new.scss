@@ -254,14 +254,16 @@
         font-weight: bold;
         font-size: 15px;
         margin: 20px 0 10px 0;
-        padding: 0 30px;
-        &__tag{
-          color: white;
-          font-size: 12px;
-          font-weight: lighter;
-          border-radius: 5px;
-          padding: 3px;
-          background-color:#cccccc;
+        &__form {
+          padding-left: 30px;
+          &__tag{
+            color: white;
+            font-size: 12px;
+            font-weight: lighter;
+            border-radius: 5px;
+            padding: 3px;
+            background-color:#cccccc;
+          }
         }
       }
       &__form{

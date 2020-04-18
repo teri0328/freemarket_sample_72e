@@ -1,21 +1,17 @@
 .item-detail__category{
   font-weight: bold;
   margin: 20px 0 10px 0;
-
   &__form {
     &__category {
       padding-left: 30px;
     }
     &__require{
-      font-size: 15px;
       color: white;
       font-size: 12px;
       font-weight: lighter;
       border-radius: 5px;
-      width: 4px;
-      height: 4px;
       padding: 3px;
-      background-color: red;
+      background-color:red;
     }
   }
 }
