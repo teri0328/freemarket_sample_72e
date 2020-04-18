@@ -15,7 +15,7 @@ $(function(){
                           <select>
                         </div>
                       </div>`;
-    $('#new_product').append(childrenSelector);
+    $('.item-detail__category__form').append(childrenSelector);
   }
   // 孫カテゴリーの表示作成
   function appendGrandchidrenBox(insertHTML){
@@ -28,7 +28,7 @@ $(function(){
                                 </select>
                               </div>
                             </div>`;
-    $('#new_product').append(grandchildrenSelector);
+    $('.item-detail__category__form').append(grandchildrenSelector);
   }
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
@@ -64,6 +64,7 @@ $(function(){
   $('.item-detail__category').on('change', '#child_category', function(){
     // 選択された子カテゴリのカスタムデータ属性を取得
     let childId = $('#child_category option:selected').data('category');
+    console.log(`${childId}`);
     if (childId != "---"){
       $.ajax({
         url: 'get_category_grandchildren',
