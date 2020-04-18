@@ -52,9 +52,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.valid?
-      @product.update(set_params)
-    else
+    unless @product.valid? && @product.update(set_params)
       redirect_to edit_product_path(@product)
     end
   end
