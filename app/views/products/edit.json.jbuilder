@@ -1,0 +1,1 @@
+json.data Image.where(product_id: @product.id)

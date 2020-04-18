@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :products, only: [:index, :new, :create, :show, :destroy] do
+  resources :products do
     collection do
       get "search"
     end
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       get "buy"
       get "create_like"
       post "create_comment"
+      delete "destroy_image"
       delete "destroy_like"
     end
   end
