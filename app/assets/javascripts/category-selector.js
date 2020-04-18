@@ -64,7 +64,6 @@ $(function(){
   $('.item-detail__category').on('change', '#child_category', function(){
     // 選択された子カテゴリのカスタムデータ属性を取得
     let childId = $('#child_category option:selected').data('category');
-    console.log(`${childId}`);
     if (childId != "---"){
       $.ajax({
         url: 'get_category_grandchildren',
