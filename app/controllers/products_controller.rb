@@ -57,7 +57,6 @@ class ProductsController < ApplicationController
   def show
     @user       = User.find(@product.user)
     @bland      = Bland.find(@product.bland)
-    @category   = Category.where(product_id: @product.id)
     @condition  = Condition.find(@product.condition)
     @address    = Address.where(user_id: @product.user)
     @evaluation = Evaluation.where(user_id: @product.user)
@@ -65,6 +64,12 @@ class ProductsController < ApplicationController
     @comment    = Comment.new
     @comments   = Comment.where(product_id: @product.id)
     @likenum    = 0
+
+    @category   = @product.category
+    if @category.ancestry != nil
+      @ancestry = @category.ancestry
+    end
+
   end
   
   def edit
