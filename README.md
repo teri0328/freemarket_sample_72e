@@ -58,7 +58,8 @@
 - belongs_to :bland
 - belongs_to :evaluation
 - has_many :conditions
-- has_many :categories, through: product_categories, dependent: :destroy
+<!-- - has_many :categories, through: product_categories, dependent: :destroy -->
+- belongs_to :category
 - has_many :images, dependent: :destroy
 - accepts_nested_attributes_for :images
 
@@ -84,7 +85,8 @@
 |name|string|null: false|
 
 ### Association
-- has_many :products, through: product_categories
+<!-- - has_many :products, through: product_categories -->
+- has_many :products
 
 ## Blandsテーブル
 

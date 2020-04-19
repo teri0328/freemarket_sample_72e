@@ -1,0 +1,38 @@
+$furima: #3CCACE;
+
+.negative {
+  display: none;
+}
+
+p {
+  padding:0 10px;
+}
+
+.brand:hover {
+  background-color: $furima;
+}
+
+.brand-area {
+  i {
+    margin-left: 30px;
+  }
+  margin: 15px 0;
+  .brand-container {
+    position: relative;
+    .brands {
+      width: 300px;
+      height: 780px;
+      position: absolute;
+      z-index: 1;
+      background-color: white;
+      a{
+        text-decoration: none;
+        p.brand {
+          font-size: 20px;
+          height: 60px;
+          line-height: 60px;
+        }
+      }
+    }
+  }
+}

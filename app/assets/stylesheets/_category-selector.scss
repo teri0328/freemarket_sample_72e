@@ -1,0 +1,24 @@
+.item-detail__category{
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  &__form {
+    &__category {
+      padding-left: 30px;
+    }
+    &__require{
+      color: white;
+      font-size: 12px;
+      font-weight: lighter;
+      border-radius: 5px;
+      padding: 3px;
+      background-color:red;
+    }
+  }
+}
+
+.select_box{
+  margin: 10px 50px;
+  width: 600px;
+  height: 50px;
+  font-size: 18px;
+}

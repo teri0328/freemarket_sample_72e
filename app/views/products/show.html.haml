@@ -61,17 +61,7 @@
                 %th
                   カテゴリー
                 %td
-                  = link_to "#" do
-                    = @category.name
-                  %br
-                -# カテゴリ機能実装後に使うので以下コメントアウト
-                  -# = link_to "#" do
-                  -#   = icon('fas','chevron-right')
-                  -#   パンツ
-                  -# %br
-                  -# = link_to "#" do
-                  -#   = icon('fas','chevron-right')
-                  -#   その他
+                  = render 'show_category'
               %tr
                 %th
                   ブランド
