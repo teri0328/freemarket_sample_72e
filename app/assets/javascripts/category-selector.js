@@ -9,7 +9,7 @@ $(function(){
     let childrenSelector = '';
     childrenSelector = `<div class='category-selector__wrapper--added' id= 'children_wrapper'>
                         <div class='category-selector__wrapper__box'>
-                          <select class="select_box" id="child_category" name="product[category_id]">
+                          <select class="select_box" id="child_category" name="test">
                             <option value="---">---</option>
                             ${insertHTML}
                           <select>
@@ -22,7 +22,7 @@ $(function(){
     let grandchildrenSelector = '';
     grandchildrenSelector = `<div class='category-selector__wrapper--added' id= 'grandchildren_wrapper'>
                               <div class='category-selector__wrapper__box'>
-                                <select class="select_box" id="grandchild_category" name="product[category_id]">
+                                <select class="select_box" id="grandchild_category" name="test">
                                   <option value="---">---</option>
                                   ${insertHTML}
                                 </select>
@@ -33,8 +33,9 @@ $(function(){
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
     // 選択された親カテゴリの”表示されている文字”を取得
-    var parentCategory = $('#parent_category option:selected').text();
+    let parentCategory = $('#parent_category option:selected').text();
     if (parentCategory != "---"){
+      $('#parent_category').attr("name", 'product[category_id]')
       $.ajax({
         url: 'get_category_children',
         type: 'GET',
@@ -51,11 +52,14 @@ $(function(){
           insertHTML += appendOption(child);
         });
         appendChidrenSelector(insertHTML);
+        // $('#child_category').attr("name", 'product[category_id]')
       })
       .fail(function(){
         alert('カテゴリー取得に失敗しました');
       })
     }else{
+      $('#parent_category').attr("name", 'test')
+      // $('#child_category').attr("name", 'test')
       //親カテゴリが初期値になった時、子カテゴリ以下を削除する
       $('#children_wrapper').remove();
       $('#grandchildren_wrapper').remove();
@@ -65,9 +69,8 @@ $(function(){
   $('.item-detail__category').on('change', '#child_category', function(){
     // 選択された子カテゴリのvalue属性(= レコードのid)を取得
     let childId = $('#child_category option:selected').val();
-    console.log(`${childId}`);
-
     if (childId != "---"){
+      
       $.ajax({
         url: 'get_category_grandchildren',
         type: 'GET',
@@ -82,14 +85,24 @@ $(function(){
             insertHTML += appendOption(grandchild);
           });
           appendGrandchidrenBox(insertHTML);
+          $('#child_category').attr("name", 'product[category_id]')
         }
       })
       .fail(function(){
         alert('カテゴリー取得に失敗しました');
       })
     }else{
+      $('#child_category').attr("name", 'test')
       // 子カテゴリが初期値("---")に戻ったら孫カテゴリを削除する
       $('#grandchildren_wrapper').remove();
+    }
+  });
+  $('.item-detail__category').on('change', '#grandchild_category', function(){
+    let grandchildId = $('#grandchild_category option:selected').val();
+    if (grandchildId != "---"){
+      $('#grandchild_category').attr("name", 'product[category_id]')
+    }else{
+      $('#grandchild_category').attr("name", 'test')
     }
   });
 });
