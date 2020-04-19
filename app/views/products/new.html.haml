@@ -46,17 +46,17 @@
             %span.item-detail__category__form__require 必須
             .category-selector__wrapper{id: "parent_wrapper"}
               .category-selector__wrapper__box
-                = form.select(:category_id, @category_parent_array, {}, {class: 'select_box', id: 'parent_category', value: "#{"})
+                = form.select(:category_id, @category_parent_array, {}, {class: 'select_box', id: 'parent_category'})
         .item-detail__brand
           .item-detail__brand__form
             ブランド
             %span.item-detail__bland__tag 任意
-          = form.select(:bland_id, @bland_array, {}, {class: 'select_box', id: 'bland_selector'})
+          = form.select(:bland_id, @brand_array, {}, {class: 'select_box', id: 'bland_selector'})
         .item-detail__brand
           サイズ
           %span.item-detail__brand__tag
             任意
-        = form.text_area :size ,class: "item-detail__form", placeholder: "例）26.5cm", rows: "40" 
+        = form.text_area :size ,class: "item-detail__form", placeholder: "例）26.5cm", rows: "40"
         .item-detail__status
           商品の状態
           %span.item-detail__status__tag

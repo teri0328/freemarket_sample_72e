@@ -61,30 +61,7 @@
                 %th
                   カテゴリー
                 %td
-                  - if @category.ancestry == nil
-                    %p
-                      = link_to "category/#{@category.id}" do
-                        = @category.name
-                  - elsif @category.ancestry != nil && @ancestry.length == 1
-                    %p
-                      = link_to "category/#{Category.find(@ancestry.split("/")[0]).id}" do
-                        = Category.find(@ancestry.split("/")[0]).name
-                    %p
-                      = link_to "category/#{@category.id}" do
-                        = icon('fas','chevron-right')
-                        = @category.name
-                  - else
-                    %p
-                      = link_to "category/#{Category.find(@ancestry.split("/")[0]).id}" do
-                        = Category.find(@ancestry.split("/")[0]).name
-                    %p
-                      = link_to "category/#{Category.find(@ancestry.split("/")[1]).id}" do
-                        = icon('fas','chevron-right')
-                        = Category.find(@ancestry.split("/")[1]).name
-                    %p
-                      = link_to "category/#{@category.id}" do
-                        = icon('fas','chevron-right')
-                        = @category.name
+                  = render 'show_category'
               %tr
                 %th
                   ブランド

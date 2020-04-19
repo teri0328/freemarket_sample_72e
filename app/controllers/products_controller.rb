@@ -40,16 +40,20 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.images.new
 
+    Category.where(ancestry: nil).each do |category|
+      @category = category.id
+    end
     # 以下、出品ページのカテゴリ選択欄のため
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |gen1|
-      @category_parent_array << gen1.name
+      @category_parent_array << [gen1.name, gen1.id]
+      # @category_parent_array << gen1.id
     end
 
-    @blands = Bland.all
-    @bland_array = ["---"]
-    @blands.each do |bland|
-      @bland_array << bland.name
+    @brands = Bland.all
+    @brand_array = ["---"]
+    @brands.each do |brand|
+      @brand_array << [brand.name, brand.id]
     end
   end
 
@@ -166,7 +170,7 @@ class ProductsController < ApplicationController
 
   # 親カテゴリーが選択された後に動くアクション
   def get_category_children
-    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+    #選択された親カテゴリーに紐付く子カテゴリー（配列）を取得
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
 

@@ -1,7 +1,7 @@
 $(function(){
   // 子カテゴリセレクター、孫カテゴリセレクターの選択肢を動的に定義
   function appendOption(category){
-    let html = `<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+    let html = `<option value="${category.id}">${category.name}</option>`;
     return html;
   }
   // 子カテゴリーの表示作成
@@ -9,8 +9,8 @@ $(function(){
     let childrenSelector = '';
     childrenSelector = `<div class='category-selector__wrapper--added' id= 'children_wrapper'>
                         <div class='category-selector__wrapper__box'>
-                          <select class="select_box" id="child_category" name="category_id">
-                            <option value="---" data-category="---">---</option>
+                          <select class="select_box" id="child_category" name="product[category_id]">
+                            <option value="---">---</option>
                             ${insertHTML}
                           <select>
                         </div>
@@ -22,8 +22,8 @@ $(function(){
     let grandchildrenSelector = '';
     grandchildrenSelector = `<div class='category-selector__wrapper--added' id= 'grandchildren_wrapper'>
                               <div class='category-selector__wrapper__box'>
-                                <select class="select_box" id="grandchild_category" name="category_id">
-                                  <option value="---" data-category="---">---</option>
+                                <select class="select_box" id="grandchild_category" name="product[category_id]">
+                                  <option value="---">---</option>
                                   ${insertHTML}
                                 </select>
                               </div>
@@ -32,8 +32,9 @@ $(function(){
   }
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
-    var parentCategory = $('#parent_category').val(); //選択された親カテゴリーの名前を取得
-    if (parentCategory != "---"){ //親カテゴリーが初期値でないことを確認
+    // 選択された親カテゴリの”表示されている文字”を取得
+    var parentCategory = $('#parent_category option:selected').text();
+    if (parentCategory != "---"){
       $.ajax({
         url: 'get_category_children',
         type: 'GET',
@@ -62,8 +63,10 @@ $(function(){
   });
   // 子カテゴリー選択後のイベント
   $('.item-detail__category').on('change', '#child_category', function(){
-    // 選択された子カテゴリのカスタムデータ属性を取得
-    let childId = $('#child_category option:selected').data('category');
+    // 選択された子カテゴリのvalue属性(= レコードのid)を取得
+    let childId = $('#child_category option:selected').val();
+    console.log(`${childId}`);
+
     if (childId != "---"){
       $.ajax({
         url: 'get_category_grandchildren',
