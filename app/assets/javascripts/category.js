@@ -8,7 +8,8 @@ $(function() {
   // 第一階層にポインタが乗ったときの処理
   $("p.gen1").on("mouseenter", function(){
     // ポインタが乗ったgen1のid名を取得
-    let current_gen1_id = $(this).attr("id");
+    let current_gen1_id = $(this).data("category");
+    console.log(`${current_gen1_id}`);
     // ポインタが乗っているgen1以外の背景色を削除
     $(".gen1").css('background-color', '').not(`#${current_gen1_id}`);
     // ポインタが乗ったgen1に背景色を追加
@@ -24,7 +25,7 @@ $(function() {
   // 第二階層にポインタが乗ったときの処理
   $("p.gen2").on("mouseenter", function(){
     // ポインタが乗ったgen2のid名(gen2.id)を取得
-    let current_gen2_id = $(this).attr("id");
+    let current_gen2_id = $(this).data("category");
     // ポインタが乗ったgen2のクラス名（=> gen2.ancestry => gen1.id)を取得、加工
     let current_gen2_class = $(this).attr("class");
     current_gen2_class = current_gen2_class.replace("gen2", "");

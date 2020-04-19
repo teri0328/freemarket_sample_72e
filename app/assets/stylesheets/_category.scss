@@ -18,22 +18,21 @@ p {
     position: relative;
     .gen1s {
       width: 300px;
-      height: 780px;
       position: absolute;
       z-index: 1;
       background-color: white;
       a{
         text-decoration: none;
-        p.gen1 {
+        .gen1 {
           font-size: 20px;
-          height: 60px;
-          line-height: 60px;
+          height: 55px;
+          line-height: 55px;
         }
       }
     }
     .gen2s {
       width: 300px;
-      min-height: 780px;
+      min-height: 920px;
       position: absolute;
       z-index: 1;
       left: 300px;
@@ -49,7 +48,7 @@ p {
     }
     .gen3s {
       width: 300px;
-      min-height: 780px;
+      min-height: 920px;
       position: absolute;
       z-index: 1;
       left: 600px;
