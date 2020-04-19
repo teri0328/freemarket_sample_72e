@@ -52,14 +52,12 @@ $(function(){
           insertHTML += appendOption(child);
         });
         appendChidrenSelector(insertHTML);
-        // $('#child_category').attr("name", 'product[category_id]')
       })
       .fail(function(){
         alert('カテゴリー取得に失敗しました');
       })
     }else{
       $('#parent_category').attr("name", 'test')
-      // $('#child_category').attr("name", 'test')
       //親カテゴリが初期値になった時、子カテゴリ以下を削除する
       $('#children_wrapper').remove();
       $('#grandchildren_wrapper').remove();

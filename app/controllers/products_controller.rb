@@ -47,7 +47,6 @@ class ProductsController < ApplicationController
     @category_parent_array = ["---"]
     Category.where(ancestry: nil).each do |gen1|
       @category_parent_array << [gen1.name, gen1.id]
-      # @category_parent_array << gen1.id
     end
 
     @brands = Bland.all

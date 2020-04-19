@@ -3,13 +3,6 @@
     = link_to "category/#{@category.id}" do
       = @category.name
 - elsif @category.ancestry != nil && @ancestry.include?("/")
-  -# %p
-  -#   = link_to "category/#{Category.find(@ancestry.split("/")[0]).id}" do
-  -#     = Category.find(@ancestry.split("/")[0]).name
-  -# %p
-  -#   = link_to "category/#{@category.id}" do
-  -#     = icon('fas','chevron-right')
-  -#     = @category.name
   %p
     = link_to "category/#{Category.find(@ancestry.split("/")[0]).id}" do
       = Category.find(@ancestry.split("/")[0]).name
@@ -29,13 +22,3 @@
     = link_to "category/#{@category.id}" do
       = icon('fas','chevron-right')
       = @category.name
-  -#   = link_to "category/#{Category.find(@ancestry.split("/")[0]).id}" do
-  -#     = Category.find(@ancestry.split("/")[0]).name
-  -# %p
-  -#   = link_to "category/#{Category.find(@ancestry.split("/")[1]).id}" do
-  -#     = icon('fas','chevron-right')
-  -#     = Category.find(@ancestry.split("/")[1]).name
-  -# %p
-  -#   = link_to "category/#{@category.id}" do
-  -#     = icon('fas','chevron-right')
-  -#     = @category.name

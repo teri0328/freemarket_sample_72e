@@ -48,7 +48,6 @@ $(function() {
 
   $(".gen3").on("mouseenter", function(){
     $(this).css('background-color', '#3CCACE');
-    // $(this).removeClass("negative");
   });
 
   $(".gen3").on("mouseleave", function(){
