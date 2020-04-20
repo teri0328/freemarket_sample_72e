@@ -11,16 +11,15 @@
         #search-results
     .header__inner__nav
       .header__inner__nav--left
-        %ul 
-          %ls
-          %p カテゴリ
-          %p ブランド
+        %ul
+          = render 'layouts/category'
+          = render 'layouts/brand'
       .header__inner__nav--right
         %ul
           %ls
           - if user_signed_in?
             %span
-              = link_to user_path(current_user) do
+              = link_to user_path(current_user), data: {"turbolinks"=>false} do
                 = "#{current_user.nickname}さんのマイページ"
             = link_to "ログアウト" , destroy_user_session_path, method: :delete
           - unless user_signed_in?

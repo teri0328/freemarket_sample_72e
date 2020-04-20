@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user
-  belongs_to :bland
+  belongs_to :bland, optional: true
   belongs_to :condition
   belongs_to :category
   has_many :images  , dependent: :destroy

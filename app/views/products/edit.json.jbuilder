@@ -1,1 +1,1 @@
-json.data Image.where(product_id: @product.id)
+json.data       Image.where(product_id: @product.id)

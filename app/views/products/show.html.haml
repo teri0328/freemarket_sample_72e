@@ -1,4 +1,4 @@
-= render "header"
+= render "/layouts/header"
 - breadcrumb :product_show
 = breadcrumbs separator: " &rsaquo; "
 .detail-wrapper
@@ -67,7 +67,8 @@
                   ブランド
                 %td
                   = link_to "#" do
-                    = @bland.name
+                    - if @bland != nil
+                      = @bland.name
               %tr
                 %th
                   商品のサイズ

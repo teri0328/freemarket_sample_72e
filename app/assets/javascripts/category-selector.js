@@ -1,8 +1,21 @@
 $(function(){
-  // 子カテゴリセレクター、孫カテゴリセレクターの選択肢を動的に定義
-  function appendOption(category){
-    let html = `<option value="${category.id}">${category.name}</option>`;
-    return html;
+    // カテゴリセレクターの選択肢を動的に定義
+    function appendOption(category,selected){
+      let html = `<option value="${category.id}" ${selected}>${category.name}</option>`;
+      return html;
+    }
+  // 親カテゴリーの表示作成
+  function appendParentSelector(insertHTML){
+    let parentSelector = '';
+    parentSelector = `<div class='category-selector__wrapper' id= 'parent_wrapper'>
+                        <div class='category-selector__wrapper__box'>
+                          <select class="select_box" id="parent_category" name="test">
+                            <option value="---">---</option>
+                            ${insertHTML}
+                          <select>
+                        </div>
+                      </div>`;
+    $('.item-detail__category__form').append(parentSelector);
   }
   // 子カテゴリーの表示作成
   function appendChidrenSelector(insertHTML){
@@ -30,6 +43,48 @@ $(function(){
                             </div>`;
     $('.item-detail__category__form').append(grandchildrenSelector);
   }
+  // editアクションの場合のみ、カテゴリセレクターを生成する
+  var request = $("#parent_wrapper").attr("action");
+  if(request != undefined && request.indexOf("edit") != -1){
+    console.log("ここからカテゴリセレクタを生成");
+    $.ajax({
+      url: 'get_category_parent',
+      type:'GET'
+    }).done(function(data){
+      console.log(data.parent.id, data.child.id, data.grandchild.id);
+      let insert = '';
+      data.parents.forEach(function(parent){
+        if(data.parent.id == parent.id){
+          console.log(`this${parent.name}`);
+        }
+        console.log(parent.name);
+      })
+      insert = '';
+      data.children.forEach(function(child){
+        if(data.child.id == child.id){
+          console.log(`this${child.name}`);
+        }
+        console.log(child.name);
+      })
+      insert = '';
+      data.grandchildren.forEach(function(grandchild){
+        if(data.grandchild.id == grandchild.id){
+          console.log(`this${grandchild.name}`);
+        }
+        console.log(grandchild.name);
+      })
+      if(data.child == null && data.grandchild == null){
+        console.log(data.parent.id);
+      }else if(data.grandchild == null){
+        console.log(data.parent.id);
+        console.log(data.child.id);
+      }else{
+        console.log(data.parent.id);
+        console.log(data.child.id);
+        console.log(data.grandchild.id);
+      }
+    })
+  }
   // 親カテゴリー選択後のイベント
   $('#parent_category').on('change', function(){
     // 選択された親カテゴリの”表示されている文字”を取得
@@ -49,7 +104,7 @@ $(function(){
         let insertHTML = '';
         children.forEach(function(child){
           // 選択された親カテゴリ直属の子カテゴリが代入されていく
-          insertHTML += appendOption(child);
+          insertHTML += appendOption(child,"");
         });
         appendChidrenSelector(insertHTML);
       })
@@ -80,7 +135,7 @@ $(function(){
           $('#grandchildren_wrapper').remove();
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
-            insertHTML += appendOption(grandchild);
+            insertHTML += appendOption(grandchild,"");
           });
           appendGrandchidrenBox(insertHTML);
           $('#child_category').attr("name", 'product[category_id]')

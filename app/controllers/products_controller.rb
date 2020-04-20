@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_params, only: :create
-  before_action :set_product, only: [:destroy_image, :edit, :update, :show, :destroy, :buy, :pay, :create_like, :destroy_like, :create_comment]
+  before_action :set_product, only: [:destroy_image, :edit, :update, :show, :destroy, :buy, :pay, :create_like, :destroy_like, :create_comment, :get_category_parent]
   before_action :authenticate_user!, except: [:index, :show, :search]
   require 'payjp'
   require 'date'
@@ -8,29 +8,11 @@ class ProductsController < ApplicationController
   def index
     @used_id = []
     @products = Product.includes(:images).order('created_at DESC')
-    @categorize = Product.where(category_id: 3).order('created_at DESC')
     respond_to do |format|
       format.html
       format.json
     end
-
-    # 以下、トップページの多重カテゴリ表示のため
-    @gen1s = Category.where(ancestry: nil)
-
-    @gen2s = []
-    @gen1s.each do |gen1|
-      @gen2s << gen1.children
-    end
-
-    @gen3s = []
-    @gen2s.each do |gen2s|
-      gen2s.each do |gen2|
-        @gen3s << gen2.children
-      end
-    end
-
-    @brands = Bland.all
-
+    @categorize = Product.where(category_id: 3).order('created_at DESC')
   end
 
 
@@ -50,7 +32,7 @@ class ProductsController < ApplicationController
     end
 
     @brands = Bland.all
-    @brand_array = ["---"]
+    @brand_array = [nil]
     @brands.each do |brand|
       @brand_array << [brand.name, brand.id]
     end
@@ -66,7 +48,9 @@ class ProductsController < ApplicationController
 
   def show
     @user       = User.find(@product.user)
-    @bland      = Bland.find(@product.bland)
+    if @product.bland != nil
+      @bland      = Bland.find(@product.bland)
+    end
     @condition  = Condition.find(@product.condition)
     @address    = Address.where(user_id: @product.user)
     @evaluation = Evaluation.where(user_id: @product.user)
@@ -82,6 +66,19 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    # 以下、出品ページのカテゴリ選択欄のため
+    Category.where(ancestry: nil).each do |category|
+      @category = category.id
+    end
+    @category_parent_array = ["---"]
+    Category.where(ancestry: nil).each do |gen1|
+      @category_parent_array << [gen1.name, gen1.id]
+    end
+    @brands = Bland.all
+    @brand_array = [nil]
+    @brands.each do |brand|
+      @brand_array << [brand.name, brand.id]
+    end
     respond_to do |format|
       format.html
       format.json
@@ -167,6 +164,28 @@ class ProductsController < ApplicationController
     end
   end
 
+  def get_category_parent
+    @category_parents       = Category.where(ancestry: nil)
+    @category_children      = nil
+    @category_grandchildren = nil
+    @category_child      = nil
+    @category_grandchild = nil
+
+    if @product.category.ancestry == nil
+      @category_parent     = Category.find(@product.category.id)
+    elsif @product.category.ancestry.include?("/") == false
+      @category_children      = Category.find_by(id: @product.category.id).children
+      @category_parent        = Category.find(@product.category.parent.id)
+      @category_child         = Category.find(@product.category.id)
+    else
+      @category_children      = Category.find_by(id: @product.category.parent.id).children
+      @category_grandchildren = Category.find_by(id: @product.category.parent.parent.id).children
+      @category_parent        = Category.find(@product.category.parent.parent.id)
+      @category_child         = Category.find(@product.category.parent.id)
+      @category_grandchild    = Category.find(@product.category.id)
+    end
+  end
+
   # 親カテゴリーが選択された後に動くアクション
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリー（配列）を取得
@@ -181,6 +200,7 @@ class ProductsController < ApplicationController
 
 
   private
+  
   def set_product
     @product = Product.find(params[:id])
   end

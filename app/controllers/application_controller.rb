@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :basic_auth, if: :production? 
   before_action :set_key
+  before_action :set_ancestry
   before_action :set_contents
   
   protected
@@ -13,6 +14,21 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def set_ancestry
+    # 以下、トップページの多重カテゴリ表示のため
+    @brands = Bland.all
+    @gen1s = Category.where(ancestry: nil)
+    @gen2s = []
+    @gen1s.each do |gen1|
+      @gen2s << gen1.children
+    end
+    @gen3s = []
+    @gen2s.each do |gen2s|
+      gen2s.each do |gen2|
+        @gen3s << gen2.children
+      end
+    end
+  end
 
   def set_key
     gon.payjp_key = ENV['KEY']

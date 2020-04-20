@@ -21,10 +21,11 @@ Rails.application.routes.draw do
     collection do
       get "search"
       # json形式でのレスポンスを指定
-      get 'get_category_children', defaults: {format: 'json'}
-      get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'get_category_children'     , defaults: {format: 'json'}
+      get 'get_category_grandchildren', defaults: {format: 'json'}
     end
     member do
+      get 'get_category_parent'       , defaults: {format: 'json'}
       get "pay"
       get "buy"
       get "create_like"

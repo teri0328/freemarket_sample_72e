@@ -1,8 +1,6 @@
-= render "header"
+= render "/layouts/header"
 - breadcrumb :product_new
 = breadcrumbs separator: " &rsaquo; "
-
-= render "header"
 
 .wrapper
   .new-main
@@ -50,13 +48,13 @@
         .item-detail__brand
           .item-detail__brand__form
             ブランド
-            %span.item-detail__bland__tag 任意
+            %span.item-detail__brand__form__tag 任意
           = form.select(:bland_id, @brand_array, {}, {class: 'select_box', id: 'bland_selector'})
         .item-detail__brand
-          サイズ
-          %span.item-detail__brand__tag
-            任意
-        = form.text_area :size ,class: "item-detail__form", placeholder: "例）26.5cm", rows: "40"
+          .item-detail__brand__form
+            サイズ
+            %span.item-detail__brand__form__tag 任意
+          = form.text_area :size ,class: "item-detail__form", placeholder: "例）26.5cm", rows: "40"
         .item-detail__status
           商品の状態
           %span.item-detail__status__tag
