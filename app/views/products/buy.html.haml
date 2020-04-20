@@ -38,7 +38,7 @@
                 = @default_card_information.exp_month.to_s + " / " + @default_card_information.exp_year.to_s.slice(2,3)
             - else
               %br
-              = link_to new_card_path do
+              = link_to new_card_path, data: {"turbolinks"=>false} do
                 %b 支払い方法を登録して下さい
         .buy-main__body__item__inner__three
           .buy-main__body__item__inner__three__address
