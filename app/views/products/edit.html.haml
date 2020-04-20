@@ -55,23 +55,9 @@
           .item-detail__name
             商品の詳細
         .item-detail__category
-          .item-detail__category__form
+          .item-detail__category__form{id: "parent_wrapper",action: request.path}
             %span.item-detail__category__form__category カテゴリー
-            -# = @category_parent.name
-            -# = @category_child.name
-            -# = @category_grandchild.name
             %span.item-detail__category__form__require 必須
-
-            .category-selector__wrapper{id: "parent_wrapper",action: request.path}
-              .category-selector__wrapper__box
-                = form.text_field :category_id
-            -#     = form.select(:category_id, @category_parent_array, {}, {class: 'select_box', id: 'parent_category', selected:1})
-            -# .category-selector__wrapper--added{id: "children_wrapper"}
-            -#   .category-selector__wrapper__box
-            -#     = form.select(:category_id, @category_parent_array, {}, {class: 'select_box', id: 'child_category'})
-                
-            -#     = @category_parent_array
-            -#     = @product.category.ancestry
         .item-detail__brand
           .item-detail__brand__form
             ブランド

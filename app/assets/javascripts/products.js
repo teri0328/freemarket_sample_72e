@@ -14,7 +14,7 @@ $(document).on('turbolinks:load', function(){
                         <span>削除</span>
                       </div>
                     </div>
-                  </div>`
+                  </div>`;
       return html;
     }
 

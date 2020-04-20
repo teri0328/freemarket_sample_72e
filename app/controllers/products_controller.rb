@@ -172,17 +172,18 @@ class ProductsController < ApplicationController
     @category_grandchild = nil
 
     if @product.category.ancestry == nil
-      @category_parent     = Category.find(@product.category.id)
+      @category_parent        = Category.find(@product.category.id)
+      @category_children      = Category.find(@product.category.id).children
     elsif @product.category.ancestry.include?("/") == false
-      @category_children      = Category.find_by(id: @product.category.id).children
       @category_parent        = Category.find(@product.category.parent.id)
       @category_child         = Category.find(@product.category.id)
-    else
       @category_children      = Category.find_by(id: @product.category.parent.id).children
-      @category_grandchildren = Category.find_by(id: @product.category.parent.parent.id).children
+    else
       @category_parent        = Category.find(@product.category.parent.parent.id)
       @category_child         = Category.find(@product.category.parent.id)
       @category_grandchild    = Category.find(@product.category.id)
+      @category_children      = Category.find_by(id: @product.category.parent.parent.id).children
+      @category_grandchildren = Category.find_by(id: @product.category.parent.id).children
     end
   end
 
