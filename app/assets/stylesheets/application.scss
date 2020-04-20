@@ -30,3 +30,22 @@ body{
     color: #333;
   }
 }
+
+.new-product-btn{
+  z-index: 11;
+  position: fixed;
+  bottom: 30px;
+  right:30px;
+  background-color: #3CCACE;
+  display: inline-block;
+  height: 140px;
+  width: 140px;
+  border-radius: 140px;
+  padding-top: 10px;
+  color: #fff;
+  font-weight: bold;
+  background-image: image_url("icon_camera.png");
+  background-size: 80px;
+  text-align: center;
+  background-position: center center;
+}
