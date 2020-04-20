@@ -41,7 +41,6 @@ class ProductsController < ApplicationController
   #商品保存機能
   def create
     @product = Product.new(set_params)
-    binding.pry
     if @product.valid? && !@product.images.empty?
       @product.save
     else
@@ -89,7 +88,17 @@ class ProductsController < ApplicationController
   end
 
   def update
-    if @product.valid? && !@product.images.empty?
+    imageLength = params[:product][:images_attributes].length
+    deleteImage = 0
+
+    for num in 0..9
+      if params[:product][:images_attributes][num.to_s] != nil
+        if params[:product][:images_attributes][num.to_s][:_destroy] == "1"
+          deleteImage += 1
+        end
+      end
+    end
+    if @product.valid? && !@product.images.empty? && imageLength != deleteImage
       @product.update(set_params)
     else
       redirect_to edit_product_path(@product)
