@@ -41,7 +41,10 @@ class ProductsController < ApplicationController
   #商品保存機能
   def create
     @product = Product.new(set_params)
-    unless @product.save!
+    binding.pry
+    if @product.valid? && !@product.images.empty?
+      @product.save
+    else
       redirect_to new_product_path
     end
   end
@@ -86,7 +89,9 @@ class ProductsController < ApplicationController
   end
 
   def update
-    unless @product.valid? && @product.update(set_params)
+    if @product.valid? && !@product.images.empty?
+      @product.update(set_params)
+    else
       redirect_to edit_product_path(@product)
     end
   end
