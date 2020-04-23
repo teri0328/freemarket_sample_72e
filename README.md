@@ -162,3 +162,5 @@
 
 ### Association
 - belongs_to :product
+
+test
