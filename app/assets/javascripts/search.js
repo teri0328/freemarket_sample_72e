@@ -17,7 +17,7 @@ $(function(){
           }
           var html = 
           `<a href= "/products/${d.id}">
-            <div class = "search-result">${soldout} ${d.name} ${d.category} ${d.bland}
+            <div class = "search-result">${soldout} ${d.name} ${d.category}
               <div class = "search-result__image">
                 <img src = "${d.image}">
               </div>
