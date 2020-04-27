@@ -150,7 +150,7 @@ ActiveRecord::Schema.define(version: 20200420011527) do
     t.string   "lastname_kana",                       null: false
     t.string   "email"
     t.string   "nickname",                            null: false
-    t.string   "tel_number"
+    t.string   "tel_number",                          null: false
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
