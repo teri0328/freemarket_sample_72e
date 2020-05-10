@@ -2,7 +2,9 @@
 %html
   %head
     %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
-    %title FreemarketSample72e
+    %link(rel="shortcut icon" href="favicon.ico" type="image/x-icon")/
+    %title fm72e:techcamp
+
     %script{src: "https://js.pay.jp/", type: "text/javascript"}
     :javascript
       Payjp.setPublicKey('pk_test_0383a1b8f91e8a6e3ea0e2a9');
@@ -10,5 +12,5 @@
     = include_gon
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body
+    %body
     = yield
